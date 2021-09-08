@@ -6,7 +6,7 @@ description: 'Update: 2021-09-09'
 
 ## 소개 및 목차
 
-## 사전준비
+## [사전준비 ](prepare.md)
 
 TransitGateway Workshop을 진행하기 위한 Cloud9 구성을 준비합니다.
 
