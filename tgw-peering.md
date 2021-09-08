@@ -1,2 +1,2 @@
-# TransitGateway 피어링
+# 4.TransitGateway 피어링
 

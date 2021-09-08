@@ -1,6 +1,7 @@
 # Table of contents
 
 * [TransitGateway](README.md)
+* [사전준비](prepare.md)
 * [TransitGateway 소개](tgw-overview.md)
 * [TransitGateway 구성](tgw-config.md)
 * [TransitGateway 멀티어카운트](tgw-multiaccount.md)
