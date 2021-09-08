@@ -6,6 +6,10 @@ description: 'Update: 2021-09-09'
 
 ## 소개 및 목차
 
+## 사전준비
+
+TransitGateway Workshop을 진행하기 위한 Cloud9 구성을 준비합니다.
+
 ## [TransitGateway 소개 ](tgw-overview.md)
 
 **Transit Gateway에 대한 전반적인 내용을 소개합니다.**
