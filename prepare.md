@@ -85,10 +85,10 @@ ssh-keygen
 
 ```
 
-key이름은 imdkey 또는 원하는 key 이름으 설정합니다.
+key이름은 mykey 또는 원하는 key 이름으 설정합니다.
 
 ```text
-imdkey
+mykey
 ```
 
 아래와 같이 ssh key가 구성됩니다.
@@ -96,7 +96,7 @@ imdkey
 ```text
 ssh-keygen
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/ec2-user/.ssh/id_rsa): awsaccess
+Enter file in which to save the key (/home/ec2-user/.ssh/id_rsa): mykey
 Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: 
 Your identification has been saved in gwlbkey.
@@ -117,21 +117,21 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-이제 생성된 Public Key를 계정으로 업로드 합니다. **`"--region {AWS Region}"`** 리전 옵션에서 각 리전을 지정하게 되면 해당 리전으로 생성한 Public Key를 전송합니다. 아래에서는 서리전으로 전송하는 예제입니다.
+이제 생성된 Public Key를 계정으로 업로드 합니다. **`"--region {AWS Region}"`** 리전 옵션에서 각 리전을 지정하게 되면 해당 리전으로 생성한 Public Key를 전송합니다. 아래에서는 서울 리전으로 전송하는 예제입니다.
 
 ```text
 mv imdkey ./imdkey.pem
 chmod 400 ./imdkey.pem
-aws ec2 import-key-pair --key-name "imdkey" --public-key-material fileb://imdkey.pub --region ap-northeast-2
+aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region ap-northeast-2
 ```
 
 아래와 같이 업로드가 완료됩니다.
 
 ```text
-whchoi:~/environment $ aws ec2 import-key-pair --key-name "gwlbkey" --public-key-material fileb://gwlbkey.pub --region ap-northeast-2
+whchoi:~/environment $ aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region ap-northeast-2
 {
     "KeyFingerprint": "xx:xx:xx:xx:xx:65:3a:70:fb:b1:fa:dd:6c:59:c6:9e",
-    "KeyName": "gwlbkey",
+    "KeyName": "mykey",
     "KeyPairId": "key-xxxxxxxxx"
 }
 ```
