@@ -1,2 +1,2 @@
-# 2.TransitGateway 구성
+# TransitGateway 구성
 

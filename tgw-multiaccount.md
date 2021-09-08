@@ -1,2 +1,2 @@
-# 3.TransitGateway 멀티어카운트
+# TransitGateway 멀티어카운트
 

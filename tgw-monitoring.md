@@ -1,2 +1,2 @@
-# 6.TransitGateway 모니터링
+# TransitGateway 모니터링
 
