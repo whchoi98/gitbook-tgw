@@ -51,11 +51,11 @@ sudo ssh-keygen -y -f ~/environment/mykey.pem > ~/environment/mykey.pub
 
 **`IAD-VPC`** 를 Cloudformation 을 기반으로 생성합니다.
 
-![](.gitbook/assets/image%20%2870%29.png)
+![](.gitbook/assets/image%20%2871%29.png)
 
 다운로드 받아 둔 파일 중에서 IAD-VPC.yml 파일을 업로드하고, 다음을 선택합니다.
 
-![](.gitbook/assets/image%20%2885%29.png)
+![](.gitbook/assets/image%20%2886%29.png)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
 
@@ -63,11 +63,11 @@ sudo ssh-keygen -y -f ~/environment/mykey.pem > ~/environment/mykey.pub
 IAD-VPC
 ```
 
-![](.gitbook/assets/image%20%2844%29.png)
+![](.gitbook/assets/image%20%2845%29.png)
 
 별도로 설정 변경없이, 다음 단계를 진행하고 , 승인을 선택하고 스택생성합니다.
 
-![](.gitbook/assets/image%20%2854%29.png)
+![](.gitbook/assets/image%20%2855%29.png)
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
 
@@ -81,7 +81,7 @@ IAD-VPC를 연결할 TransitGateway를 버지니아 리전\(us-east-1\)에 Cloud
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다. \(TGW는 스택이름을 다르게 지정해도, 본 랩을 구성하는데 문제가 없습니다.\)
 
-![](.gitbook/assets/image%20%2884%29.png)
+![](.gitbook/assets/image%20%2885%29.png)
 
 5분 이내에 TransitGateway가 완성됩니다.
 
@@ -99,7 +99,7 @@ AWS 관리콘솔 - EC2를 선택합니다.
 
 EC2가 정상적으로 생성되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%2867%29.png)
+![](.gitbook/assets/image%20%2868%29.png)
 
 ### Task4. TGW 구성 확인
 
@@ -107,7 +107,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 [![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28149%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28149%29.png)
 
-![](.gitbook/assets/image%20%2864%29.png)
+![](.gitbook/assets/image%20%2865%29.png)
 
 ### Task5. TGW Attachment 확인.
 
@@ -124,13 +124,13 @@ IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연
 
 **`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. Associations와 Propagation 탭을 눌러서, IAD-VPC 연결과 IAD-VPC의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%2835%29.png)
+![](.gitbook/assets/image%20%2836%29.png)
 
 ![](.gitbook/assets/image%20%285%29.png)
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
-![](.gitbook/assets/image%20%2887%29.png)
+![](.gitbook/assets/image%20%2888%29.png)
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**👏
 
@@ -207,7 +207,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 **`Create Transit Gateway Attachment` 를 선택합니다.**
 
-![](.gitbook/assets/image%20%2888%29.png)
+![](.gitbook/assets/image%20%2889%29.png)
 
 **1.Transit Gateway ID - 버지니아에서 생성한 IAD-TGW를 선택합니다.**
 
@@ -231,7 +231,7 @@ IAD-TO-SEOUL
 
 **이제 5번의 Transit Gateway \(accepter\)에 서울 리전의 Transit Gateway ID값을 붙여 넣고, Create Attachment를 클릭하고 완료합니다. 아래와 같이 새로운 Transit Gateway Attachment가 생성되었습니다.**
 
-![](.gitbook/assets/image%20%2874%29.png)
+![](.gitbook/assets/image%20%2875%29.png)
 
 하지만 서울리전 Transit Gateway Peering을 위한 Transit Gateway Attachment는 initiating request 상태입니다. 서울리전에서 수락하지 않으면 연결되지 않습니다.
 
@@ -243,7 +243,7 @@ IAD-TO-SEOUL
 
 상단 **`"작업"`** 을 선택하고 **`Accept`** 선택합니다.
 
-![](.gitbook/assets/image%20%2855%29.png)
+![](.gitbook/assets/image%20%2856%29.png)
 
 Accept를 선택하면, pending 으로 전환되고 7~8분 이후 available로 변경됩니다.
 
@@ -251,11 +251,11 @@ Accept를 선택하면, pending 으로 전환되고 7~8분 이후 available로 �
 Seoul-To-Virginia
 ```
 
-![](.gitbook/assets/image%20%2886%29.png)
+![](.gitbook/assets/image%20%2887%29.png)
 
 이제 Attachment가 Association으로 변경되면, Transit Gateway-Transit Gateway Route Table 탭에서 Create Association 을 시켜 줍니다.
 
-![](.gitbook/assets/image%20%2837%29.png)
+![](.gitbook/assets/image%20%2838%29.png)
 
 ![](.gitbook/assets/image%20%287%29.png)
 
@@ -263,7 +263,7 @@ Seoul-To-Virginia
 
 AWS 콘솔 - VPC - Transit Gateway - Transit Gateway 라우팅 테이블 을 선택하고, Create association을 선택합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28130%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28130%29.png)
+![](.gitbook/assets/image%20%2832%29.png)
 
 새로운 peering을 Association 시켜 줍니다.
 
