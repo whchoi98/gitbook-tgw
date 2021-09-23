@@ -113,13 +113,13 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-이제 생성된 Public Key를 계정으로 업로드 합니다. **`"--region {AWS Region}"`** 리전 옵션에서 각 리전을 지정하게 되면 해당 리전으로 생성한 Public Key를 전송합니다. 아래에서는 서울 리전과 도쿄 리으로 전송하는 예제입니다.
+이제 생성된 Public Key를 계정으로 업로드 합니다. **`"--region {AWS Region}"`** 리전 옵션에서 각 리전을 지정하게 되면 해당 리전으로 생성한 Public Key를 전송합니다. 아래에서는 서울 리전과 버지니아 리전으로 전송하는 예제입니다.
 
 ```text
 mv imdkey ./imdkey.pem
 chmod 400 ./imdkey.pem
 aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region ap-northeast-2
-aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region ap-northeast-1
+aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region us-east-1
 ```
 
 아래와 같이 업로드가 완료됩니다.
