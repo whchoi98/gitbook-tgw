@@ -40,7 +40,7 @@ RAM은 AWS Identity and Access Management \(IAM\)에 설정된 기존 정책과 
 
 AWS RAM\(Resource Access Manager\)를 이용하여 빌더스 컴퍼니의 Transit Gateway를 연계해서, 협력사인 서밋 컴퍼니 자원을 사용해 봅니다.
 
-![](.gitbook/assets/image%20%2840%29.png)
+![](.gitbook/assets/image%20%2847%29.png)
 
 ## 2.서로 다른 계정에서 TGW 연동
 
@@ -66,7 +66,7 @@ git clone https://github.com/whchoi98/builders20210312
 
 **`Seoul-VPC-PART`** 를 Cloudformation 을 기반으로 생성합니다.
 
-![](.gitbook/assets/image%20%2866%29.png)
+![](.gitbook/assets/image%20%2874%29.png)
 
 **AWS 콘솔에서 서울 리전 \(ap-northeast-2\)를 선택하고, Cloudformation 서비스를 선택합니다.**
 
@@ -78,19 +78,19 @@ git clone https://github.com/whchoi98/builders20210312
 Seoul-VPC-PART.yml
 ```
 
-![](.gitbook/assets/image%20%2865%29.png)
+![](.gitbook/assets/image%20%2873%29.png)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
 
-![](.gitbook/assets/image%20%2890%29.png)
+![](.gitbook/assets/image%20%28101%29.png)
 
 별도로 설정 변경없이, 다음 단계를 진행하고 , 승인을 선택하고 스택생성합니다.
 
-![](.gitbook/assets/image%20%28102%29.png)
+![](.gitbook/assets/image%20%28113%29.png)
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
 
-![](.gitbook/assets/image%20%2830%29.png)
+![](.gitbook/assets/image%20%2836%29.png)
 
 서밋 컴퍼니 계의 번호를 복사해 둡니다. RAM 구성시 계정 정보가 필요합니다.
 
@@ -108,11 +108,11 @@ Seoul-VPC-PART.yml
 
 **`빌더스 계정 - AWS 콘솔 - RAM`**
 
-![](.gitbook/assets/image%20%2846%29.png)
+![](.gitbook/assets/image%20%2854%29.png)
 
 **`Resource Access Manager - 내가 공유: 리소스 공유`** 에서 **`"리소스 공유 생성"`** 을 선택합니다.
 
-![](.gitbook/assets/image%20%2882%29.png)
+![](.gitbook/assets/image%20%2892%29.png)
 
 아래와 값을 입력합니다.
 
@@ -125,15 +125,15 @@ Seoul-TGW
 * `리소스 유형 선택 - 전송 게이트웨이 (Transit Gateway)`를 선택하고, 생성해 놓은 TGW를 선택합니다.
 * **`Principal - 외부 계정`** 허용 을 선택합니다. 앞서 새롭게 Seoul-VPC-PART VPC 자원이 생성된 계정의 번호를 입력합니다. \(앞서 복사해 둔 서밋 컴퍼니의 계정입니다.\)
 
-![](.gitbook/assets/image%20%2869%29.png)
+![](.gitbook/assets/image%20%2878%29.png)
 
 리소스 공유를 확인하고, 생성한 리소스 공유를 선택합니다.
 
-![](.gitbook/assets/image%20%2867%29.png)
+![](.gitbook/assets/image%20%2875%29.png)
 
 Associating 단계로 진행 중인 것을 확인 할 수 있습니다.
 
-![](.gitbook/assets/image%20%2853%29.png)
+![](.gitbook/assets/image%20%2861%29.png)
 
 이제 공유를 확인하기 위해, 협력사인 서밋 컴퍼니 계정 콘솔로 이동해서 RAM으로 이동합니다.
 
@@ -141,11 +141,11 @@ Associating 단계로 진행 중인 것을 확인 할 수 있습니다.
 
 `리소스 공유`에 `초대 알람`이 생성된 것을 확인 할 수 있습니다. 리소스 공유를 선택합니다.
 
-![](.gitbook/assets/image%20%2810%29.png)
+![](.gitbook/assets/image%20%2811%29.png)
 
 해당 리소스 공유를 선택하면, 리소스 공유 수락을 대기하고 있는 것을 확인 할 수 있습니다. 공유된 리소스 Seoul-TGW 를 선택합니다.
 
-![](.gitbook/assets/image%20%284%29.png)
+![](.gitbook/assets/image%20%285%29.png)
 
 리소스 공유 수락을 선택합니다.
 
@@ -153,7 +153,7 @@ Associating 단계로 진행 중인 것을 확인 할 수 있습니다.
 
 AWS 계정 - VPC - TransitGateway에 빌더스 컴퍼니 계정의 Seoul-TGW가 나타납니다.
 
-![](.gitbook/assets/image%20%2888%29.png)
+![](.gitbook/assets/image%20%2898%29.png)
 
 ### Task 3. TGW 연동하기
 
@@ -164,11 +164,11 @@ AWS 계정 - VPC - TransitGateway에 빌더스 컴퍼니 계정의 Seoul-TGW가 
 * VPC ID : 서밋 컴퍼니의 VPC 선택 \(Seoul-VPC-PART\)
 * Subnet : TGW ENI가 연결된 서브넷 선택 \(Seoul-VPC-TGWSubnetA, Seoul-VPC-TGWSubnetB\)
 
-![](.gitbook/assets/image%20%2870%29.png)
+![](.gitbook/assets/image%20%2879%29.png)
 
 **`VPC - Transit Gateway - Transit Gateway`** 연결 에서 정상적으로 구성되었는지 확인합니다 . 
 
-![](.gitbook/assets/image%20%2884%29.png)
+![](.gitbook/assets/image%20%2894%29.png)
 
 라우팅 테이블에서 Assocation을 수행합니다.
 
@@ -180,15 +180,15 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 **`빌더스 계정 - AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블`**에서 **`"Seoul-TGW-RT-East-To-West"`** 테이블을 선택합니다. 새롭게 추가된 서밋 컴퍼니 계정의 **Transit Gateway Attachment를 선택하고 추가**합니다.
 
-![](.gitbook/assets/image%20%2825%29.png)
+![](.gitbook/assets/image%20%2829%29.png)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - "Seoul-TGW-RT-East-To-West" - Assosications Tab`** 를 선택합니다. 정상적으로 Association 되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%2817%29.png)
+![](.gitbook/assets/image%20%2819%29.png)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations Tab`** 을 선택하고, 서밋 컴퍼니의 Seoul-VPC-PART 를 propagation 합니다.
 
-![](.gitbook/assets/image%20%2826%29.png)
+![](.gitbook/assets/image%20%2830%29.png)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations Tab`** 을 선택하고, 정상적으로 Propagation 되었는지 확인합니다.
 
@@ -196,7 +196,7 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Route Tab`** 을 선택고, 정상적으로 Route가 추가되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%2839%29.png)
+![](.gitbook/assets/image%20%2846%29.png)
 
 서밋 컴퍼니 계정에서 SEOUL-VPC-PRT-Private-10.4.21.101 을 접속합니다.
 
@@ -260,7 +260,7 @@ ping SEOUL-VPC-DEV-Private
 
 이제 Seoul-VPC-PART에서 Seoul-VPC-DEV, Seoul-VPC-STG로 통신을 하기 위해, 10.0.0.0/8의 목적지를 Transit Gateway로 추가합니다.
 
-![](.gitbook/assets/image%20%2821%29.png)
+![](.gitbook/assets/image%20%2823%29.png)
 
 {% hint style="info" %}
 Seoul-VPC-PART에서 Seoul-VPC-PRD 로도 접근이 가능할 것입니다. 모든 VPC에서 10.0.0.0/8의 목적지를 TGW로 구성했긴 때문입니다. 보안 강화를 이러한 경우에는 VPC들의 CIDR을 Propagation 하지 않고, Static으로 처리하면 접근 제어가 가능합니다. 

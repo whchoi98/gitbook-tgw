@@ -51,11 +51,11 @@ sudo ssh-keygen -y -f ~/environment/mykey.pem > ~/environment/mykey.pub
 
 **`IAD-VPC`** 를 Cloudformation 을 기반으로 생성합니다.
 
-![](.gitbook/assets/image%20%2879%29.png)
+![](.gitbook/assets/image%20%2889%29.png)
 
 다운로드 받아 둔 파일 중에서 IAD-VPC.yml 파일을 업로드하고, 다음을 선택합니다.
 
-![](.gitbook/assets/image%20%2894%29.png)
+![](.gitbook/assets/image%20%28105%29.png)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
 
@@ -63,29 +63,29 @@ sudo ssh-keygen -y -f ~/environment/mykey.pem > ~/environment/mykey.pub
 IAD-VPC
 ```
 
-![](.gitbook/assets/image%20%2850%29.png)
+![](.gitbook/assets/image%20%2858%29.png)
 
 별도로 설정 변경없이, 다음 단계를 진행하고 , 승인을 선택하고 스택생성합니다.
 
-![](.gitbook/assets/image%20%2862%29.png)
+![](.gitbook/assets/image%20%2870%29.png)
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
 
-![](.gitbook/assets/image%20%2832%29.png)
+![](.gitbook/assets/image%20%2838%29.png)
 
 ### Task2. TGW구성하기.
 
 IAD-VPC를 연결할 TransitGateway를 버지니아 리전\(us-east-1\)에 Cloudformation으로 생성합니다. 다운로드 받은 파일 중에 , **`IAD-TGW.yml`** 파일을 업로드 합니다.
 
-![](.gitbook/assets/image%20%286%29.png)
+![](.gitbook/assets/image%20%287%29.png)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다. \(TGW는 스택이름을 다르게 지정해도, 본 랩을 구성하는데 문제가 없습니다.\)
 
-![](.gitbook/assets/image%20%2893%29.png)
+![](.gitbook/assets/image%20%28104%29.png)
 
 5분 이내에 TransitGateway가 완성됩니다.
 
-![](.gitbook/assets/image%20%2827%29.png)
+![](.gitbook/assets/image%20%2831%29.png)
 
 ### Task3. VPC, EC2 구성 확인하기.
 
@@ -93,13 +93,13 @@ IAD-VPC를 연결할 TransitGateway를 버지니아 리전\(us-east-1\)에 Cloud
 
 VPC가 정상적으로 생성되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%2819%29.png)
+![](.gitbook/assets/image%20%2821%29.png)
 
 AWS 관리콘솔 - EC2를 선택합니다.
 
 EC2가 정상적으로 생성되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%2876%29.png)
+![](.gitbook/assets/image%20%2885%29.png)
 
 ### Task4. TGW 구성 확인
 
@@ -107,13 +107,13 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 [![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28149%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28149%29.png)
 
-![](.gitbook/assets/image%20%2873%29.png)
+![](.gitbook/assets/image%20%2882%29.png)
 
 ### Task5. TGW Attachment 확인.
 
 **`VPC-Transit Gateway-Transit Gateway 연결` 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
-![](.gitbook/assets/image%20%2811%29.png)
+![](.gitbook/assets/image%20%2813%29.png)
 
 IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.
 
@@ -124,13 +124,13 @@ IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연
 
 **`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. Associations와 Propagation 탭을 눌러서, IAD-VPC 연결과 IAD-VPC의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%2841%29.png)
+![](.gitbook/assets/image%20%2848%29.png)
 
-![](.gitbook/assets/image%20%285%29.png)
+![](.gitbook/assets/image%20%286%29.png)
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
-![](.gitbook/assets/image%20%2897%29.png)
+![](.gitbook/assets/image%20%28108%29.png)
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**👏
 
@@ -199,7 +199,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 **목표 구성과 필요작업은 아래와 같습니다.**
 
-![](.gitbook/assets/image%20%2836%29.png)
+![](.gitbook/assets/image%20%2842%29.png)
 
 ### **Task9. 버지니아 리전과 한국 리전 연결 \(Peering\)**
 
@@ -207,7 +207,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 **`Create Transit Gateway Attachment` 를 선택합니다.**
 
-![](.gitbook/assets/image%20%2898%29.png)
+![](.gitbook/assets/image%20%28109%29.png)
 
 **1.Transit Gateway ID - 버지니아에서 생성한 IAD-TGW를 선택합니다.**
 
@@ -227,11 +227,11 @@ IAD-TO-SEOUL
 
 **AWS 관리 콘솔 - VPC - Transit Gateway - Transit Gateway 를 선택하고, Transit Gateway ID를 복사합니다.**
 
-![](.gitbook/assets/image%20%2829%29.png)
+![](.gitbook/assets/image%20%2835%29.png)
 
 **이제 5번의 Transit Gateway \(accepter\)에 서울 리전의 Transit Gateway ID값을 붙여 넣고, Create Attachment를 클릭하고 완료합니다. 아래와 같이 새로운 Transit Gateway Attachment가 생성되었습니다.**
 
-![](.gitbook/assets/image%20%2883%29.png)
+![](.gitbook/assets/image%20%2893%29.png)
 
 하지만 서울리전 Transit Gateway Peering을 위한 Transit Gateway Attachment는 initiating request 상태입니다. 서울리전에서 수락하지 않으면 연결되지 않습니다.
 
@@ -239,11 +239,11 @@ IAD-TO-SEOUL
 
 **`서울 리전의 VPC - Transit Gateway - Transit Gateway 연결`** 에 새로운 Transit Gateway Attachment가 생성된 것을 확인 할 수 있습니다. 하지만 **`pending acceptance`** 상태입니다.
 
-![](.gitbook/assets/image%20%2812%29.png)
+![](.gitbook/assets/image%20%2814%29.png)
 
 상단 **`"작업"`** 을 선택하고 **`Accept`** 선택합니다.
 
-![](.gitbook/assets/image%20%2864%29.png)
+![](.gitbook/assets/image%20%2872%29.png)
 
 Accept를 선택하면, pending 으로 전환되고 7~8분 이후 available로 변경됩니다.
 
@@ -251,25 +251,25 @@ Accept를 선택하면, pending 으로 전환되고 7~8분 이후 available로 �
 Seoul-To-Virginia
 ```
 
-![](.gitbook/assets/image%20%2896%29.png)
+![](.gitbook/assets/image%20%28107%29.png)
 
 이제 Attachment가 Association으로 변경되면, Transit Gateway-Transit Gateway Route Table 탭에서 Create Association 을 시켜 줍니다.
 
-![](.gitbook/assets/image%20%2843%29.png)
+![](.gitbook/assets/image%20%2850%29.png)
 
-![](.gitbook/assets/image%20%287%29.png)
+![](.gitbook/assets/image%20%288%29.png)
 
 이제 다시 버지니아 리전 콘솔로 이동합니다.
 
 AWS 콘솔 - VPC - Transit Gateway - Transit Gateway 라우팅 테이블 을 선택하고, Create association을 선택합니다.
 
-![](.gitbook/assets/image%20%2837%29.png)
+![](.gitbook/assets/image%20%2844%29.png)
 
 새로운 peering을 Association 시켜 줍니다.
 
-![](.gitbook/assets/image%20%2815%29.png)
+![](.gitbook/assets/image%20%2817%29.png)
 
-![](.gitbook/assets/image%20%2822%29.png)
+![](.gitbook/assets/image%20%2824%29.png)
 
 ### Task10. Transit Gateway 라우팅 테이블 변경
 
@@ -281,7 +281,7 @@ Peering은 구성을 완료했지만, 상호간의 라우팅 구성이 되어 �
 
 Seoul-TGW-RT-East-To-West 를 선택하고, Route 탭을 선택하고, Create static Route를 선택합니다.
 
-![](.gitbook/assets/image%20%2856%29.png)
+![](.gitbook/assets/image%20%2864%29.png)
 
 CIDR 주소를 버지니아 리전에 생성한 VPC CIDR 주소를 입력합니다.
 
@@ -291,11 +291,11 @@ CIDR 주소를 버지니아 리전에 생성한 VPC CIDR 주소를 입력합니�
 
 Choose attachmet는 Seoul-To-Virginia를 선택합니다.
 
-![](.gitbook/assets/image%20%28100%29.png)
+![](.gitbook/assets/image%20%28111%29.png)
 
 아래와 같이 새롭게 라우팅 테이블이 추가 되었습니다.
 
-![](.gitbook/assets/image%20%2813%29.png)
+![](.gitbook/assets/image%20%2815%29.png)
 
 이제 버지니아 리전에서 서울로 오는 경로만 설정하면 됩니다. 버지니아 리전의 콘솔 창이 열려 있는 브라우저 탭을 선택합니다.
 
@@ -303,7 +303,7 @@ Choose attachmet는 Seoul-To-Virginia를 선택합니다.
 
 합니다.
 
-![](.gitbook/assets/image%20%2814%29.png)
+![](.gitbook/assets/image%20%2816%29.png)
 
 CIDR 주소를 서울리전의 Seoul-VPC-DEV CIDR 주소를 입력합니다.
 
@@ -313,11 +313,11 @@ CIDR 주소를 서울리전의 Seoul-VPC-DEV CIDR 주소를 입력합니다.
 
 Choose attachmet는 IAD-TO-SEOUL 선택하고, Create Static Route를 선택합니다.
 
-![](.gitbook/assets/image%20%289%29.png)
+![](.gitbook/assets/image%20%2810%29.png)
 
 아래와 같이 새롭게 라우팅 테이블이 추가 되었습니다.
 
-![](.gitbook/assets/image%20%2860%29.png)
+![](.gitbook/assets/image%20%2868%29.png)
 
 이제 버지니아 리전의 IAD-VPC-Private-Subnet-A-RT 라우팅 테이블에서 Seoul-VPC-DEV 의 CIDR 주소에 대한 라우팅 테이블만 편집하면 됩니다.
 
@@ -329,9 +329,9 @@ Choose attachmet는 IAD-TO-SEOUL 선택하고, Create Static Route를 선택합�
 10.3.0.0/16
 ```
 
-![](.gitbook/assets/image%20%2895%29.png)
+![](.gitbook/assets/image%20%28106%29.png)
 
-![](.gitbook/assets/image%20%2863%29.png)
+![](.gitbook/assets/image%20%2871%29.png)
 
 ### Task 11. 트래픽 전송 확인
 
