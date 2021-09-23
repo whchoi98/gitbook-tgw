@@ -28,24 +28,22 @@ Transit Gateway는 서로 다른 리전에서 동일한 Transit Gateway를 사�
 
 앞서 서울 리전에서 만들어 둔 keypair \(public key\)는 서울리전에서만 존재합니다.
 
-us-east-1 버지니아 리전에서도 사용할 수 있도록 Cloud9 콘솔 터미널에서 아래와 같이 명령을 입력하고 서울리전의 public key를 전송합니다. \(앞서 이미 Key를 전송하였기 때문에 생략합니다.\)
+us-east-1 버지니아 리전에서도 사용할 수 있도록 Cloud9 콘솔 터미널에서 아래와 같이 명령을 입력하고 서울리전의 public key를 전송합니다. \(앞서 [사전준비](prepare.md#keypair)에서 Key를 전송하였기 때문에 생략합니다.\)
 
 ```text
 ### Transfer public key to us-east-1
 cd ~/environment
-aws ec2 import-key-pair --key-name builders20210312 --public-key-material fileb://builders20210312.pub --region us-east-1
+aws ec2 import-key-pair --key-name mykey --public-key-material fileb://mykey.pub --region us-east-1
 
 ### Tip - Converting from private key to public key
-sudo ssh-keygen -y -f ~/environment/builders20210312.pem > ~/environment/builders20210312.pub
+sudo ssh-keygen -y -f ~/environment/mykey.pem > ~/environment/mykey.pub
 ```
 
-정상적으로 public key가 us-east-1 리전 Keypair에 전송되었는지 확인합니다.
+정상적으로 public key가 us-east-1 리전 Keypair에 전송되었는지 확인 합니다.  
 
-**`AWS 관리 콘솔 - EC2 - 네트워크 및 보안 - 키페어`** 를 클릭하고, **`builders20210321`** 이라는 Public key가 전송되었는지 확인합니다.
+**`AWS 관리 콘솔 - EC2 - 네트워크 및 보안 - 키페어`** 를 클릭하고, **`mykey`** 이라는 Public key가 전송되었는지 확인합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28106%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28106%29.png)
-
-**2.Cloudformation 에서 생성.**
+#### **2.Cloudformation 에서 생성.**
 
 **AWS 관리콘솔 - Cloudformation 으로 이동하고, 새로운 리소스를 선택 합니다.**
 
@@ -53,11 +51,11 @@ sudo ssh-keygen -y -f ~/environment/builders20210312.pem > ~/environment/builder
 
 **`IAD-VPC`** 를 Cloudformation 을 기반으로 생성합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2895%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2895%29.png)
+![](.gitbook/assets/image%20%2854%29.png)
 
 다운로드 받아 둔 파일 중에서 IAD-VPC.yml 파일을 업로드하고, 다음을 선택합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28102%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28102%29.png)
+![](.gitbook/assets/image%20%2867%29.png)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
 
@@ -65,19 +63,17 @@ sudo ssh-keygen -y -f ~/environment/builders20210312.pem > ~/environment/builder
 IAD-VPC
 ```
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2898%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2898%29.png)
+![](.gitbook/assets/image%20%2832%29.png)
 
 별도로 설정 변경없이, 다음 단계를 진행하고 , 승인을 선택하고 스택생성합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28103%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28103%29.png)
+![](.gitbook/assets/image%20%2842%29.png)
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28101%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28101%29.png)
+![](.gitbook/assets/image%20%2818%29.png)
 
-#### 
-
-#### Task2. TGW구성하기.
+### Task2. TGW구성하기.
 
 IAD-VPC를 연결할 TransitGateway를 버지니아 리전\(us-east-1\)에 Cloudformation으로 생성합니다. 다운로드 받은 파일 중에 , **`IAD-TGW.yml`** 파일을 업로드 합니다.
 
