@@ -4,11 +4,9 @@ description: 'Update: 2021-09-09'
 
 # TransitGateway 멀티어카운트
 
-### 1.Transit Gateway MultiAccount 연결
+## 1.Transit Gateway MultiAccount 연결
 
-#### 
-
-#### 개요
+### 개요
 
 Transit Gateway는 동일 리전에서 서로 다른 계정에서 Transit Gateway Peering을 사용할 수 없습니다.
 
@@ -16,9 +14,7 @@ Transit Gateway는 동일 리전에서 서로 다른 계정에서 Transit Gatewa
 
 아래와 같이 서울 리전안에서 2개의 계정간에 개발 협력을 위해 연결하는 과정을 소개합니다.
 
-#### 
-
-#### RAM \(Resource Access Manager\) 소개
+### RAM \(Resource Access Manager\) 소개
 
 AWS Resource Access Manager \(RAM\)는 AWS 계정 또는 AWS 조직 내에서 AWS 리소스를 쉽고 안전하게 공유 할 수있는 서비스입니다. AWS Transit Gateway, 서브넷, AWS License Manager 구성 및 Amazon Route 53 Resolver 규칙 리소스를 RAM과 공유 할 수 있습니다.
 
@@ -38,23 +34,17 @@ RAM은 AWS Identity and Access Management \(IAM\)에 설정된 기존 정책과 
 
 계정간에 AWS License Manager 구성과 같은 리소스를 공유하면 회사의 여러 부분에서 라이선스를 활용하여 활용도를 높이고 비용을 최적화 할 수 있습니다.
 
-#### 
-
-#### 구성 아키텍쳐 소개
+### 구성 아키텍쳐 소개
 
 [TransitGateway 구성하기](https://github.com/whchoi98/builders20210312/blob/master/transitgateway-basic.md)에서 생성한 빌더스 컴퍼니의 Transit Gateway를 동일한 서울 리전, 다른 어카운트\(서밋 컴퍼니\) Seoul-VPC-PART VPC에서 사용하려고 하는 목표 구성입니다.
 
 AWS RAM\(Resource Access Manager\)를 이용하여 빌더스 컴퍼니의 Transit Gateway를 연계해서, 협력사인 서밋 컴퍼니 자원을 사용해 봅니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2879%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2879%29.png)
+![](.gitbook/assets/image%20%2814%29.png)
 
-### 
+## 2.서로 다른 계정에서 TGW 연동
 
-### 2.서로 다른 계정에서 TGW 연동
-
-#### 
-
-#### Task 1. VPC 구성하기
+### Task 1. VPC 구성하기
 
 **`새로운 계정에 접속`** 하고, Cloudformation을 통해 기본이 되는 VPC구성을 먼저 구성합니다.
 
@@ -70,11 +60,13 @@ git clone https://github.com/whchoi98/builders20210312
 
 **2.Cloudformation 생성.**
 
-{% hint style="warning" %} **서밋 컴퍼니는 서울리전에서 새로운 계정으 Seoul-VPC-PART라는 이름으로 VPC를 생성합니다.** {% endhint %}
+{% hint style="warning" %}
+**서밋 컴퍼니는 서울리전에서 새로운 계정으 Seoul-VPC-PART라는 이름으로 VPC를 생성합니다.**
+{% endhint %}
 
 **`Seoul-VPC-PART`** 를 Cloudformation 을 기반으로 생성합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2834%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2834%29.png)
+![](.gitbook/assets/image%20%2831%29.png)
 
 **AWS 콘솔에서 서울 리전 \(ap-northeast-2\)를 선택하고, Cloudformation 서비스를 선택합니다.**
 
@@ -86,41 +78,41 @@ git clone https://github.com/whchoi98/builders20210312
 Seoul-VPC-PART.yml
 ```
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2857%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2857%29.png)
+![](.gitbook/assets/image%20%2830%29.png)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%281%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%281%29.png)
+![](.gitbook/assets/image%20%2846%29.png)
 
 별도로 설정 변경없이, 다음 단계를 진행하고 , 승인을 선택하고 스택생성합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2845%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2845%29.png)
+![](.gitbook/assets/image%20%2851%29.png)
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2812%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2812%29.png)
+![](.gitbook/assets/image%20%289%29.png)
 
 서밋 컴퍼니 계의 번호를 복사해 둡니다. RAM 구성시 계정 정보가 필요합니다.
 
 [![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2852%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2852%29.png)
 
-#### 
-
-#### Task 2. RAM 구성하기
+### Task 2. RAM 구성하기
 
 **이제 다시 빌더스 컴퍼니 계정에서 수행합니다.**
 
-{% hint style="info" %} 빌더스 컴퍼니에서 생성된 TGW를 서밋 컴퍼니에게 제공할 것입니다. 반드시 RAM 구성은 리소스 제공하는 계정에서 실행합니다. {% endhint %}
+{% hint style="info" %}
+빌더스 컴퍼니에서 생성된 TGW를 서밋 컴퍼니에게 제공할 것입니다. 반드시 RAM 구성은 리소스 제공하는 계정에서 실행합니다.
+{% endhint %}
 
 **AWS 관리콘솔에서 RAM 을 선택하고, 새로운 윈도우 창을 오픈합니다.**
 
 **`빌더스 계정 - AWS 콘솔 - RAM`**
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%284%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%284%29.png)
+![](.gitbook/assets/image%20%2817%29.png)
 
 **`Resource Access Manager - 내가 공유: 리소스 공유`** 에서 **`"리소스 공유 생성"`** 을 선택합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2811%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2811%29.png)
+![](.gitbook/assets/image%20%2842%29.png)
 
 아래와 값을 입력합니다.
 
@@ -130,30 +122,30 @@ Seoul-VPC-PART.yml
 Seoul-TGW
 ```
 
-* \*\*`리소스 유형 선택 - 전송 게이트웨이 (Transit Gateway)`\*\*를 선택하고, 생성해 놓은 TGW를 선택합니다.
+* `리소스 유형 선택 - 전송 게이트웨이 (Transit Gateway)`를 선택하고, 생성해 놓은 TGW를 선택합니다.
 * **`Principal - 외부 계정`** 허용 을 선택합니다. 앞서 새롭게 Seoul-VPC-PART VPC 자원이 생성된 계정의 번호를 입력합니다. \(앞서 복사해 둔 서밋 컴퍼니의 계정입니다.\)
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2839%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2839%29.png)
+![](.gitbook/assets/image%20%2834%29.png)
 
 리소스 공유를 확인하고, 생성한 리소스 공유를 선택합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2869%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2869%29.png)
+![](.gitbook/assets/image%20%2832%29.png)
 
 Associating 단계로 진행 중인 것을 확인 할 수 있습니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2817%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2817%29.png)
+![](.gitbook/assets/image%20%2823%29.png)
 
 이제 공유를 확인하기 위해, 협력사인 서밋 컴퍼니 계정 콘솔로 이동해서 RAM으로 이동합니다.
 
 **`서밋 컴퍼니 - AWS 계정 - RAM`** 을 선택합니다.
 
-\*\*`리소스 공유`\*\*에 \*\*`초대 알람`\*\*이 생성된 것을 확인 할 수 있습니다. 리소스 공유를 선택합니다.
+`리소스 공유`에 `초대 알람`이 생성된 것을 확인 할 수 있습니다. 리소스 공유를 선택합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2863%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2863%29.png)
+![](.gitbook/assets/image%20%284%29.png)
 
 해당 리소스 공유를 선택하면, 리소스 공유 수락을 대기하고 있는 것을 확인 할 수 있습니다. 공유된 리소스 Seoul-TGW 를 선택합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2840%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2840%29.png)
+
 
 리소스 공유 수락을 선택합니다.
 
