@@ -51,11 +51,11 @@ sudo ssh-keygen -y -f ~/environment/mykey.pem > ~/environment/mykey.pub
 
 **`IAD-VPC`** 를 Cloudformation 을 기반으로 생성합니다.
 
-![](.gitbook/assets/image%20%2854%29.png)
+![](.gitbook/assets/image%20%2862%29.png)
 
 다운로드 받아 둔 파일 중에서 IAD-VPC.yml 파일을 업로드하고, 다음을 선택합니다.
 
-![](.gitbook/assets/image%20%2867%29.png)
+![](.gitbook/assets/image%20%2876%29.png)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
 
@@ -63,82 +63,74 @@ sudo ssh-keygen -y -f ~/environment/mykey.pem > ~/environment/mykey.pub
 IAD-VPC
 ```
 
-![](.gitbook/assets/image%20%2832%29.png)
+![](.gitbook/assets/image%20%2838%29.png)
 
 별도로 설정 변경없이, 다음 단계를 진행하고 , 승인을 선택하고 스택생성합니다.
 
-![](.gitbook/assets/image%20%2842%29.png)
+![](.gitbook/assets/image%20%2848%29.png)
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
 
-![](.gitbook/assets/image%20%2818%29.png)
+![](.gitbook/assets/image%20%2823%29.png)
 
 ### Task2. TGW구성하기.
 
 IAD-VPC를 연결할 TransitGateway를 버지니아 리전\(us-east-1\)에 Cloudformation으로 생성합니다. 다운로드 받은 파일 중에 , **`IAD-TGW.yml`** 파일을 업로드 합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2896%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2896%29.png)
+![](.gitbook/assets/image%20%286%29.png)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다. \(TGW는 스택이름을 다르게 지정해도, 본 랩을 구성하는데 문제가 없습니다.\)
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%2897%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%2897%29.png)
+![](.gitbook/assets/image%20%2875%29.png)
 
 5분 이내에 TransitGateway가 완성됩니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28100%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28100%29.png)
+![](.gitbook/assets/image%20%2819%29.png)
 
-#### 
-
-#### Task3. VPC, EC2 구성 확인하기.
+### Task3. VPC, EC2 구성 확인하기.
 
 **`AWS 관리콘솔 - VPC`** 를 선택합니다.
 
 VPC가 정상적으로 생성되었는지 확인합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28136%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28136%29.png)
+![](.gitbook/assets/image%20%2813%29.png)
 
 AWS 관리콘솔 - EC2를 선택합니다.
 
 EC2가 정상적으로 생성되었는지 확인합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28148%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28148%29.png)
+![](.gitbook/assets/image%20%2859%29.png)
 
-#### 
-
-#### Task 4. TGW 구성 확인
+### Task 4. TGW 구성 확인
 
 **`AWS 관리콘솔 - VPC - TransitGateway`** 를 선택해서, Transit Gateway 정상적으로 구성되었는지 확인합니다.
 
 [![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28149%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28149%29.png)
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28128%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28128%29.png)
-
-#### 
+![](.gitbook/assets/image%20%2857%29.png)
 
 #### Task5. TGW Attachment 확인.
 
 **`VPC-Transit Gateway-Transit Gateway 연결` 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28145%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28145%29.png)
+![](.gitbook/assets/image%20%289%29.png)
 
 IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.
 
 1. **TGW Routing Table과 Attachment가 연결된 상태를 확인**
 2. **Attachment가 VPC의 어떤 Subnet과 연결되었는지 확인**
 
-#### 
-
 #### Task6. TGW Routing Table 확인.
 
 **`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. Associations와 Propagation 탭을 눌러서, IAD-VPC 연결과 IAD-VPC의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28146%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28146%29.png)
+![](.gitbook/assets/image%20%2830%29.png)
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28143%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28143%29.png)
+![](.gitbook/assets/image%20%285%29.png)
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
-[![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20%28125%29.png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20%28125%29.png)
+![](.gitbook/assets/image%20%2877%29.png)
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**👏
 
