@@ -62,7 +62,7 @@ Seoul-VPC-DEV
 
 #### 
 
-#### Task2. TGW구성하기.
+### Task2. TGW구성하기.
 
 4개의 VPC를 연결할 TransitGateway를 Region에 Cloudformation으로 생성합니다.
 
@@ -78,11 +78,11 @@ Seoul-VPC-DEV
 
 ### 
 
-### 2.TransitGateway 구성 확인
+## 2.TransitGateway 구성 확인
 
 #### 
 
-#### Task3.VPC, EC2 구성 확인
+### Task3.VPC, EC2 구성 확인
 
 AWS 관리콘솔 - VPC 를 선택합니다.
 
@@ -98,7 +98,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 #### 
 
-#### Task 4. TGW 구성 확인
+### Task 4. TGW 구성 확인
 
 VPC - TransitGateway를 선택해서, Transit Gateway 정상적으로 구성되었는지 확인합니다.
 
@@ -110,7 +110,7 @@ VPC - TransitGateway를 선택해서, Transit Gateway 정상적으로 구성되�
 
 #### 
 
-#### Task5. TGW Attachment 확인.
+### Task5. TGW Attachment 확인.
 
 **VPC-Transit Gateway-Transit Gateway 연결 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
@@ -135,7 +135,7 @@ Seoul-TGW-Attach-Seoul-VPC-PRD
 
 #### 
 
-#### Task6. TGW Routing Table 확인.
+### Task6. TGW Routing Table 확인.
 
 **`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. 라우팅 테이블은 2개로 구성되어 있습니다.
 
@@ -179,11 +179,11 @@ Routing 탭을 선택해서, 앞서 Propagation 된 Route가 정상적으로 등
 
 ### 
 
-### 3. TGW 기반 트래픽 제어
+## 3. TGW 기반 트래픽 제어
 
 #### 
 
-#### Task7. SSM 에서 인스턴스 확인
+### Task7. SSM 에서 인스턴스 확인
 
 모든 랩의 구성 시험은 Private 인스턴스로 시험합니다. Cloudformation을 통해 System Manager와 Session Manager를 사용할 수 있도록 자동 배포 구성하였습니다.
 
@@ -289,7 +289,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 #### 
 
-#### Task8. 시나리오 이해하기
+### Task8. 시나리오 이해하기
 
 **다음과 같은 시나리오 구성으로 Task9~11를 수행합니다.**
 
@@ -314,7 +314,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 #### 
 
-#### Task9. Staging과 Dev 연결
+### Task9. Staging과 Dev 연결
 
 Seoul-VPC-STG와 Seoul-VPC-DEV를 TGW를 통해 연결 구성해 봅니다.
 
@@ -359,7 +359,7 @@ Seoul-VPC-DEV-Private-Subnet-A-RT
 
 #### 
 
-#### Task10. Production 연결
+### Task10. Production 연결
 
 Dev, Stage 환경에서 모든 준비가 완료되고 필요 요구에 따라 Production으로 연결이 필요하게 되었습니다.
 
@@ -417,7 +417,7 @@ Transit Gateway에는 Blackhole 기능이 있습니다. 이것은 전통적인 �
 
 #### 
 
-#### Task11. Production과 HQ 연결
+### Task11. Production과 HQ 연결
 
 이제 모든 작업이 완료되고, Production 개시 단계입니다. 보안 강화를 위해 SEOUL-HQ-VPC를 통해서 외부 연결을 하도록 합니다.
 
