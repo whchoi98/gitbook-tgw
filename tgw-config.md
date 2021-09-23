@@ -1,3 +1,7 @@
+---
+description: 'Update: 2021-09-09'
+---
+
 # TransitGateway 구성
 
 ## 1.TransitGateway 기본 구성
