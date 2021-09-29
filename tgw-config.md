@@ -38,7 +38,7 @@ Seoul-VPC-HQ, Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV를 Cloudformation 을 
 Seoul-VPC-HQ
 ```
 
-![](.gitbook/assets/image%20%28124%29.png)
+![](.gitbook/assets/image%20%28127%29.png)
 
 사내 보안을 이슈로 다운로드 받은 파일을 직접 업로드 하지 못하는 경우에는 , Cloud9에서 S3 bucket을 생성해서 직접 업로드 합니다.
 
@@ -68,7 +68,7 @@ S3 경로는 아래와 같이 해당 Object의 속성에서 URL을 확인합니�
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
 
-![](.gitbook/assets/image%20%28116%29.png)
+![](.gitbook/assets/image%20%28118%29.png)
 
 {% hint style="info" %}
 스택이름을 파일명과 다르게 입력하지 마십시요. 이후 과정에서 TransitGateway의 yaml파일은 , VPC yml 에서 생성된 값들을 import 해서 TGW를 생성합니다. 스택이름을 파일명과 다르게 할 경우, TGW를 생성할 때 에러가 발생합니다. 
@@ -88,21 +88,21 @@ Seoul-VPC-DEV
 
 4개의 VPC가 모두 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. 4개의 VPC는 각 3분 내외에 생성됩니다. 동시에 수행해도 가능합니다.
 
-![](.gitbook/assets/image%20%28117%29.png)
+![](.gitbook/assets/image%20%28119%29.png)
 
 ### Task2. TGW구성하기.
 
 4개의 VPC를 연결할 TransitGateway를 Region에 Cloudformation으로 생성합니다.
 
-![](.gitbook/assets/image%20%28121%29.png)
+![](.gitbook/assets/image%20%28124%29.png)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다. \(TGW는 스택이름을 다르게 지정해도, 본 랩을 구성하는데 문제가 없습니다.\)
 
-![](.gitbook/assets/image%20%28122%29.png)
+![](.gitbook/assets/image%20%28125%29.png)
 
 5분 이내에 TransitGateway가 완성됩니다.
 
-![](.gitbook/assets/image%20%28123%29.png)
+![](.gitbook/assets/image%20%28126%29.png)
 
 ## 2.TransitGateway 구성 확인
 
@@ -112,13 +112,13 @@ AWS 관리콘솔 - VPC 를 선택합니다.
 
 4개의 VPC가 정상적으로 생성되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%28118%29.png)
+![](.gitbook/assets/image%20%28121%29.png)
 
 AWS 관리콘솔 - EC2를 선택합니다.
 
 EC2가 정상적으로 생성되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%28119%29.png)
+![](.gitbook/assets/image%20%28122%29.png)
 
 ### Task 4. TGW 구성 확인
 
@@ -453,9 +453,29 @@ Transit Gateway에는 Blackhole 기능이 있습니다. 이것은 전통적인 �
 10.2.21.101/32
 ```
 
-![](.gitbook/assets/image%20%2862%29.png)
+**`VPC - TransitGateway - TransitGateway 라우팅 테이블 - Seoul-TGW-RT-East-To-West`**
 
-![](.gitbook/assets/image%20%2896%29.png)
+![](.gitbook/assets/image%20%28120%29.png)
+
+![](.gitbook/assets/image%20%28116%29.png)
+
+![](.gitbook/assets/image%20%28115%29.png)
+
+앞서 연결한 Cloud9 터미널에서 다시 Ping을 시험해 봅니다.
+
+```text
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PRD-Private"
+aws ssm start-session --target "Instance ID 값"
+sudo -s
+
+```
+
+```text
+##Seoul-VPC-PRD-Private-10.1.21.101
+ping SEOUL-VPC-STG-Private
+```
+
+Blackhole 구성으로 연결되지 않는 것을 확인 할 수 있습니다.
 
 **다시 Blackhole을 해제합니다.**
 
