@@ -1,3 +1,7 @@
+---
+description: 'Update : 2021-09-09'
+---
+
 # 사전준비
 
 ## Cloud9 환경 생성
@@ -116,8 +120,8 @@ The key's randomart image is:
 이제 생성된 Public Key를 계정으로 업로드 합니다. **`"--region {AWS Region}"`** 리전 옵션에서 각 리전을 지정하게 되면 해당 리전으로 생성한 Public Key를 전송합니다. 아래에서는 서울 리전과 버지니아 리전으로 전송하는 예제입니다.
 
 ```text
-mv imdkey ./imdkey.pem
-chmod 400 ./imdkey.pem
+mv imdkey ./mykey.pem
+chmod 400 ./mmdkey.pem
 aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region ap-northeast-2
 aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region us-east-1
 ```
