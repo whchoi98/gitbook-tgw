@@ -203,6 +203,20 @@ Session Manager를 사용할 수 있도록 아래 같이 각 PC환경에 맞추�
 PC 환경에서는 사전에 반드시 AWS CLI를 설치합니다. Cloud9으로 사용할 때는 별도 구성하지 않아도 됩니다.
 {% endhint %}
 
+**Fedora Linux, Cloud9 에서 Session Manager Plugin 설치**
+
+```text
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
+sudo yum install -y session-manager-plugin.rpm
+```
+
+**Ubuntu에서 Session Manager Plugin 설치\(Cloud9, 웹기반 세션 매니저 사용시 생략\)**
+
+```text
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+sudo dpkg -i session-manager-plugin.deb
+```
+
 **Windows Session manager plugin 설치 \(Cloud9, 웹기반 세션 매니저 사용시 생략\)**
 
 ```text
@@ -229,27 +243,13 @@ unzip sessionmanager-bundle.zip
 sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
 ```
 
-**Fedora Linux 에서 Session Manager Plugin 설치\(Cloud9, 웹기반 세션 매니저 사용시 생략\)**
-
-```text
-curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
-sudo yum install -y session-manager-plugin.rpm
-```
-
-**Ubuntu에서 Session Manager Plugin 설치\(Cloud9, 웹기반 세션 매니저 사용시 생략\)**
-
-```text
-curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
-sudo dpkg -i session-manager-plugin.deb
-```
-
 **아래와 같이 Cloud9에서 shell을 실행해 봅니다.**
 
 ```text
-~/environment/buildernet/aws_ec2_ext.sh |grep "Seoul-VPC-HQ"
-~/environment/buildernet/aws_ec2_ext.sh |grep "Seoul-VPC-PRD"
-~/environment/buildernet/aws_ec2_ext.sh |grep "Seoul-VPC-STG"
-~/environment/buildernet/aws_ec2_ext.sh |grep "Seoul-VPC-DEV"
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-HQ"
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PRD"
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-STG"
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-DEV"
 
 ```
 
@@ -333,6 +333,13 @@ Cloudformation을 통해 Security Group은 시험에 필요한 트래픽은 모�
 {% endhint %}
 
 ```text
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-DEV-Private"
+aws ssm start-session --target "Instance ID 값"
+sudo -s
+
+```
+
+```text
 ##Seoul-VPC-STG-Private-10.2.21.101
 ping SEOUL-VPC-DEV-Private
 
@@ -343,7 +350,7 @@ ping SEOUL-VPC-DEV-Private
 ping SEOUL-VPC-STG-Private
 ```
 
-{% hint style="info" %}
+{% hint style="warning" %}
 상호간의 트래픽이 허용되지 않습니다. 각 VPC에서 라우팅 테이블이 없기 때문입니다. 
 {% endhint %}
 
@@ -362,6 +369,24 @@ Seoul-VPC-DEV-Private-Subnet-A-RT
 ![](.gitbook/assets/image%20%2828%29.png)
 
 이제 다시 앞서 실행한 각 인스턴스에서의 Ping이 정상적으로 처리되는 지 확인합니다.
+
+```text
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-DEV-Private"
+aws ssm start-session --target "Instance ID 값"
+sudo -s
+
+```
+
+```text
+##Seoul-VPC-STG-Private-10.2.21.101
+ping SEOUL-VPC-DEV-Private
+
+```
+
+```text
+##Seoul-VPC-DEV-Private-10.3.21.101
+ping SEOUL-VPC-STG-Private
+```
 
 {% hint style="info" %}
 **이제 Dev환경에서 Stage환경으로 연결이 되었습니다.**
