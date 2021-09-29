@@ -38,11 +38,37 @@ Seoul-VPC-HQ, Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV를 Cloudformation 을 
 Seoul-VPC-HQ
 ```
 
+사내 보안을 이슈로 다운로드 받은 파일을 직접 업로드 하지 못하는 경우에는 , Cloud9에서 S3 bucket을 생성해서 직접 업로드 합니다.
+
+```text
+# S3 Bucket을 생성합니다. Bucket Name은 고유해야 합니다.
+aws s3 mb s3://{bucket name} --region ap-northeast-2
+
+# 생성된 버킷에 clone한 파일들을 업로드 합니다.
+cd ~/environment/tgw
+aws s3 sync ./ s3://{bucket name}
+
+# object가 외부에서 접근할 수 있도록 , Read 권한을 부여합니다.
+aws s3api put-object-acl --bucket {bucket name} --key Seoul-VPC-HQ.yml --acl public-read  
+aws s3api put-object-acl --bucket {bucket name} --key Seoul-VPC-PRD.yml --acl public-read  
+aws s3api put-object-acl --bucket {bucket name} --key Seoul-VPC-STG.yml --acl public-read  
+aws s3api put-object-acl --bucket {bucket name} --key Seoul-VPC-PART.yml --acl public-read  
+aws s3api put-object-acl --bucket {bucket name} --key SSeoul-VPC-DEV.yml --acl public-read  
+aws s3api put-object-acl --bucket {bucket name} --key Seoul-TGW.yml --acl public-read  
+aws s3api put-object-acl --bucket {bucket name} --key IAD-TGW.yml --acl public-read  
+aws s3api put-object-acl --bucket {bucket name} --key IAD-VPC.yml --acl public-read  
+
+```
+
 ![](.gitbook/assets/image%20%2866%29.png)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
 
 ![](.gitbook/assets/image%20%2845%29.png)
+
+S3 경로는 아래와 같이 해당 Object의 속성에서 URL을 확인합니다.
+
+![](.gitbook/assets/image%20%28115%29.png)
 
 {% hint style="info" %}
 스택이름을 파일명과 다르게 입력하지 마십시요. 이후 과정에서 TransitGateway의 yaml파일은 , VPC yml 에서 생성된 값들을 import 해서 TGW를 생성합니다. 스택이름을 파일명과 다르게 할 경우, TGW를 생성할 때 에러가 발생합니다. 
