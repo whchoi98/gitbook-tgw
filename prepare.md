@@ -141,5 +141,12 @@ whchoi:~/environment $ aws ec2 import-key-pair --key-name "mykey" --public-key-m
 
 **`AWS 관리 콘솔 - EC2 - 네트워크 및 보안 - 키페어`**
 
+LAB에서 사용할 Cloudformation yaml 파일들을 다운로드 받습니다.
+
+```text
+cd ~/environment
+git clone https://github.com/whchoi98/tgw.git
+```
+
 이제 사전 구성이 완료되었습니다.
 
