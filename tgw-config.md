@@ -405,6 +405,13 @@ Dev, Stage 환경에서 모든 준비가 완료되고 필요 요구에 따라 Pr
 {% endhint %}
 
 ```text
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PRD-Private"
+aws ssm start-session --target "Instance ID 값"
+sudo -s
+
+```
+
+```text
 ##Seoul-VPC-PRD-Private-10.1.21.101
 ping SEOUL-VPC-DEV-Private
 
