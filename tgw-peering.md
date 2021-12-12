@@ -107,7 +107,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 [![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20\(149\).png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20\(149\).png)
 
-![](<.gitbook/assets/image (135).png>)
+![](<.gitbook/assets/image (136).png>)
 
 ### Task5. TGW Attachment 확인.
 
@@ -130,7 +130,7 @@ IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
-
+![](<.gitbook/assets/image (135).png>)
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**👏
 
