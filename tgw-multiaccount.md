@@ -58,7 +58,7 @@ AWS RAM(Resource Access Manager)를 이용하여 빌더스 컴퍼니의 Transit 
 git clone https://github.com/whchoi98/builders20210312
 ```
 
-Task 들을 수행하기 위해서, 새로운 계정에도 Cloud9을 구성하는 것이 좋습니다. Cloud9에는 아래와 같이 동일하게 Ac &#x20;
+Task 들을 수행하기 위해서, 새로운 계정에도 Cloud9을 구성하는 것이 좋습니다. Cloud9에는 아래와 같이 동일하게 ㅁㅈaws cli, ssm plugin 등을 설치해 둡니다.
 
 **2.Cloudformation 생성.**
 
