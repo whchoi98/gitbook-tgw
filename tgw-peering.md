@@ -113,7 +113,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 **`VPC-Transit Gateway-Transit Gateway 연결` 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
-![](<.gitbook/assets/image (129).png>)
+![](<.gitbook/assets/image (129) (1).png>)
 
 IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.
 
@@ -227,11 +227,11 @@ IAD-TO-SEOUL
 
 **5.Transit Gateway(accepter) - 원격지 서울 리전에 만들어져 있는 Transit Gateway ID를 입력합니다.**
 
-**미리 열어둔 브라우저의 서울리전 탭에, AWS 관리콘솔 좌측 상단에서 ap-northeast-2 (서울리전)을 선택합니다.**
+![](<.gitbook/assets/image (139).png>)
 
-**AWS 관리 콘솔 - VPC - Transit Gateway - Transit Gateway 를 선택하고, Transit Gateway ID를 복사합니다.**
+**작업이 완료되면 아래와 같이 US-EAST-1 리전에서는 서울리전(ap-northeast-2)에서 TGW가 수락할때 까지 Pending 상태가 됩니다.**
 
-![](<.gitbook/assets/image (35).png>)
+![](<.gitbook/assets/image (129).png>)
 
 **이제 5번의 Transit Gateway (accepter)에 서울 리전의 Transit Gateway ID값을 붙여 넣고, Create Attachment를 클릭하고 완료합니다. 아래와 같이 새로운 Transit Gateway Attachment가 생성되었습니다.**
 
