@@ -107,7 +107,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 [![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20\(149\).png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20\(149\).png)
 
-![](<.gitbook/assets/image (82).png>)
+![](<.gitbook/assets/image (135).png>)
 
 ### Task5. TGW Attachment 확인.
 
@@ -122,9 +122,9 @@ IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연
 
 ### Task6. TGW Routing Table 확인.
 
-**`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. Associations와 Propagation 탭을 눌러서, IAD-VPC 연결과 IAD-VPC의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
+**`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. Associations(연겨 와 Propagation 탭을 눌러서, IAD-VPC 연결과 IAD-VPC의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
-![](<.gitbook/assets/image (48).png>)
+![](<.gitbook/assets/image (131).png>)
 
 ![](<.gitbook/assets/image (6).png>)
 
