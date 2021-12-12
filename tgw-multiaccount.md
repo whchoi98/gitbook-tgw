@@ -215,7 +215,7 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 ![](<.gitbook/assets/image (128) (1) (1).png>)
 
-![](<.gitbook/assets/image (130).png>)
+![](<.gitbook/assets/image (130) (1).png>)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations(전파) Tab`** 을 선택하고, 정상적으로 Propagation(전파) 되었는지 확인합니다.
 
@@ -287,6 +287,8 @@ ping SEOUL-VPC-DEV-Private
 이제 Seoul-VPC-PART에서 Seoul-VPC-DEV, Seoul-VPC-STG로 통신을 하기 위해, 10.0.0.0/8의 목적지를 Transit Gateway로 추가합니다.
 
 ![](<.gitbook/assets/image (128).png>)
+
+![](<.gitbook/assets/image (130).png>)
 
 ![](<.gitbook/assets/image (23).png>)
 
