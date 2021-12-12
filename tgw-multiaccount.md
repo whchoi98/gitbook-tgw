@@ -58,6 +58,8 @@ AWS RAM(Resource Access Manager)를 이용하여 빌더스 컴퍼니의 Transit 
 git clone https://github.com/whchoi98/builders20210312
 ```
 
+Task3
+
 **2.Cloudformation 생성.**
 
 {% hint style="warning" %}
@@ -214,8 +216,6 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 서밋 컴퍼니 계정에서 SEOUL-VPC-PRT-Private-10.4.21.101 을 접속합니다.
 
-SEOUL-VPC-PRT-Private-10.4.21.101 id 확인.
-
 리눅스 또는 Mac OS 콘솔에서 AWS   계정이 2개 구성되어 aws cli는 default profile로 접근이 됩니다. 아래와 같이 2개의 구성을 관리자 PC 또는 리눅스에서 설정합니다.
 
 ```
@@ -246,7 +246,7 @@ export AWS_DEFAULT_PROFILE=builders
 export AWS_DEFAULT_PROFILE=builders
 ```
 
-아래와 같이 Seoul-VPC-PART-Private-10.4.21.101 인스턴스 id를 조회합니다.
+서밋 계정에도 (신규 계정) Cloud9으로 구성되어 있다면, 아래와 같이 Seoul-VPC-PART-Private-10.4.21.101 인스턴스 id를 조회합니다.
 
 ```
 ~/environment/buildernet/aws_ec2_ext.sh  | grep "Seoul-VPC-PART-Private-10.4.21.101"
