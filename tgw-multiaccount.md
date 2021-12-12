@@ -129,15 +129,19 @@ Step1. 리스스 공유 세부 정보 지정&#x20;
 
 리소스 공유를 확인하고, 생성한 리소스 공유를 선택합니다.
 
-![](<.gitbook/assets/image (128).png>)
+![](<.gitbook/assets/image (132).png>)
 
 Step2. 권한을 각 리소스 유형과 연결&#x20;
 
-![](<.gitbook/assets/image (130).png>)
+![](<.gitbook/assets/image (134).png>)
 
 Step3. 액세스 할 수 있는 보안 주체 선택 - TransitGateway 자원을 연결할 다른 계정을 입력하고, "추가"를&#x20;
 
 합니다. 선택한 보안 주체에 해당 계정이 정상적으로 입력되었는 지 확인합니다.   Associating 단계로 진행 중인 것을 확인 할 수 있습니다.
+
+![](<.gitbook/assets/image (133).png>)
+
+공유 리소스가 "Associated" 되었는지 확인합니다. 공유한 프리&#x20;
 
 ![](<.gitbook/assets/image (129).png>)
 
