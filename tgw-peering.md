@@ -113,9 +113,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 **`VPC-Transit Gateway-Transit Gateway 연결` 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
-****
-
-![](<.gitbook/assets/image (13).png>)
+![](<.gitbook/assets/image (129).png>)
 
 IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.
 
