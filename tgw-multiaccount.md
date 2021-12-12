@@ -68,8 +68,12 @@ sudo ./aws/install
 source ~/.bashrc
 # aws cli 자동완성 설치 
 which aws_completer
-
-
+export PATH=/usr/local/bin:$PATH
+source ~/.bash_profile
+complete -C '/usr/local/bin/aws_completer' aws
+##ssm plugin install
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
+sudo yum install -y session-manager-plugin.rpm
 
 ```
 
