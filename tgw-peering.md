@@ -122,15 +122,15 @@ IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연
 
 ### Task6. TGW Routing Table 확인.
 
-**`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. Associations(연겨 와 Propagation 탭을 눌러서, IAD-VPC 연결과 IAD-VPC의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
+**`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. Associations(연결) 와 Propagation(전파) 탭을 눌러서, IAD-VPC 연결과 IAD-VPC의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
 ![](<.gitbook/assets/image (131).png>)
 
-![](<.gitbook/assets/image (6).png>)
+![](<.gitbook/assets/image (134).png>)
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
-![](<.gitbook/assets/image (108).png>)
+
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**👏
 
