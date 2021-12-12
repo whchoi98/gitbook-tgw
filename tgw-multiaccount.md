@@ -50,14 +50,6 @@ AWS RAM(Resource Access Manager)를 이용하여 빌더스 컴퍼니의 Transit 
 
 **1.사전 준비하기**
 
-서울 리전에 4개의 VPC를 구성하고, 사전에 구성된 TGW를 배포합니다.
-
-아래 Github에서 실습에 사용할 Cloudformation yaml 파일을 다운로드 받습니다. **(이미 받았다면 생략합니다.)**
-
-```
-git clone https://github.com/whchoi98/builders20210312
-```
-
 Task 들을 수행하기 위해서, 새로운 계정에도 Cloud9을 구성하는 것이 좋습니다. Cloud9에는 아래와 같이 동일하게 aws cli, ssm plugin 등을 설치해 둡니다.
 
 ```
@@ -195,7 +187,7 @@ AWS 계정 - VPC - TransitGateway에 빌더스 컴퍼니 계정의 Seoul-TGW가 
 * VPC ID : 서밋 컴퍼니의 VPC 선택 (Seoul-VPC-PART)
 * Subnet : TGW ENI가 연결된 서브넷 선택 (Seoul-VPC-TGWSubnetA, Seoul-VPC-TGWSubnetB)
 
-![](<.gitbook/assets/image (128) (1).png>)
+![](<.gitbook/assets/image (128) (1) (1).png>)
 
 **`VPC - Transit Gateway - Transit Gateway`** 연결 에서 정상적으로 구성되었는지 확인합니다 .&#x20;
 
@@ -221,7 +213,7 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations(전파) Tab`** 을 선택하고, 서밋 컴퍼니의 Seoul-VPC-PART 를 propagation(전파) 합니다.
 
-![](<.gitbook/assets/image (128).png>)
+![](<.gitbook/assets/image (128) (1).png>)
 
 ![](<.gitbook/assets/image (130).png>)
 
@@ -268,7 +260,8 @@ export AWS_DEFAULT_PROFILE=builders
 서밋 계정에도 (신규 계정) Cloud9으로 구성되어 있다면, 아래와 같이 Seoul-VPC-PART-Private-10.4.21.101 인스턴스 id를 조회합니다.
 
 ```
-~/environment/buildernet/aws_ec2_ext.sh  | grep "Seoul-VPC-PART-Private-10.4.21.101"
+ ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PART-Private-10.4.21.101"
+ 
 ```
 
 Seoul-VPC-PART-Private-10.4.21.101 인스턴스에 접속합니다.
@@ -292,6 +285,8 @@ ping SEOUL-VPC-DEV-Private
 ```
 
 이제 Seoul-VPC-PART에서 Seoul-VPC-DEV, Seoul-VPC-STG로 통신을 하기 위해, 10.0.0.0/8의 목적지를 Transit Gateway로 추가합니다.
+
+
 
 ![](<.gitbook/assets/image (23).png>)
 
