@@ -237,9 +237,11 @@ IAD-TO-SEOUL
 
 **`서울 리전의 VPC - Transit Gateway - Transit Gateway 연결`** 에 새로운 Transit Gateway Attachment가 생성된 것을 확인 할 수 있습니다. 하지만 **`pending acceptance`** 상태입니다.
 
-상단 **`"작업"`** 을 선택하고  **`Transit Gateway 연결수`**택합니다.을  선선택합니다.
+상단 **`"작업"`** 을 선택하고  **`Transit Gateway 연결수락`**을  선택합니다.&#x20;
 
 ![](<.gitbook/assets/image (133).png>)
+
+Peering 된 Attachment는 Tag name을 식별하게 쉽도록 변경해 둡니다.
 
 ![](<.gitbook/assets/image (72).png>)
 
