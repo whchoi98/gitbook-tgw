@@ -126,7 +126,7 @@ IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연
 
 ![](<.gitbook/assets/image (131).png>)
 
-![](<.gitbook/assets/image (134).png>)
+![](<.gitbook/assets/image (134) (1).png>)
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
@@ -259,7 +259,9 @@ Seoul-To-Virginia
 
 ![](<.gitbook/assets/image (141).png>)
 
-이제 다시 버지니아 리전 콘솔로 이동합니다.
+![](<.gitbook/assets/image (134).png>)
+
+**이제 다시 버지니아 리전(US-EAST-1) 콘솔로 이동합니다.**
 
 AWS 콘솔 - VPC - Transit Gateway - Transit Gateway 라우팅 테이블 을 선택하고, Create association을 선택합니다.
 
