@@ -1,5 +1,5 @@
 ---
-description: 'Update: 2021-09-09'
+description: 'Update: 2021-12-12'
 ---
 
 # TransitGateway

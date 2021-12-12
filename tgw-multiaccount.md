@@ -1,5 +1,5 @@
 ---
-description: 'Update: 2021-09-09'
+description: 'Update: 2021-12-12'
 ---
 
 # TransitGateway 멀티어카운트
@@ -129,21 +129,21 @@ Step1. 리스스 공유 세부 정보 지정&#x20;
 
 리소스 공유를 확인하고, 생성한 리소스 공유를 선택합니다.
 
-![](<.gitbook/assets/image (132).png>)
+![](<.gitbook/assets/image (132) (1).png>)
 
 Step2. 권한을 각 리소스 유형과 연결&#x20;
 
-![](<.gitbook/assets/image (134).png>)
+![](<.gitbook/assets/image (134) (1).png>)
 
 Step3. 액세스 할 수 있는 보안 주체 선택 - TransitGateway 자원을 연결할 다른 계정을 입력하고, "추가"를&#x20;
 
 합니다. 선택한 보안 주체에 해당 계정이 정상적으로 입력되었는 지 확인합니다.   Associating 단계로 진행 중인 것을 확인 할 수 있습니다.
 
-![](<.gitbook/assets/image (133).png>)
+![](<.gitbook/assets/image (133) (1).png>)
 
 공유 리소스가 "Associated" 되었는지 확인합니다. 공유한 프린시펄에서 Associated 단계가 되도록 새로 만든 계정에서 RAM 에서 수락해야 합니다.&#x20;
 
-![](<.gitbook/assets/image (129).png>)
+![](<.gitbook/assets/image (129) (1).png>)
 
 이제 공유를 확인하기 위해, 협력사인 서밋 컴퍼니 계정 콘솔로 이동해서 RAM으로 이동합니다.
 
@@ -174,13 +174,15 @@ AWS 계정 - VPC - TransitGateway에 빌더스 컴퍼니 계정의 Seoul-TGW가 
 * VPC ID : 서밋 컴퍼니의 VPC 선택 (Seoul-VPC-PART)
 * Subnet : TGW ENI가 연결된 서브넷 선택 (Seoul-VPC-TGWSubnetA, Seoul-VPC-TGWSubnetB)
 
-![](<.gitbook/assets/image (128).png>)
+![](<.gitbook/assets/image (128) (1).png>)
 
 **`VPC - Transit Gateway - Transit Gateway`** 연결 에서 정상적으로 구성되었는지 확인합니다 .&#x20;
 
 ![](<.gitbook/assets/image (94).png>)
 
 라우팅 테이블에서 Assocation을 수행합니다.
+
+
 
 {% hint style="info" %}
 TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니다. 따라서 Assocation, Routing Table 구성은 빌더스 계정에서 수행합니다.
@@ -190,15 +192,17 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 **`빌더스 계정 - AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블`**에서 **`"Seoul-TGW-RT-East-To-West"`** 테이블을 선택합니다. 새롭게 추가된 서밋 컴퍼니 계정의 **Transit Gateway Attachment를 선택하고 추가**합니다.
 
-![](<.gitbook/assets/image (29).png>)
+![](<.gitbook/assets/image (133).png>)
+
+![](<.gitbook/assets/image (129).png>)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - "Seoul-TGW-RT-East-To-West" - Assosications Tab`** 를 선택합니다. 정상적으로 Association 되었는지 확인합니다.
 
-![](<.gitbook/assets/image (19).png>)
+![](<.gitbook/assets/image (134).png>)
 
-**`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations Tab`** 을 선택하고, 서밋 컴퍼니의 Seoul-VPC-PART 를 propagation 합니다.
+**`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations(전파) Tab`** 을 선택하고, 서밋 컴퍼니의 Seoul-VPC-PART 를 propagation(전파) 합니다.
 
-![](<.gitbook/assets/image (30).png>)
+![](<.gitbook/assets/image (128).png>)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations Tab`** 을 선택하고, 정상적으로 Propagation 되었는지 확인합니다.
 
