@@ -145,8 +145,6 @@ Step3. 액세스 할 수 있는 보안 주체 선택 - TransitGateway 자원을 
 
 ![](<.gitbook/assets/image (129).png>)
 
-![](<.gitbook/assets/image (61).png>)
-
 이제 공유를 확인하기 위해, 협력사인 서밋 컴퍼니 계정 콘솔로 이동해서 RAM으로 이동합니다.
 
 **`서밋 컴퍼니 - AWS 계정 - RAM`** 을 선택합니다.
@@ -169,14 +167,14 @@ AWS 계정 - VPC - TransitGateway에 빌더스 컴퍼니 계정의 Seoul-TGW가 
 
 ### Task 3. TGW 연동하기
 
-서밋 컴퍼디 계정에서 Transit Gateway Attachment를 생성하기 위해, **`VPC - Transit Gateway - Transit Gateway 연결`**을 선택해서 새로운 Attachment를 생성합니다.
+서밋 컴퍼 계정에서 Transit Gateway Attachment를 생성하기 위해, **`VPC - Transit Gateway - Transit Gateway 연결`**을 선택해서 새로운 Attachment를 생성합니다.
 
 * Transit Gateway ID : 공유된 TGW
 * Attachment name tag : Attachment 이름 (Seoul-TGW-Attach-Seoul-VPC-PART)
 * VPC ID : 서밋 컴퍼니의 VPC 선택 (Seoul-VPC-PART)
 * Subnet : TGW ENI가 연결된 서브넷 선택 (Seoul-VPC-TGWSubnetA, Seoul-VPC-TGWSubnetB)
 
-![](<.gitbook/assets/image (79).png>)
+![](<.gitbook/assets/image (128).png>)
 
 **`VPC - Transit Gateway - Transit Gateway`** 연결 에서 정상적으로 구성되었는지 확인합니다 .&#x20;
 
