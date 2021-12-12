@@ -205,7 +205,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 **Seoul Region의 TransitGateway ID를 복사해 둡니다.**
 
-![](<.gitbook/assets/image (130).png>)
+![](<.gitbook/assets/image (130) (1).png>)
 
 **`AWS 관리콘솔 - VPC - Transit Gateway - Transit Gateway` 연결 을 선택합니다.**
 
@@ -253,11 +253,11 @@ Seoul-To-Virginia
 
 ![](<.gitbook/assets/image (107).png>)
 
-이제 Attachment가 Association으로 변경되면, Transit Gateway-Transit Gateway Route Table 탭에서 Create Association 을 시켜 줍니다.
+이제 Attachment가 Association으로 변경되면, Transit Gateway-Transit Gateway Route Table 탭에서 Create Association(연결생성) 을 시켜 줍니다.
 
-![](<.gitbook/assets/image (50).png>)
+![](<.gitbook/assets/image (130).png>)
 
-![](<.gitbook/assets/image (8).png>)
+![](<.gitbook/assets/image (141).png>)
 
 이제 다시 버지니아 리전 콘솔로 이동합니다.
 
