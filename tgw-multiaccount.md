@@ -142,11 +142,11 @@ Step1. 리스스 공유 세부 정보 지정&#x20;
 
 리소스 공유를 확인하고, 생성한 리소스 공유를 선택합니다.
 
-![](<.gitbook/assets/image (132) (1) (1).png>)
+![](<.gitbook/assets/image (132) (1) (1) (1).png>)
 
 Step2. 권한을 각 리소스 유형과 연결&#x20;
 
-![](<.gitbook/assets/image (134) (1) (1) (1).png>)
+![](<.gitbook/assets/image (134) (1) (1) (1) (1).png>)
 
 Step3. 액세스 할 수 있는 보안 주체 선택 - TransitGateway 자원을 연결할 다른 계정을 입력하고, "추가"를&#x20;
 
@@ -215,15 +215,15 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 ![](<.gitbook/assets/image (128) (1) (1) (1).png>)
 
-![](<.gitbook/assets/image (130) (1) (1) (1).png>)
+![](<.gitbook/assets/image (130) (1) (1) (1) (1).png>)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations(전파) Tab`** 을 선택하고, 정상적으로 Propagation(전파) 되었는지 확인합니다.
 
-![](<.gitbook/assets/image (134) (1) (1).png>)
+![](<.gitbook/assets/image (134) (1) (1) (1).png>)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Route Tab`** 을 선택고, 정상적으로 Route가 추가되었는지 확인합니다.
 
-![](<.gitbook/assets/image (132) (1).png>)
+![](<.gitbook/assets/image (132) (1) (1).png>)
 
 서밋 컴퍼니 계정에서 SEOUL-VPC-PRT-Private-10.4.21.101 을 접속합니다.
 
