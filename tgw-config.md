@@ -12,7 +12,7 @@ AWS TransitGateway의 기본 동작 이해를 위해, 가장 기본이 되는 �
 
 아래 그림은 이번 Chapter에서 구성해 볼 아키텍쳐 입니다.
 
-![](.gitbook/assets/image%20%281%29.png)
+![](<.gitbook/assets/image (1).png>)
 
 ### Task1. VPC 구성하기
 
@@ -26,23 +26,23 @@ Cloudformation을 통해 기본이 되는 VPC구성을 먼저 구성합니다.
 
 Seoul-VPC-HQ, Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV를 Cloudformation 을 기반으로 생성합니다.
 
-**AWS 콘솔에서 서울 리전 \(ap-northeast-2\)를 선택하고, Cloudformation 서비스를 선택합니다.**
+**AWS 콘솔에서 서울 리전 (ap-northeast-2)를 선택하고, Cloudformation 서비스를 선택합니다.**
 
 **Cloudformation에서 먼저 새로운 스택을 생성합니다.**
 
-![](.gitbook/assets/image%20%2840%29.png)
+![](<.gitbook/assets/image (40).png>)
 
 **앞서 다운로드 받은 yaml 파일들 중에 `Seoul-VPC-HQ.yml` 파일을 업로드 합니다.**
 
-```text
+```
 Seoul-VPC-HQ
 ```
 
-![](.gitbook/assets/image%20%28127%29.png)
+![](<.gitbook/assets/image (127).png>)
 
 사내 보안을 이슈로 다운로드 받은 파일을 직접 업로드 하지 못하는 경우에는 , Cloud9에서 S3 bucket을 생성해서 직접 업로드 합니다.
 
-```text
+```
 # S3 Bucket을 생성합니다. Bucket Name은 고유해야 합니다.
 aws s3 mb s3://{bucket name} --region ap-northeast-2
 
@@ -64,23 +64,23 @@ aws s3api put-object-acl --bucket {bucket name} --key IAD-VPC.yml --acl public-r
 
 S3 경로는 아래와 같이 해당 Object의 속성에서 URL을 확인합니다.
 
-![](.gitbook/assets/image%20%28114%29.png)
+![](<.gitbook/assets/image (114).png>)
 
 다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
 
-![](.gitbook/assets/image%20%28118%29.png)
+![](<.gitbook/assets/image (118).png>)
 
 {% hint style="info" %}
-스택이름을 파일명과 다르게 입력하지 마십시요. 이후 과정에서 TransitGateway의 yaml파일은 , VPC yml 에서 생성된 값들을 import 해서 TGW를 생성합니다. 스택이름을 파일명과 다르게 할 경우, TGW를 생성할 때 에러가 발생합니다. 
+스택이름을 파일명과 다르게 입력하지 마십시요. 이후 과정에서 TransitGateway의 yaml파일은 , VPC yml 에서 생성된 값들을 import 해서 TGW를 생성합니다. 스택이름을 파일명과 다르게 할 경우, TGW를 생성할 때 에러가 발생합니다.&#x20;
 {% endhint %}
 
 별도로 설정 변경없이, 다음 단계를 진행하고 , 승인을 선택하고 스택생성합니다.
 
-![](.gitbook/assets/image%20%2891%29.png)
+![](<.gitbook/assets/image (91).png>)
 
 **다운로드 받은 yaml 파일 3개를 추가로 반복적으로 수행합니다.**
 
-```text
+```
 Seoul-VPC-PRD
 Seoul-VPC-STG
 Seoul-VPC-DEV
@@ -88,21 +88,21 @@ Seoul-VPC-DEV
 
 4개의 VPC가 모두 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. 4개의 VPC는 각 3분 내외에 생성됩니다. 동시에 수행해도 가능합니다.
 
-![](.gitbook/assets/image%20%28119%29.png)
+![](<.gitbook/assets/image (119).png>)
 
 ### Task2. TGW구성하기.
 
 4개의 VPC를 연결할 TransitGateway를 Region에 Cloudformation으로 생성합니다.
 
-![](.gitbook/assets/image%20%28124%29.png)
+![](<.gitbook/assets/image (124).png>)
 
-다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다. \(TGW는 스택이름을 다르게 지정해도, 본 랩을 구성하는데 문제가 없습니다.\)
+다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다. (TGW는 스택이름을 다르게 지정해도, 본 랩을 구성하는데 문제가 없습니다.)
 
-![](.gitbook/assets/image%20%28125%29.png)
+![](<.gitbook/assets/image (125).png>)
 
 5분 이내에 TransitGateway가 완성됩니다.
 
-![](.gitbook/assets/image%20%28126%29.png)
+![](<.gitbook/assets/image (126).png>)
 
 ## 2.TransitGateway 구성 확인
 
@@ -112,38 +112,38 @@ AWS 관리콘솔 - VPC 를 선택합니다.
 
 4개의 VPC가 정상적으로 생성되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%28121%29.png)
+![](<.gitbook/assets/image (121).png>)
 
 AWS 관리콘솔 - EC2를 선택합니다.
 
 EC2가 정상적으로 생성되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%28122%29.png)
+![](<.gitbook/assets/image (122).png>)
 
 ### Task 4. TGW 구성 확인
 
 VPC - TransitGateway를 선택해서, Transit Gateway 정상적으로 구성되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%28103%29.png)
+![](<.gitbook/assets/image (103).png>)
 
-![](.gitbook/assets/image%20%2876%29.png)
+![](<.gitbook/assets/image (76).png>)
 
 ### Task5. TGW Attachment 확인.
 
 **VPC-Transit Gateway-Transit Gateway 연결 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
-![](.gitbook/assets/image%20%2897%29.png)
+![](<.gitbook/assets/image (97).png>)
 
 Seoul-TGW-Attach-Seoul-VPC-HQ를 선택하면, 이미 "Seoul-VPC-HQ"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.
 
 1. **TGW Routing Table과 Attachment가 연결된 상태를 확인**
 2. **Attachment가 VPC의 어떤 Subnet과 연결되었는지 확인**
 
-![](.gitbook/assets/image%20%2867%29.png)
+![](<.gitbook/assets/image (67).png>)
 
 아래에서 나머지 VPC들도 선택해서 확인해 봅니다.
 
-```text
+```
 Seoul-TGW-Attach-Seoul-VPC-STG
 Seoul-TGW-Attach-Seoul-VPC-DEV
 Seoul-TGW-Attach-Seoul-VPC-PRD
@@ -161,31 +161,31 @@ East-To-West 트래픽을 위한 라우팅 테이블 도메인, North-To-South �
 
 Associations와 Propagation 탭을 눌러서, Seoul-VPC-HQ 연결과 Seoul-VPC-HQ의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%28102%29.png)
+![](<.gitbook/assets/image (102).png>)
 
-![](.gitbook/assets/image%20%2865%29.png)
+![](<.gitbook/assets/image (65).png>)
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
-![](.gitbook/assets/image%20%2837%29.png)
+![](<.gitbook/assets/image (37).png>)
 
 **이제 East-To-West 라우팅 테이블 도메인을 확인합니다.**
 
 **해당 라우팅 테이블 도에인에는 Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV를 연결했습니다.**
 
-![](.gitbook/assets/image%20%28110%29.png)
+![](<.gitbook/assets/image (110).png>)
 
 **East-To-West Routing Table 도메인을 선택하여, 라우팅 테이블 속성을 확인합니다. Association 탭을 선택해서 3개의 VPC가 Association 되었는지 확인합니다.**
 
-![](.gitbook/assets/image%20%2834%29.png)
+![](<.gitbook/assets/image (34).png>)
 
 Propagations 탭을 선택해서, 3개의 VPC CIDR를 Propagation 하는지 확인합니다.
 
-![](.gitbook/assets/image%20%28112%29.png)
+![](<.gitbook/assets/image (112).png>)
 
 Routing 탭을 선택해서, 앞서 Propagation 된 Route가 정상적으로 등록되었는지 확인합니다.
 
-![](.gitbook/assets/image%20%2884%29.png)
+![](<.gitbook/assets/image (84).png>)
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**
 
@@ -205,47 +205,47 @@ PC 환경에서는 사전에 반드시 AWS CLI를 설치합니다. Cloud9으로 
 
 **Fedora Linux, Cloud9 에서 Session Manager Plugin 설치**
 
-```text
+```
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
 sudo yum install -y session-manager-plugin.rpm
 ```
 
-**Ubuntu에서 Session Manager Plugin 설치\(Cloud9, 웹기반 세션 매니저 사용시 생략\)**
+**Ubuntu에서 Session Manager Plugin 설치(Cloud9, 웹기반 세션 매니저 사용시 생략)**
 
-```text
+```
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
 sudo dpkg -i session-manager-plugin.deb
 ```
 
-**Windows Session manager plugin 설치 \(Cloud9, 웹기반 세션 매니저 사용시 생략\)**
+**Windows Session manager plugin 설치 (Cloud9, 웹기반 세션 매니저 사용시 생략)**
 
-```text
+```
 https://s3.amazonaws.com/session-manager-downloads/plugin/latest/windows/SessionManagerPluginSetup.exe
 ```
 
-**Mac OS용 Session manager plugin 설치\(Cloud9, 웹기반 세션 매니저 사용시 생략\)**
+**Mac OS용 Session manager plugin 설치(Cloud9, 웹기반 세션 매니저 사용시 생략)**
 
 번들 설치 관리자를 다운로드합니다.
 
-```text
+```
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
 ```
 
 패키지의 압축을 풉니다.
 
-```text
+```
 unzip sessionmanager-bundle.zip
 ```
 
 설치 명령을 실행합니다.
 
-```text
+```
 sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
 ```
 
 **아래와 같이 Cloud9에서 shell을 실행해 봅니다.**
 
-```text
+```
 ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-HQ"
 ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PRD"
 ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-STG"
@@ -255,7 +255,7 @@ sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/
 
 실행한 예제입니다.
 
-```text
+```
 ~/environment/buildernet/aws_ec2_ext.sh | grep "Seoul-VPC-HQ"
 |  Seoul-VPC-HQ-Public-10.0.12.102  |  ap-northeast-2b |  i-0aa1c4c96f8924b33 |  t3.small |  ami-006e2f9fa7597680a |  running |  10.0.12.102  |  3.34.195.174    |
 |  Seoul-VPC-HQ-Private-10.0.22.101 |  ap-northeast-2b |  i-078a899d467028886 |  t3.small |  ami-006e2f9fa7597680a |  running |  10.0.22.101  |  None            |
@@ -270,14 +270,14 @@ sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/
 
 ssm plugin을 통해서 인스턴스 ID 기반으로, 직접 Private Instance에 접속합니다. 인스턴스 ID는 **`"aws_ec2.sh"`**을 통해 확인 할 수 있습니다.
 
-아래와 같은 명령을 통해서 직접 4개의 Private Instance에 접속합니다. \(10.0.21.101, 10.1.21.101, 10.2.21.101, 10.2.31.101\)
+아래와 같은 명령을 통해서 직접 4개의 Private Instance에 접속합니다. (10.0.21.101, 10.1.21.101, 10.2.21.101, 10.2.31.101)
 
 * **Seoul-VPC-HQ-Private-10.0.21.101**
 * **Seoul-VPC-PRD-Private-10.1.21.101**
 * **Seoul-VPC-STG-Private-10.2.21.101**
 * **Seoul-VPC-DEV-Private-10.3.21.101**
 
-```text
+```
 aws ssm start-session --target "인스턴스 ID"
 ```
 
@@ -288,7 +288,7 @@ Cloud9에서 터미널 창을 4개를 추가로 오픈하고, 아래와 같이 �
 * **Seoul-VPC-STG-Private-10.2.21.101**
 * **Seoul-VPC-DEV-Private-10.3.21.101**
 
-```text
+```
 sudo -s
 echo 10.0.21.101 SEOUL-VPC-HQ-Private >> /etc/hosts 
 echo 10.1.21.101 SEOUL-VPC-PRD-Private >> /etc/hosts
@@ -301,7 +301,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 ### Task8. 시나리오 이해하기
 
-**다음과 같은 시나리오 구성으로 Task9~11를 수행합니다.**
+**다음과 같은 시나리오 구성으로 Task9\~11를 수행합니다.**
 
 **1.빌더스 컴퍼니는 아래와 같은 VPC를 하나의 계정에 소유하고 있습니다.**
 
@@ -318,7 +318,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 **목표 구성과 필요작업은 아래와 같습니다.**
 
-![](.gitbook/assets/image%20%283%29.png)
+![](<.gitbook/assets/image (3).png>)
 
 ### Task9. Staging과 Dev 연결
 
@@ -329,61 +329,61 @@ East-To-West에는 이미 Seoul-VPC-STG, Seoul-VPC-DEV의 CIDR가 Propagated 되
 아래 명령을 통해 각 Cloud9 터미널 콘에서 Ping 시험을 해 봅니다.
 
 {% hint style="info" %}
-Cloudformation을 통해 Security Group은 시험에 필요한 트래픽은 모두 허용되어 있습니다. 
+Cloudformation을 통해 Security Group은 시험에 필요한 트래픽은 모두 허용되어 있습니다.&#x20;
 {% endhint %}
 
-```text
+```
 ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-DEV-Private"
 aws ssm start-session --target "Instance ID 값"
 sudo -s
 
 ```
 
-```text
+```
 ##Seoul-VPC-STG-Private-10.2.21.101
 ping SEOUL-VPC-DEV-Private
 
 ```
 
-```text
+```
 ##Seoul-VPC-DEV-Private-10.3.21.101
 ping SEOUL-VPC-STG-Private
 ```
 
 {% hint style="warning" %}
-상호간의 트래픽이 허용되지 않습니다. 각 VPC에서 라우팅 테이블이 없기 때문입니다. 
+상호간의 트래픽이 허용되지 않습니다. 각 VPC에서 라우팅 테이블이 없기 때문입니다.&#x20;
 {% endhint %}
 
 VPC- 가상 프라이빗 클라우드 - 라우팅 테이블에서 아래 라우팅 테이블 Tag 확인하고, 수정합니다.
 
-```text
+```
 Seoul-VPC-STG-Private-Subnet-A-RT
 ```
 
-![](.gitbook/assets/image%20%2860%29.png)
+![](<.gitbook/assets/image (60).png>)
 
-```text
+```
 Seoul-VPC-DEV-Private-Subnet-A-RT
 ```
 
-![](.gitbook/assets/image%20%2828%29.png)
+![](<.gitbook/assets/image (28).png>)
 
 이제 다시 앞서 실행한 각 인스턴스에서의 Ping이 정상적으로 처리되는 지 확인합니다.
 
-```text
+```
 ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-DEV-Private"
 aws ssm start-session --target "Instance ID 값"
 sudo -s
 
 ```
 
-```text
+```
 ##Seoul-VPC-STG-Private-10.2.21.101
 ping SEOUL-VPC-DEV-Private
 
 ```
 
-```text
+```
 ##Seoul-VPC-DEV-Private-10.3.21.101
 ping SEOUL-VPC-STG-Private
 ```
@@ -401,44 +401,44 @@ Dev, Stage 환경에서 모든 준비가 완료되고 필요 요구에 따라 Pr
 아래 명령을 통해 각 Cloud9 터미널 콘솔에서 Ping 시험을 해 봅니다.
 
 {% hint style="info" %}
- Cloudformation을 통해 Security Group은 시험에 필요한 트래픽은 모두 허용되어 있습니다. 
+&#x20;Cloudformation을 통해 Security Group은 시험에 필요한 트래픽은 모두 허용되어 있습니다.&#x20;
 {% endhint %}
 
-```text
+```
 ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PRD-Private"
 aws ssm start-session --target "Instance ID 값"
 sudo -s
 
 ```
 
-```text
+```
 ##Seoul-VPC-PRD-Private-10.1.21.101
 ping SEOUL-VPC-DEV-Private
 
 ```
 
-```text
+```
 ##Seoul-VPC-PRD-Private-10.1.21.101
 ping SEOUL-VPC-STG-Private
 ```
 
 {% hint style="info" %}
-상호간의 트래픽이 허용되지 않습니다. 각 VPC에서 라우팅 테이블이 없기 때문입니다. 
+상호간의 트래픽이 허용되지 않습니다. 각 VPC에서 라우팅 테이블이 없기 때문입니다.&#x20;
 {% endhint %}
 
 **`VPC- 가상 프라이빗 클라우드 - 라우팅 테이블`** 에서 아래 라우팅 테이블 Tag 확인하고, 수정합니다.
 
-```text
+```
 Seoul-VPC-PRD-Private-Subnet-A-RT
 
 ```
 
-![](.gitbook/assets/image%20%289%29.png)
+![](<.gitbook/assets/image (9).png>)
 
 이제 다시 앞서 실행한 각 인스턴스에서의 Ping이 정상적으로 처리되는 지 확인합니다.
 
 {% hint style="info" %}
-**이제 Production과 Dev,Staging 환경이 연결되었습니다.**    
+**이제 Production과 Dev,Staging 환경이 연결되었습니다.**  \
 Production과 Staging간의 10.2.21.101만 잠시 Block 하고 싶습니다. 어떻게 해야 할까요?
 {% endhint %}
 
@@ -448,29 +448,29 @@ Transit Gateway에는 Blackhole 기능이 있습니다. 이것은 전통적인 �
 
 **`Seoul-TGW-RT-East-To-West`** RouteTable을 선택하고, **`Route`** 탭을 선택합니다. **`Create Static Route`** 버튼을 누르고 아래와 같이 Staging Host만 격리 시켜 봅니다.
 
-```text
+```
 ###Blcokhole Target host
 10.2.21.101/32
 ```
 
 **`VPC - TransitGateway - TransitGateway 라우팅 테이블 - Seoul-TGW-RT-East-To-West`**
 
-![](.gitbook/assets/image%20%28120%29.png)
+![](<.gitbook/assets/image (120).png>)
 
-![](.gitbook/assets/image%20%28116%29.png)
+![](<.gitbook/assets/image (116).png>)
 
-![](.gitbook/assets/image%20%28115%29.png)
+![](<.gitbook/assets/image (115).png>)
 
 앞서 연결한 Cloud9 터미널에서 다시 Ping을 시험해 봅니다.
 
-```text
+```
 ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PRD-Private"
 aws ssm start-session --target "Instance ID 값"
 sudo -s
 
 ```
 
-```text
+```
 ##Seoul-VPC-PRD-Private-10.1.21.101
 ping SEOUL-VPC-STG-Private
 ```
@@ -491,17 +491,17 @@ Blackhole 구성으로 연결되지 않는 것을 확인 할 수 있습니다.
 
 **`Create Static Route`**를 선택하고, 0.0.0.0/0에 대한 경로를 Seoul-TGW-Seoul-VPC-HQ Attachment 추가합니다.
 
-![](.gitbook/assets/image%20%2859%29.png)
+![](<.gitbook/assets/image (59).png>)
 
-![](.gitbook/assets/image%20%2841%29.png)
+![](<.gitbook/assets/image (41).png>)
 
 이제 Seoul-VPC-PRD의 Private Subnet 라우팅에서 인터넷으로 가는 목적지를 NAT Gateway에서 Transit Gateway로 아래와 같이 변경합니다.
 
-```text
+```
 Seoul-VPC-PRD-Private-Subnet-A-RT
 ```
 
-![](.gitbook/assets/image%20%2820%29.png)
+![](<.gitbook/assets/image (20).png>)
 
 **Seoul-VPC-PRD-Private-10.1.21.101 인스턴스에서** [**www.aws.com**](http://www.aws.com) **으로 ping을 실행해 봅니다.**
 
@@ -511,11 +511,11 @@ Seoul-VPC-PRD-Private-Subnet-A-RT
 
 **`VPC- 가상 프라이빗 클라우드 - 라우팅 테이블`** 에서 아래 라우팅 테이블 Tag 확인하고, 수정합니다.
 
-```text
+```
 Seoul-VPC-HQ-PublicRT
 ```
 
-![](.gitbook/assets/image%20%2880%29.png)
+![](<.gitbook/assets/image (80).png>)
 
 TGW North-To-South 라우팅테이블에 아래와 같이 Seoul-VPC-HQ로 트래픽 경로를 추가합니다.
 
@@ -525,7 +525,7 @@ TGW North-To-South 라우팅테이블에 아래와 같이 Seoul-VPC-HQ로 트래
 
 `Create Static Route`를 선택하고, 10.1.21.0/24 에 대한 경로를 Seoul-TGW-Seoul-VPC-PRD Attachment 추가합니다.
 
-![](.gitbook/assets/image%20%2890%29.png)
+![](<.gitbook/assets/image (90).png>)
 
 **이제 Seoul-VPC-PRD-Private-10.1.21.101 인스턴스에서 정상적으로 외부 접속이 되는지 확인해 봅니다.**
 
@@ -537,17 +537,17 @@ Transit Gateway 구성에 대한 모든 실습을 마쳤습니다. 연결되는 
 
 **1.4개의 VPC 생성**
 
-* Cloudformation 을 통해서, 다운로드 받은 4개의 yaml 파일 업로드 \(Seoul-VPC-HQ, Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV\)하고 , VPC 생성
+* Cloudformation 을 통해서, 다운로드 받은 4개의 yaml 파일 업로드 (Seoul-VPC-HQ, Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV)하고 , VPC 생성
 
-**2.서울 리전\(ap-northeast-2\)에서 TransitGateway 생성**
+**2.서울 리전(ap-northeast-2)에서 TransitGateway 생성**
 
-* Cloudformation을 통해서, 다운로드 받은 yaml 파일 업로드\(Seoul-TGW\)하고, TGW 생성
+* Cloudformation을 통해서, 다운로드 받은 yaml 파일 업로드(Seoul-TGW)하고, TGW 생성
 
 **3.생성된 VPC, EC2 구성 확인.**
 
 **4. TGW 구성확인**
 
-**5. TGW Attachment \(연결\) 확인**
+**5. TGW Attachment (연결) 확인**
 
 **6. TGW Routing Table 확인**
 
@@ -555,11 +555,10 @@ Transit Gateway 구성에 대한 모든 실습을 마쳤습니다. 연결되는 
 
 **8. 시나리오 이해하기**
 
-**9. Staging VPC와 Dev VPC 연결하기 - TGW를 통해 연결하**
+**9. Staging VPC와 Dev VPC 연결하기 - TGW를 통해 연결하기 .**
 
 **10. Production 연결하기 - TGW 연결하기.**
 
 **11. Production과 HQ 연결하기 - 서로 다른 라우팅 테이블에서 연결하기.**
 
-\*\*\*\*
-
+****
