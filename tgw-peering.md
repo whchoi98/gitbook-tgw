@@ -217,8 +217,6 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 **3.Attachment name tag - 연결 이름을 입력합니다.**
 
-![](broken-reference)
-
 ```
 IAD-TO-SEOUL
 ```
@@ -227,25 +225,21 @@ IAD-TO-SEOUL
 
 **5.Transit Gateway(accepter) - 원격지 서울 리전에 만들어져 있는 Transit Gateway ID를 입력합니다.**
 
-![](<.gitbook/assets/image (139).png>)
+![](<.gitbook/assets/image (140).png>)
 
 **작업이 완료되면 아래와 같이 US-EAST-1 리전에서는 서울리전(ap-northeast-2)에서 TGW가 수락할때 까지 Pending 상태가 됩니다.**
 
 ![](<.gitbook/assets/image (129).png>)
 
-**이제 5번의 Transit Gateway (accepter)에 서울 리전의 Transit Gateway ID값을 붙여 넣고, Create Attachment를 클릭하고 완료합니다. 아래와 같이 새로운 Transit Gateway Attachment가 생성되었습니다.**
-
-![](<.gitbook/assets/image (93).png>)
-
-하지만 서울리전 Transit Gateway Peering을 위한 Transit Gateway Attachment는 initiating request 상태입니다. 서울리전에서 수락하지 않으면 연결되지 않습니다.
+서울리전에서 수락하지 않으면 연결되지 않습니다.
 
 **이제 다시 서울리전의 콘솔 창이 열려있는 브라우저 탭을 선택합니다.**
 
 **`서울 리전의 VPC - Transit Gateway - Transit Gateway 연결`** 에 새로운 Transit Gateway Attachment가 생성된 것을 확인 할 수 있습니다. 하지만 **`pending acceptance`** 상태입니다.
 
-![](<.gitbook/assets/image (14).png>)
+상단 **`"작업"`** 을 선택하고  **`Transit Gateway 연결수`**택합니다.을  선선택합니다.
 
-상단 **`"작업"`** 을 선택하고 **`Accept`** 선택합니다.
+![](<.gitbook/assets/image (133).png>)
 
 ![](<.gitbook/assets/image (72).png>)
 

@@ -152,7 +152,7 @@ Step3. 액세스 할 수 있는 보안 주체 선택 - TransitGateway 자원을 
 
 합니다. 선택한 보안 주체에 해당 계정이 정상적으로 입력되었는 지 확인합니다.   Associating 단계로 진행 중인 것을 확인 할 수 있습니다.
 
-![](<.gitbook/assets/image (133) (1) (1).png>)
+![](<.gitbook/assets/image (133) (1) (1) (1).png>)
 
 공유 리소스가 "Associated" 되었는지 확인합니다. 공유한 프린시펄에서 Associated 단계가 되도록 새로 만든 계정에서 RAM 에서 수락해야 합니다.&#x20;
 
@@ -288,7 +288,7 @@ ping SEOUL-VPC-DEV-Private
 
 ![](<.gitbook/assets/image (128) (1).png>)
 
-![](<.gitbook/assets/image (133).png>)
+![](<.gitbook/assets/image (133) (1).png>)
 
 ![](<.gitbook/assets/image (23).png>)
 
