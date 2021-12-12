@@ -182,8 +182,6 @@ AWS 계정 - VPC - TransitGateway에 빌더스 컴퍼니 계정의 Seoul-TGW가 
 
 라우팅 테이블에서 Assocation을 수행합니다.
 
-
-
 {% hint style="info" %}
 TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니다. 따라서 Assocation, Routing Table 구성은 빌더스 계정에서 수행합니다.
 {% endhint %}
@@ -192,31 +190,33 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 **`빌더스 계정 - AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블`**에서 **`"Seoul-TGW-RT-East-To-West"`** 테이블을 선택합니다. 새롭게 추가된 서밋 컴퍼니 계정의 **Transit Gateway Attachment를 선택하고 추가**합니다.
 
-![](<.gitbook/assets/image (133).png>)
+![](<.gitbook/assets/image (135).png>)
 
 ![](<.gitbook/assets/image (129).png>)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - "Seoul-TGW-RT-East-To-West" - Assosications Tab`** 를 선택합니다. 정상적으로 Association 되었는지 확인합니다.
 
-![](<.gitbook/assets/image (134).png>)
+![](<.gitbook/assets/image (136).png>)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations(전파) Tab`** 을 선택하고, 서밋 컴퍼니의 Seoul-VPC-PART 를 propagation(전파) 합니다.
 
 ![](<.gitbook/assets/image (128).png>)
 
-**`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations Tab`** 을 선택하고, 정상적으로 Propagation 되었는지 확인합니다.
+![](<.gitbook/assets/image (130).png>)
 
-![](<.gitbook/assets/image (2).png>)
+**`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations(전파) Tab`** 을 선택하고, 정상적으로 Propagation(전파) 되었는지 확인합니다.
+
+![](<.gitbook/assets/image (134).png>)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Route Tab`** 을 선택고, 정상적으로 Route가 추가되었는지 확인합니다.
 
-![](<.gitbook/assets/image (46).png>)
+![](<.gitbook/assets/image (132).png>)
 
 서밋 컴퍼니 계정에서 SEOUL-VPC-PRT-Private-10.4.21.101 을 접속합니다.
 
 SEOUL-VPC-PRT-Private-10.4.21.101 id 확인.
 
-계정이 2개 구성되어 aws cli는 default profile로 접근이 됩니다. 아래와 같이 2개의 구성을 관리자 PC 또는 리눅스에서 설정합니다.
+리눅스 또는 Mac OS 콘솔에서 AWS   계정이 2개 구성되어 aws cli는 default profile로 접근이 됩니다. 아래와 같이 2개의 구성을 관리자 PC 또는 리눅스에서 설정합니다.
 
 ```
 ~/.aws/config
