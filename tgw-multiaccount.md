@@ -141,7 +141,7 @@ Step3. 액세스 할 수 있는 보안 주체 선택 - TransitGateway 자원을 
 
 ![](<.gitbook/assets/image (133).png>)
 
-공유 리소스가 "Associated" 되었는지 확인합니다. 공유한 프리&#x20;
+공유 리소스가 "Associated" 되었는지 확인합니다. 공유한 프린시펄에서 Associated 단계가 되도록 새로 만든 계정에서 RAM 에서 수락해야 합니다.&#x20;
 
 ![](<.gitbook/assets/image (129).png>)
 
