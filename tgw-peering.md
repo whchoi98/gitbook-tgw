@@ -203,17 +203,21 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 ### **Task9. 버지니아 리전과 한국 리전 연결 (Peering)**
 
+**Seoul Region의 TransitGateway ID를 복사해 둡니다.**
+
+![](<.gitbook/assets/image (130).png>)
+
 **`AWS 관리콘솔 - VPC - Transit Gateway - Transit Gateway` 연결 을 선택합니다.**
 
-**`Create Transit Gateway Attachment` 를 선택합니다.**
-
-![](<.gitbook/assets/image (109).png>)
+**`Create Transit Gateway Attachment(Transit Gateway 연결 생성)` 를 선택합니다.**
 
 **1.Transit Gateway ID - 버지니아에서 생성한 IAD-TGW를 선택합니다.**
 
 **2.Attachment Type - `Peering Connection` 을 선택 합니다. (주의 !!!)**
 
 **3.Attachment name tag - 연결 이름을 입력합니다.**
+
+![](broken-reference)
 
 ```
 IAD-TO-SEOUL
