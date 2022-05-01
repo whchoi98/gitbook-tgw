@@ -43,12 +43,18 @@ Seoul-VPC-HQ
 사내 보안을 이슈로 다운로드 받은 파일을 직접 업로드 하지 못하는 경우에는 , Cloud9에서 S3 bucket을 생성해서 직접 업로드 합니다.
 
 ```
-# S3 Bucket을 생성합니다. Bucket Name은 고유해야 합니다.
-aws s3 mb s3://{bucket name} --region ap-northeast-2
-
-# 생성된 버킷에 clone한 파일들을 업로드 합니다.
+## 생성된 버킷에 clone한 파일들을 업로드 합니다.
+## S3 Bucket 생성합니다.
+## Bucket name은 고유해야 합니다.
 cd ~/environment/tgw
-aws s3 sync ./ s3://{bucket name}
+export bucket_name="usernameDate"
+echo "export bucket_name=${bucket_name}" | tee -a ~/.bash_profile
+
+# Cloud9에서 변경되는 파일을 S3와 동기화 합니다. 
+aws s3 sync ./ s3://${bucket_name}
+
+## option - copy를 통해 사용해도 가능합니다.
+aws s3 cp ./ s3://${bucket_name} --recursive
 
 # object가 외부에서 접근할 수 있도록 , Read 권한을 부여합니다.
 aws s3api put-object-acl --bucket {bucket name} --key Seoul-VPC-HQ.yml --acl public-read  
