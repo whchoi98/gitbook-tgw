@@ -74,32 +74,23 @@ sudo yum install -y session-manager-plugin.rpm
 **2.Cloudformation 생성.**
 
 {% hint style="warning" %}
-**서밋 컴퍼니는 서울리전에서 새로운 계정으 Seoul-VPC-PART라는 이름으로 VPC를 생성합니다.**
+**서밋 컴퍼니는 서울리전에서 새로운 계정의 Seoul-VPC-PART라는 이름으로 VPC를 생성합니다.**
 {% endhint %}
 
 **`Seoul-VPC-PART`** 를 Cloudformation 을 기반으로 생성합니다.
 
-![](<.gitbook/assets/image (74).png>)
+Cloud9에서 아래와 같이 수행하여, 배포 합니다.&#x20;
 
-**AWS 콘솔에서 서울 리전 (ap-northeast-2)를 선택하고, Cloudformation 서비스를 선택합니다.**
-
-**Cloudformation에서 먼저 새로운 스택을 생성합니다.**
-
-**앞서 다운로드 받은 yaml 파일들 중에 `Seoul-VPC-PART.yml` 파일을 업로드 합니다.**
+* Seoul-VPC-PART 배포&#x20;
 
 ```
-Seoul-VPC-PART.yml
+aws cloudformation deploy \
+  --stack-name "Seoul-VPC-PART" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-PART.yml" \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides "KeyPair=mykey"
+
 ```
-
-![](<.gitbook/assets/image (73).png>)
-
-다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
-
-![](<.gitbook/assets/image (101).png>)
-
-별도로 설정 변경없이, 다음 단계를 진행하고 , 승인을 선택하고 스택생성합니다.
-
-![](<.gitbook/assets/image (113).png>)
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
 
