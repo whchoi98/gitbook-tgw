@@ -51,23 +51,18 @@ sudo ssh-keygen -y -f ~/environment/mykey.pem > ~/environment/mykey.pub
 
 **`IAD-VPC`** 를 Cloudformation 을 기반으로 생성합니다.
 
-![](<.gitbook/assets/image (89).png>)
+Cloud9에서 아래와 같이 실행합니다 .&#x20;
 
-다운로드 받아 둔 파일 중에서 IAD-VPC.yml 파일을 업로드하고, 다음을 선택합니다.
-
-![](<.gitbook/assets/image (105).png>)
-
-다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
+* IAD-VPC를 생성합니다
 
 ```
-IAD-VPC
+aws cloudformation deploy \
+  --region us-east-1 \
+  --stack-name "IAD-VPC" \
+  --template-file "/home/ec2-user/environment/tgw/IAD-VPC.yml" \
+  --parameter-overrides "KeyPair=mykey" \
+  --capabilities CAPABILITY_NAMED_IAM
 ```
-
-![](<.gitbook/assets/image (58).png>)
-
-별도로 설정 변경없이, 다음 단계를 진행하고 , 승인을 선택하고 스택생성합니다.
-
-![](<.gitbook/assets/image (70).png>)
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
 
@@ -77,11 +72,16 @@ IAD-VPC
 
 IAD-VPC를 연결할 TransitGateway를 버지니아 리전(us-east-1)에 Cloudformation으로 생성합니다. 다운로드 받은 파일 중에 , **`IAD-TGW.yml`** 파일을 업로드 합니다.
 
-![](<.gitbook/assets/image (7).png>)
+Cloud9에서 아래와 같이 실행합니다 .  (TGW는 스택이름을 다르게 지정해도, 본 랩을 구성하는데 문제가 없습니다.)
 
-다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다. (TGW는 스택이름을 다르게 지정해도, 본 랩을 구성하는데 문제가 없습니다.)
-
-![](<.gitbook/assets/image (104).png>)
+```
+aws cloudformation deploy \
+  --region us-east-1 \
+  --stack-name "IAD-TGW" \
+  --template-file "/home/ec2-user/environment/tgw/IAD-TGW.yml" \
+  --parameter-overrides "KeyPair=mykey" \
+  --capabilities CAPABILITY_NAMED_IAM
+```
 
 5분 이내에 TransitGateway가 완성됩니다.
 
