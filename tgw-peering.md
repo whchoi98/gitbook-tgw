@@ -78,8 +78,7 @@ Cloud9에서 아래와 같이 실행합니다 .  (TGW는 스택이름을 다르�
 aws cloudformation deploy \
   --region us-east-1 \
   --stack-name "IAD-TGW" \
-  --template-file "/home/ec2-user/environment/tgw/IAD-TGW.yml" \
-  --parameter-overrides "KeyPair=mykey" \
+  --template-file "/home/ec2-user/environment/tgw/IAD-TGW-1.yml" \
   --capabilities CAPABILITY_NAMED_IAM
 ```
 
