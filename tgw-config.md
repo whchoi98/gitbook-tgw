@@ -26,20 +26,6 @@ Cloudformation을 통해 기본이 되는 VPC구성을 먼저 구성합니다.
 
 Seoul-VPC-HQ, Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV를 Cloudformation 을 기반으로 생성합니다.
 
-**AWS 콘솔에서 서울 리전 (ap-northeast-2)를 선택하고, Cloudformation 서비스를 선택합니다.**
-
-**Cloudformation에서 먼저 새로운 스택을 생성합니다.**
-
-![](<.gitbook/assets/image (40).png>)
-
-**앞서 다운로드 받은 yaml 파일들 중에 `Seoul-VPC-HQ.yml` 파일을 업로드 합니다.**
-
-```
-Seoul-VPC-HQ
-```
-
-![](<.gitbook/assets/image (127).png>)
-
 사내 보안을 이슈로 다운로드 받은 파일을 직접 업로드 하지 못하는 경우에는 , Cloud9에서 S3 bucket을 생성해서 직접 업로드 합니다.
 
 ```
@@ -53,19 +39,6 @@ aws s3 mb s3://${bucket_name}
 
 # Cloud9에서 변경되는 파일을 S3와 동기화 합니다. 
 aws s3 sync ./ s3://${bucket_name}
-
-## option - copy를 통해 사용해도 가능합니다.
-aws s3 cp ./ s3://${bucket_name} --recursive
-
-# object가 외부에서 접근할 수 있도록 , Read 권한을 부여합니다.
-aws s3api put-object-acl --bucket {bucket name} --key Seoul-VPC-HQ.yml --acl public-read  
-aws s3api put-object-acl --bucket {bucket name} --key Seoul-VPC-PRD.yml --acl public-read  
-aws s3api put-object-acl --bucket {bucket name} --key Seoul-VPC-STG.yml --acl public-read  
-aws s3api put-object-acl --bucket {bucket name} --key Seoul-VPC-PART.yml --acl public-read  
-aws s3api put-object-acl --bucket {bucket name} --key SSeoul-VPC-DEV.yml --acl public-read  
-aws s3api put-object-acl --bucket {bucket name} --key Seoul-TGW.yml --acl public-read  
-aws s3api put-object-acl --bucket {bucket name} --key IAD-TGW.yml --acl public-read  
-aws s3api put-object-acl --bucket {bucket name} --key IAD-VPC.yml --acl public-read  
 
 ```
 
@@ -134,15 +107,18 @@ aws cloudformation deploy \
 
 ![](<.gitbook/assets/image (119).png>)
 
+AWS Cloudformation 서비스에서 직접 작업을 수행해도 됩니다. S3에 업로드한 경로를 선택하고 진행합니다. (옵션)
+
 ### Task2. TGW구성하기.
 
 4개의 VPC를 연결할 TransitGateway를 Region에 Cloudformation으로 생성합니다.
 
-![](<.gitbook/assets/image (124).png>)
-
-다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다. (TGW는 스택이름을 다르게 지정해도, 본 랩을 구성하는데 문제가 없습니다.)
-
-![](<.gitbook/assets/image (125).png>)
+```
+aws cloudformation deploy \
+  --stack-name "Seoul-TGW" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-TGW.yml" \
+  --capabilities CAPABILITY_NAMED_IAM
+```
 
 5분 이내에 TransitGateway가 완성됩니다.
 
