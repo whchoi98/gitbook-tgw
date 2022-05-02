@@ -49,6 +49,7 @@ Seoul-VPC-HQ
 cd ~/environment/tgw
 export bucket_name="usernameDate"
 echo "export bucket_name=${bucket_name}" | tee -a ~/.bash_profile
+aws s3 mb s3://${bucket_name}
 
 # Cloud9에서 변경되는 파일을 S3와 동기화 합니다. 
 aws s3 sync ./ s3://${bucket_name}
@@ -68,29 +69,66 @@ aws s3api put-object-acl --bucket {bucket name} --key IAD-VPC.yml --acl public-r
 
 ```
 
-S3 경로는 아래와 같이 해당 Object의 속성에서 URL을 확인합니다.
+S3 경로는 아래와 같이 해당 Object의 속성에서 URL을 확인하거나, Cloud9에서 아래 출력값을 복사해 둡니다.
 
-![](<.gitbook/assets/image (114).png>)
+```
+cd ~/environment
+echo https://${bucket_name}.s3.ap-northeast-2.amazonaws.com/Seoul-VPC-HQ.yml > Seoul-VPC-yaml-url.txt
+echo https://${bucket_name}.s3.ap-northeast-2.amazonaws.com/Seoul-VPC-PRD.yml >> Seoul-VPC-yaml-url.txt
+echo https://${bucket_name}.s3.ap-northeast-2.amazonaws.com/Seoul-VPC-STG.yml >> Seoul-VPC-yaml-url.txt
+echo https://${bucket_name}.s3.ap-northeast-2.amazonaws.com/Seoul-VPC-DEV.yml >> Seoul-VPC-yaml-url.txt
 
-다음을 선택하고, 아래와 같아 스택이름은 파일명과 동일하게 입력합니다.
+```
 
-![](<.gitbook/assets/image (118).png>)
+Cloud9에서 아래와 같이 차례로 수행하여, 배포 합니다.&#x20;
+
+* Seoul-VPC-HQ 배포&#x20;
+
+```
+aws cloudformation deploy \
+  --stack-name "Seoul-VPC-HQ" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-HQ.yml" \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides "KeyPair=mykey"
+
+```
+
+* Seoul-VPC-PRD 배포&#x20;
+
+```
+aws cloudformation deploy \
+  --stack-name "Seoul-VPC-PRD" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-PRD.yml" \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides "KeyPair=mykey"
+
+```
+
+Seoul-VPC-STG 배포&#x20;
+
+```
+aws cloudformation deploy \
+  --stack-name "Seoul-VPC-STG" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-STG.yml" \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides "KeyPair=mykey"
+
+```
+
+Seoul-VPC-DEV 배포&#x20;
+
+```
+aws cloudformation deploy \
+  --stack-name "Seoul-VPC-DEV" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-DEV.yml" \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides "KeyPair=mykey"
+
+```
 
 {% hint style="info" %}
 스택이름을 파일명과 다르게 입력하지 마십시요. 이후 과정에서 TransitGateway의 yaml파일은 , VPC yml 에서 생성된 값들을 import 해서 TGW를 생성합니다. 스택이름을 파일명과 다르게 할 경우, TGW를 생성할 때 에러가 발생합니다.&#x20;
 {% endhint %}
-
-별도로 설정 변경없이, 다음 단계를 진행하고 , 승인을 선택하고 스택생성합니다.
-
-![](<.gitbook/assets/image (91).png>)
-
-**다운로드 받은 yaml 파일 3개를 추가로 반복적으로 수행합니다.**
-
-```
-Seoul-VPC-PRD
-Seoul-VPC-STG
-Seoul-VPC-DEV
-```
 
 4개의 VPC가 모두 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. 4개의 VPC는 각 3분 내외에 생성됩니다. 동시에 수행해도 가능합니다.
 
