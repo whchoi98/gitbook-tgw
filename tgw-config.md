@@ -159,7 +159,7 @@ Seoul-TGW-Attach-Seoul-VPC-HQ를 선택하면, 이미 "Seoul-VPC-HQ"의 TGW-Subn
 1. **TGW Routing Table과 Attachment가 연결된 상태를 확인**
 2. **Attachment가 VPC의 어떤 Subnet과 연결되었는지 확인**
 
-![](<.gitbook/assets/image (134) (1).png>)
+![](<.gitbook/assets/image (134) (1) (1).png>)
 
 아래에서 나머지 VPC들도 선택해서 확인해 봅니다.
 
@@ -183,7 +183,7 @@ Associations **(연결)**와  Propagation(전파 탭을 눌러서, Seoul-VPC-HQ 
 
 ![](<.gitbook/assets/image (143).png>)
 
-![](<.gitbook/assets/image (134).png>)
+![](<.gitbook/assets/image (134) (1).png>)
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
@@ -201,11 +201,11 @@ propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하�
 
 Propagations 탭을 선택해서, 3개의 VPC CIDR를 Propagation 하는지 확인합니다.
 
-![](<.gitbook/assets/image (133).png>)
+![](<.gitbook/assets/image (133) (1).png>)
 
 Routing 탭을 선택해서, 앞서 Propagation 된 Route가 정상적으로 등록되었는지 확인합니다.
 
-![](<.gitbook/assets/image (142).png>)
+![](<.gitbook/assets/image (142) (1).png>)
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**
 
@@ -380,7 +380,7 @@ VPC- 가상 프라이빗 클라우드 - 라우팅 테이블에서 아래 라우�
 Seoul-VPC-STG-Private-Subnet-A-RT
 ```
 
-![](<.gitbook/assets/image (141).png>)
+![](<.gitbook/assets/image (141) (1).png>)
 
 ![](<.gitbook/assets/image (129).png>)
 
@@ -391,6 +391,10 @@ Seoul-VPC-DEV-Private-Subnet-A-RT
 ![](<.gitbook/assets/image (138).png>)
 
 ![](<.gitbook/assets/image (137).png>)
+
+아래와 같이 변경 적용합니다
+
+![](<.gitbook/assets/image (141).png>)
 
 이제 다시 앞서 실행한 각 인스턴스에서의 Ping이 정상적으로 처리되는 지 확인합니다.
 
@@ -457,7 +461,7 @@ Seoul-VPC-PRD-Private-Subnet-A-RT
 
 ```
 
-![](<.gitbook/assets/image (9).png>)
+![](<.gitbook/assets/image (134).png>)
 
 이제 다시 앞서 실행한 각 인스턴스에서의 Ping이 정상적으로 처리되는 지 확인합니다.
 
@@ -515,9 +519,9 @@ Blackhole 구성으로 연결되지 않는 것을 확인 할 수 있습니다.
 
 **`Create Static Route`**를 선택하고, 0.0.0.0/0에 대한 경로를 Seoul-TGW-Seoul-VPC-HQ Attachment 추가합니다.
 
-![](<.gitbook/assets/image (59).png>)
+![](<.gitbook/assets/image (142).png>)
 
-![](<.gitbook/assets/image (41).png>)
+![](<.gitbook/assets/image (146).png>)
 
 이제 Seoul-VPC-PRD의 Private Subnet 라우팅에서 인터넷으로 가는 목적지를 NAT Gateway에서 Transit Gateway로 아래와 같이 변경합니다.
 
