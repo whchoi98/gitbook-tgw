@@ -1,6 +1,118 @@
 ---
-description: 'Update: 2021-12-12'
+description: 'Update: 2022-06-05'
 ---
 
 # TransitGateway Intra-Peering
+
+TransitGateway는 서로 다른 리전 또는 동일 리전에서 TransitGateway를 Peering 할 수 있습니다
+
+
+
+## 1.환경 구성하기
+
+앞서 **TransitGateway 멀티 어카운트** Chapter를 수행하였다면  **`사전 준비하기`** 는생략해도 됩니다.&#x20;
+
+### Task 1. VPC 구성하기
+
+**`새로운 계정에 접속`** 하고, Cloudformation을 통해 기본이 되는 VPC구성을 먼저 구성합니다.
+
+**1.사전 준비하기**
+
+Task 들을 수행하기 위해서, 새로운 계정에도 Cloud9을 구성하는 것이 좋습니다. Cloud9에는 아래와 같이 동일하게 aws cli, ssm plugin 등을 설치해 둡니다.
+
+```
+cd ~/environment
+git clone https://github.com/whchoi98/tgw.git
+# AWS CLI upgrade
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+source ~/.bashrc
+# aws cli 자동완성 설치 
+which aws_completer
+export PATH=/usr/local/bin:$PATH
+source ~/.bash_profile
+complete -C '/usr/local/bin/aws_completer' aws
+##ssm plugin install
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
+sudo yum install -y session-manager-plugin.rpm
+
+##ssh key를 생성합니다 
+##ssh key name은 mykey 로 구성합니다
+ssh key-gen
+
+mv mykey ./mykey.pem
+chmod 400 ./mykey.pem
+
+## Public Key를 ap-northeast-2로 전송합니다
+aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region ap-northeast-2
+
+```
+
+
+
+2\. Cloudformation 생성 - VPC
+
+서울 리전에서 신규 VPC를 Cloud9에서 aws cli로 Cloudformation 기반으로 생성합니다
+
+* Seoul-VPC-PART-PRD 생성
+
+```
+aws cloudformation deploy \
+  --stack-name "Seoul-VPC-PART-PRD" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-PART-PRD.yml" \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides "KeyPair=mykey"
+  
+```
+
+* Seoul-VPC-PART-STG 생성
+
+```
+aws cloudformation deploy \
+  --stack-name "Seoul-VPC-PART-STG" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-PART-STG.yml" \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides "KeyPair=mykey"
+  
+```
+
+* Seoul-VPC-PART-DEV 생성
+
+```
+aws cloudformation deploy \
+  --stack-name "Seoul-VPC-PART-DEV" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-PART-DEV.yml" \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides "KeyPair=mykey"
+  
+```
+
+정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
+
+
+
+2\. Cloudformation 생성 - TransitGateway
+
+서울 리전에서 신규 TransitGateway를 Cloud9에서 aws cli로 Cloudformation 기반으로 생성합니다
+
+* Seoul-TGW-PART1 생성 - Production VPC와 연결되는 TGW 입니다
+
+```
+aws cloudformation deploy \
+  --stack-name "Seoul-TGW-PART1" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-TGW-PART1.yml" \
+  --capabilities CAPABILITY_NAMED_IAM
+  
+```
+
+* Seoul-TGW-PART2 생성 - Staging , Dev VPC와 연결되는 TGW 입니다&#x20;
+
+```
+aws cloudformation deploy \
+  --stack-name "Seoul-TGW-PART2" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-TGW-PART1.yml" \
+  --capabilities CAPABILITY_NAMED_IAM
+  
+```
 
