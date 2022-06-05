@@ -146,7 +146,7 @@ VPC - TransitGateway를 선택해서, Transit Gateway 정상적으로 구성되�
 
 ![](<.gitbook/assets/image (103).png>)
 
-![](<.gitbook/assets/image (136).png>)
+![](<.gitbook/assets/image (136) (1).png>)
 
 ### Task5. TGW Attachment 확인.
 
@@ -159,7 +159,7 @@ Seoul-TGW-Attach-Seoul-VPC-HQ를 선택하면, 이미 "Seoul-VPC-HQ"의 TGW-Subn
 1. **TGW Routing Table과 Attachment가 연결된 상태를 확인**
 2. **Attachment가 VPC의 어떤 Subnet과 연결되었는지 확인**
 
-![](<.gitbook/assets/image (134).png>)
+![](<.gitbook/assets/image (134) (1).png>)
 
 아래에서 나머지 VPC들도 선택해서 확인해 봅니다.
 
@@ -179,33 +179,33 @@ East-To-West 트래픽을 위한 라우팅 테이블 도메인, North-To-South �
 
 **해당 라우팅 테이블 도에인에는 Seoul-VPC-HQ를 연결했습니다.**
 
-Associations **(연결**와  Propagation 탭을 눌러서, Seoul-VPC-HQ 연결과 Seoul-VPC-HQ의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
+Associations **(연결)**와  Propagation(전파 탭을 눌러서, Seoul-VPC-HQ 연결과 Seoul-VPC-HQ의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
 ![](<.gitbook/assets/image (143).png>)
 
-![](<.gitbook/assets/image (65).png>)
+![](<.gitbook/assets/image (134).png>)
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
-![](<.gitbook/assets/image (37).png>)
+![](<.gitbook/assets/image (130).png>)
 
 **이제 East-To-West 라우팅 테이블 도메인을 확인합니다.**
 
 **해당 라우팅 테이블 도에인에는 Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV를 연결했습니다.**
 
-![](<.gitbook/assets/image (110).png>)
+![](<.gitbook/assets/image (132).png>)
 
 **East-To-West Routing Table 도메인을 선택하여, 라우팅 테이블 속성을 확인합니다. Association 탭을 선택해서 3개의 VPC가 Association 되었는지 확인합니다.**
 
-![](<.gitbook/assets/image (34).png>)
+![](<.gitbook/assets/image (136).png>)
 
 Propagations 탭을 선택해서, 3개의 VPC CIDR를 Propagation 하는지 확인합니다.
 
-![](<.gitbook/assets/image (112).png>)
+![](<.gitbook/assets/image (133).png>)
 
 Routing 탭을 선택해서, 앞서 Propagation 된 Route가 정상적으로 등록되었는지 확인합니다.
 
-![](<.gitbook/assets/image (84).png>)
+![](<.gitbook/assets/image (139).png>)
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**
 
@@ -380,13 +380,17 @@ VPC- 가상 프라이빗 클라우드 - 라우팅 테이블에서 아래 라우�
 Seoul-VPC-STG-Private-Subnet-A-RT
 ```
 
-![](<.gitbook/assets/image (60).png>)
+![](<.gitbook/assets/image (141).png>)
+
+![](<.gitbook/assets/image (129).png>)
 
 ```
 Seoul-VPC-DEV-Private-Subnet-A-RT
 ```
 
-![](<.gitbook/assets/image (28).png>)
+![](<.gitbook/assets/image (138).png>)
+
+![](<.gitbook/assets/image (137).png>)
 
 이제 다시 앞서 실행한 각 인스턴스에서의 Ping이 정상적으로 처리되는 지 확인합니다.
 
