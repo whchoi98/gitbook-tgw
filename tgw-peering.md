@@ -129,7 +129,7 @@ IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
-![](<.gitbook/assets/image (135) (1) (1).png>)
+![](<.gitbook/assets/image (135) (1) (1) (1).png>)
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**👏
 
@@ -256,7 +256,7 @@ Seoul-To-Virginia
 
 ![](<.gitbook/assets/image (130) (1) (1).png>)
 
-![](<.gitbook/assets/image (141) (1) (1) (1).png>)
+![](<.gitbook/assets/image (141) (1) (1) (1) (1).png>)
 
 ![](<.gitbook/assets/image (134) (1) (1) (1) (1).png>)
 
@@ -282,7 +282,7 @@ Peering은 구성을 완료했지만, 상호간의 라우팅 구성이 되어 �
 
 Seoul-TGW-RT-East-To-West 를 선택하고, Route(경로) 탭을 선택하고, Create static Route(정적경로생성)를 선택합니다.
 
-![](<.gitbook/assets/image (143) (1).png>)
+![](<.gitbook/assets/image (143) (1) (1).png>)
 
 CIDR 주소를 버지니아 리전에 생성한 VPC CIDR 주소를 입력합니다.
 
@@ -296,7 +296,7 @@ Choose attachmet는 Seoul-To-Virginia를 선택합니다.
 
 아래와 같이 새롭게 라우팅 테이블이 추가 되었습니다.
 
-![](<.gitbook/assets/image (145).png>)
+![](<.gitbook/assets/image (145) (1).png>)
 
 이제 버지니아 리전에서 서울로 오는 경로만 설정하면 됩니다.&#x20;
 
@@ -320,7 +320,7 @@ Choose attachmet(연결선택)는 IAD-TO-SEOUL 선택하고, Create Static Route
 
 아래와 같이 새롭게 라우팅 테이블이 추가 되었습니다.
 
-![](<.gitbook/assets/image (139) (1).png>)
+![](<.gitbook/assets/image (139) (1) (1).png>)
 
 이제 버지니아 리전의 IAD-VPC-Private-Subnet-A-RT 라우팅 테이블에서 Seoul-VPC-DEV 의 CIDR 주소에 대한 라우팅 테이블만 편집하면 됩니다.
 
@@ -332,7 +332,7 @@ Choose attachmet(연결선택)는 IAD-TO-SEOUL 선택하고, Create Static Route
 10.3.0.0/16
 ```
 
-![](<.gitbook/assets/image (141) (1) (1).png>)
+![](<.gitbook/assets/image (141) (1) (1) (1).png>)
 
 ![](<.gitbook/assets/image (134) (1) (1) (1).png>)
 

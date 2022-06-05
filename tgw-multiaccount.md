@@ -194,7 +194,7 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 **`빌더스 계정 - AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블`**에서 **`"Seoul-TGW-RT-East-To-West"`** 테이블을 선택합니다. 새롭게 추가된 서밋 컴퍼니 계정의 **Transit Gateway Attachment를 선택하고 추가**합니다.
 
-![](<.gitbook/assets/image (135) (1) (1) (1).png>)
+![](<.gitbook/assets/image (135) (1) (1) (1) (1).png>)
 
 ![](<.gitbook/assets/image (129) (1) (1) (1) (1).png>)
 

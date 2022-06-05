@@ -9,3 +9,4 @@
 * [TransitGateway Inter-Peering](tgw-peering.md)
 * [TransitGateway 멀티캐스트](tgw-mcast.md)
 * [TransitGateway 모니터링](tgw-monitoring.md)
+* [TransitGateway VPN 구성하기](transitgateway-vpn.md)
