@@ -146,20 +146,20 @@ VPC - TransitGateway를 선택해서, Transit Gateway 정상적으로 구성되�
 
 ![](<.gitbook/assets/image (103).png>)
 
-![](<.gitbook/assets/image (76).png>)
+![](<.gitbook/assets/image (136).png>)
 
 ### Task5. TGW Attachment 확인.
 
 **VPC-Transit Gateway-Transit Gateway 연결 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
-![](<.gitbook/assets/image (97).png>)
+![](<.gitbook/assets/image (140).png>)
 
 Seoul-TGW-Attach-Seoul-VPC-HQ를 선택하면, 이미 "Seoul-VPC-HQ"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.
 
 1. **TGW Routing Table과 Attachment가 연결된 상태를 확인**
 2. **Attachment가 VPC의 어떤 Subnet과 연결되었는지 확인**
 
-![](<.gitbook/assets/image (67).png>)
+![](<.gitbook/assets/image (134).png>)
 
 아래에서 나머지 VPC들도 선택해서 확인해 봅니다.
 
@@ -179,9 +179,9 @@ East-To-West 트래픽을 위한 라우팅 테이블 도메인, North-To-South �
 
 **해당 라우팅 테이블 도에인에는 Seoul-VPC-HQ를 연결했습니다.**
 
-Associations와 Propagation 탭을 눌러서, Seoul-VPC-HQ 연결과 Seoul-VPC-HQ의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
+Associations **(연결**와  Propagation 탭을 눌러서, Seoul-VPC-HQ 연결과 Seoul-VPC-HQ의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
-![](<.gitbook/assets/image (102).png>)
+![](<.gitbook/assets/image (143).png>)
 
 ![](<.gitbook/assets/image (65).png>)
 

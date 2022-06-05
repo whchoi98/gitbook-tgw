@@ -106,7 +106,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 [![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20\(149\).png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20\(149\).png)
 
-![](<.gitbook/assets/image (136) (1).png>)
+![](<.gitbook/assets/image (136) (1) (1).png>)
 
 ### Task5. TGW Attachment 확인.
 
@@ -125,7 +125,7 @@ IAD-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연
 
 ![](<.gitbook/assets/image (131) (1).png>)
 
-![](<.gitbook/assets/image (134) (1) (1).png>)
+![](<.gitbook/assets/image (134) (1) (1) (1).png>)
 
 propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
@@ -224,7 +224,7 @@ IAD-TO-SEOUL
 
 **5.Transit Gateway(accepter) - 원격지 서울 리전에 만들어져 있는 Transit Gateway ID를 입력합니다.**
 
-![](<.gitbook/assets/image (140) (1).png>)
+![](<.gitbook/assets/image (140) (1) (1).png>)
 
 **작업이 완료되면 아래와 같이 US-EAST-1 리전에서는 서울리전(ap-northeast-2)에서 TGW가 수락할때 까지 Pending 상태가 됩니다.**
 
@@ -258,7 +258,7 @@ Seoul-To-Virginia
 
 ![](<.gitbook/assets/image (141) (1).png>)
 
-![](<.gitbook/assets/image (134) (1).png>)
+![](<.gitbook/assets/image (134) (1) (1).png>)
 
 **이제 다시 버지니아 리전(US-EAST-1) 콘솔로 이동합니다.**
 
@@ -270,7 +270,7 @@ AWS 콘솔 - VPC - Transit Gateway - Transit Gateway 라우팅 테이블 을 선
 
 ![](<.gitbook/assets/image (132).png>)
 
-![](<.gitbook/assets/image (136).png>)
+![](<.gitbook/assets/image (136) (1).png>)
 
 ### Task10. Transit Gateway 라우팅 테이블 변경
 
@@ -282,7 +282,7 @@ Peering은 구성을 완료했지만, 상호간의 라우팅 구성이 되어 �
 
 Seoul-TGW-RT-East-To-West 를 선택하고, Route(경로) 탭을 선택하고, Create static Route(정적경로생성)를 선택합니다.
 
-![](<.gitbook/assets/image (143).png>)
+![](<.gitbook/assets/image (143) (1).png>)
 
 CIDR 주소를 버지니아 리전에 생성한 VPC CIDR 주소를 입력합니다.
 
@@ -292,7 +292,7 @@ CIDR 주소를 버지니아 리전에 생성한 VPC CIDR 주소를 입력합니�
 
 Choose attachmet는 Seoul-To-Virginia를 선택합니다.
 
-![](<.gitbook/assets/image (140).png>)
+![](<.gitbook/assets/image (140) (1).png>)
 
 아래와 같이 새롭게 라우팅 테이블이 추가 되었습니다.
 
@@ -334,7 +334,7 @@ Choose attachmet(연결선택)는 IAD-TO-SEOUL 선택하고, Create Static Route
 
 ![](<.gitbook/assets/image (141).png>)
 
-![](<.gitbook/assets/image (134).png>)
+![](<.gitbook/assets/image (134) (1).png>)
 
 ### Task 11. 트래픽 전송 확인
 
