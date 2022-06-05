@@ -205,7 +205,7 @@ Propagations 탭을 선택해서, 3개의 VPC CIDR를 Propagation 하는지 확�
 
 Routing 탭을 선택해서, 앞서 Propagation 된 Route가 정상적으로 등록되었는지 확인합니다.
 
-![](<.gitbook/assets/image (139).png>)
+![](<.gitbook/assets/image (142).png>)
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**
 
