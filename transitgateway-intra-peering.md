@@ -133,7 +133,7 @@ aws cloudformation deploy \
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다.  Transitgateway는 각 5분 내외에 생성됩니다.
 
-![](<.gitbook/assets/image (143).png>)
+![](<.gitbook/assets/image (143) (1).png>)
 
 ### Task4. VPC, EC2 구성 확인하기
 
@@ -155,15 +155,31 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 **`AWS 관리콘솔 - VPC - TransitGateway`** 를 선택해서, Transit Gateway 정상적으로 구성되었는지 확인합니다.
 
+![](<.gitbook/assets/image (132).png>)
+
 ![](<.gitbook/assets/image (136).png>)
 
-#### Task6. TGW Attachment 확인.
+### Task6. TGW Attachment 확인.
 
 **`VPC-Transit Gateway-Transit Gateway 연결` 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
-****
+![](<.gitbook/assets/image (134).png>)
 
-Seoul-TGW-Attach-IAD-VPC를 선택하면, 이미 "IAD-VPC"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.
+3개의 Attachment를 선택하면, 이미 "Seoul-PART-PRD, STG, DEV VPC"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.&#x20;
+
+* Seoul-TGW-PART2-Attach-Seoul-VPC-PART-PRD - Seoul-PART-PRD VPC 에 연결
+* Seoul-TGW-PART2-Attach-Seoul-VPC-PART-DEV - Seoul-PART-STG VPC 에 연결
+* Seoul-TGW-PART2-Attach-Seoul-VPC-PART-DEV - Seoul-PART-DEV VPC 에 연결
 
 1. **TGW Routing Table과 Attachment가 연결된 상태를 확인**
 2. **Attachment가 VPC의 어떤 Subnet과 연결되었는지 확인**
+
+### Task6. TGW Routing Table 확인.&#x20;
+
+**`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. Associations(연결) 와 Propagation(전파), Routes(경로 탭을 눌러서, Seoul-VPC-PART-PRD/STG/DEV 연결과 각 VPC의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.&#x20;
+
+![](<.gitbook/assets/image (149).png>)
+
+![](<.gitbook/assets/image (148).png>)
+
+![](<.gitbook/assets/image (137).png>)
