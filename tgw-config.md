@@ -146,13 +146,13 @@ VPC - TransitGateway를 선택해서, Transit Gateway 정상적으로 구성되�
 
 ![](<.gitbook/assets/image (103).png>)
 
-![](<.gitbook/assets/image (136) (1) (1).png>)
+![](<.gitbook/assets/image (136) (1) (1) (1).png>)
 
 ### Task5. TGW Attachment 확인.
 
 **VPC-Transit Gateway-Transit Gateway 연결 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
-![](<.gitbook/assets/image (140).png>)
+![](<.gitbook/assets/image (140) (1).png>)
 
 Seoul-TGW-Attach-Seoul-VPC-HQ를 선택하면, 이미 "Seoul-VPC-HQ"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.
 
@@ -181,7 +181,7 @@ East-To-West 트래픽을 위한 라우팅 테이블 도메인, North-To-South �
 
 Associations **(연결)**와  Propagation(전파 탭을 눌러서, Seoul-VPC-HQ 연결과 Seoul-VPC-HQ의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
-![](<.gitbook/assets/image (143) (1) (1) (1).png>)
+![](<.gitbook/assets/image (143) (1) (1) (1) (1).png>)
 
 ![](<.gitbook/assets/image (134) (1) (1).png>)
 
@@ -193,15 +193,15 @@ propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하�
 
 **해당 라우팅 테이블 도에인에는 Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV를 연결했습니다.**
 
-![](<.gitbook/assets/image (132) (1).png>)
+![](<.gitbook/assets/image (132) (1) (1).png>)
 
 **East-To-West Routing Table 도메인을 선택하여, 라우팅 테이블 속성을 확인합니다. Association 탭을 선택해서 3개의 VPC가 Association 되었는지 확인합니다.**
 
-![](<.gitbook/assets/image (136) (1).png>)
+![](<.gitbook/assets/image (136) (1) (1).png>)
 
 Propagations 탭을 선택해서, 3개의 VPC CIDR를 Propagation 하는지 확인합니다.
 
-![](<.gitbook/assets/image (133) (1).png>)
+![](<.gitbook/assets/image (133) (1) (1).png>)
 
 Routing 탭을 선택해서, 앞서 Propagation 된 Route가 정상적으로 등록되었는지 확인합니다.
 
@@ -380,9 +380,9 @@ VPC- 가상 프라이빗 클라우드 - 라우팅 테이블에서 아래 라우�
 Seoul-VPC-STG-Private-Subnet-A-RT
 ```
 
-![](<.gitbook/assets/image (141) (1) (1).png>)
+![](<.gitbook/assets/image (141) (1) (1) (1).png>)
 
-![](<.gitbook/assets/image (129).png>)
+![](<.gitbook/assets/image (129) (1).png>)
 
 ```
 Seoul-VPC-DEV-Private-Subnet-A-RT
@@ -394,7 +394,7 @@ Seoul-VPC-DEV-Private-Subnet-A-RT
 
 아래와 같이 변경 적용합니다
 
-![](<.gitbook/assets/image (141) (1).png>)
+![](<.gitbook/assets/image (141) (1) (1).png>)
 
 이제 다시 앞서 실행한 각 인스턴스에서의 Ping이 정상적으로 처리되는 지 확인합니다.
 

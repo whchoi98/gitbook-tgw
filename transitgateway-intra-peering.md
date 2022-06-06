@@ -133,7 +133,7 @@ aws cloudformation deploy \
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다.  Transitgateway는 각 5분 내외에 생성됩니다.
 
-![](<.gitbook/assets/image (143) (1) (1).png>)
+![](<.gitbook/assets/image (143) (1) (1) (1).png>)
 
 ### Task4. VPC, EC2 구성 확인하기
 
@@ -149,15 +149,15 @@ AWS 관리콘솔 - EC2를 선택합니다.
 
 EC2가 정상적으로 생성되었는지 확인합니다.
 
-![](<.gitbook/assets/image (139).png>)
+![](<.gitbook/assets/image (139) (1).png>)
 
 ### Task5. TGW 구성 확인
 
 **`AWS 관리콘솔 - VPC - TransitGateway`** 를 선택해서, Transit Gateway 정상적으로 구성되었는지 확인합니다.
 
-![](<.gitbook/assets/image (132).png>)
+![](<.gitbook/assets/image (132) (1).png>)
 
-![](<.gitbook/assets/image (136).png>)
+![](<.gitbook/assets/image (136) (1).png>)
 
 ### Task6. TGW Attachment 확인.
 
@@ -178,7 +178,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 **`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. Associations(연결) 와 Propagation(전파), Routes(경로 탭을 눌러서, Seoul-VPC-PART-PRD/STG/DEV 연결과 각 VPC의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.&#x20;
 
-![](<.gitbook/assets/image (149).png>)
+![](<.gitbook/assets/image (149) (1).png>)
 
 ![](<.gitbook/assets/image (148) (1).png>)
 
@@ -274,7 +274,7 @@ Seoul-TGW-PART2 TGW ID를 복사해 둡니다. Peering을 위해서는 TGW ID를
 5. 리전 - ap-northeast-2 를 선택&#x20;
 6. Transit gateway 수락자 - 앞서 복사해 둔 Seoul-TGW-PART2 Transit gateway ID를 입력합니다.
 
-![](<.gitbook/assets/image (144).png>)
+![](<.gitbook/assets/image (144) (1).png>)
 
 작업이 완료되면 아래와 같이 Seoul-TGW-PART2가 수락할때 까지 Pending 상태가 됩니다.
 
@@ -288,6 +288,42 @@ Seoul-TGW-PART2에서 수락하지 않으면 연결되지 않습니다.
 
 Accept(수락를 선택하면, pending 으로 전환되고 3\~4분 이후 available로 변경됩니다.&#x20;
 
+![](<.gitbook/assets/image (143) (1).png>)
+
+이제 Attachment가 Available(가용)으로 변경되면,**`Seoul-TGW-PART1-RT`** 라우팅 테이블의 **`Transit Gateway-Transit Gateway Route Table`** 탭에서 생성한 Peering Attachment를 Association(연결)을 시켜 줍니다.&#x20;
+
+![](<.gitbook/assets/image (136).png>)
+
+![](<.gitbook/assets/image (149).png>)
+
+![](<.gitbook/assets/image (135).png>)
+
+연결 생성 이후 Trasit Gateway 라우팅테이블의 연결 탭에서 3\~4분 이후 Associated (연결) 됩니다.&#x20;
+
+![](<.gitbook/assets/image (144).png>)
+
+**`Seoul-TGW-PART2-RT`** 라우팅 테이블도 **`Transit Gateway-Transit Gateway Route Table`** 탭에서 생성한 Peering Attachment를  Association(연결)을 시켜 줍니다.&#x20;
+
+![](<.gitbook/assets/image (139).png>)
+
+![](<.gitbook/assets/image (140).png>)
+
+연결 생성 이후 Trasit Gateway 라우팅테이블의 연결 탭에서 3\~4분 이후 Associated (연결) 됩니다.&#x20;
+
+![](<.gitbook/assets/image (129).png>)
+
+### Task11. Transit Gateway 라우팅 테이블 변경
+
+Peering은 구성을 완료했지만, 상호간의 라우팅 구성이 되어 있지 않았습니다.
+
+먼저 Seoul-TGW-PART1에서 Seoul-TGW-PART2로 라우팅을 구성해 줍니다.
+
+**`Transit Gateway - Transit Gateway 라우팅 테이블`** 을 선택합니다.
+
+**`Seoul-TGW-PART1-RT`** 를 선택하고, Route(경로) 탭을 선택하고, Create static Route(정적경로생성)를 선택합니다.
+
+![](<.gitbook/assets/image (132).png>)
+
 ![](<.gitbook/assets/image (143).png>)
 
-이제 Attachment가 Association으로 변경되면, Transit Gateway-Transit Gateway Route Table 탭에서 Create Association(연결생성) 을 시켜 줍니다.
+![](<.gitbook/assets/image (141).png>)
