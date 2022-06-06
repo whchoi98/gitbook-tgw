@@ -1,5 +1,5 @@
 ---
-description: 'Update: 2021-12-12'
+description: 'Update: 2022-06-06'
 ---
 
 # TransitGateway
@@ -26,7 +26,7 @@ TransitGateway Workshop을 진행하기 위한 Cloud9 구성을 준비합니다.
 
 **동일 리전에서 TGW간 Peering 방법을 소개합니다.**
 
-## TransitGateway Intra-Peering
+## [TransitGateway Intra-Peering](tgw-peering.md#1.transit-gateway-peering)
 
 **서로 다른 리전간 에서 TGW간 Peering 방법을 소개합니다.**
 
