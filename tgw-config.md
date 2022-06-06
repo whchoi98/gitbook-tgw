@@ -521,7 +521,7 @@ Blackhole 구성으로 연결되지 않는 것을 확인 할 수 있습니다.
 
 ![](<.gitbook/assets/image (142).png>)
 
-![](<.gitbook/assets/image (146).png>)
+![](<.gitbook/assets/image (146) (1).png>)
 
 이제 Seoul-VPC-PRD의 Private Subnet 라우팅에서 인터넷으로 가는 목적지를 NAT Gateway에서 Transit Gateway로 아래와 같이 변경합니다.
 
