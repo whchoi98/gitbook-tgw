@@ -200,7 +200,7 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - "Seoul-TGW-RT-East-To-West" - Assosications Tab`** 를 선택합니다. 정상적으로 Association 되었는지 확인합니다.
 
-![](<.gitbook/assets/image (136) (1) (1) (1) (1).png>)
+![](<.gitbook/assets/image (136) (1) (1) (1) (1) (1).png>)
 
 **`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - Propagations(전파) Tab`** 을 선택하고, 서밋 컴퍼니의 Seoul-VPC-PART 를 propagation(전파) 합니다.
 

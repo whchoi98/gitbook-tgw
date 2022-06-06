@@ -106,7 +106,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 [![](https://github.com/whchoi98/builders20210312/raw/master/.gitbook/assets/image%20\(149\).png)](https://github.com/whchoi98/builders20210312/blob/master/.gitbook/assets/image%20\(149\).png)
 
-![](<.gitbook/assets/image (136) (1) (1) (1).png>)
+![](<.gitbook/assets/image (136) (1) (1) (1) (1).png>)
 
 ### Task5. TGW Attachment 확인.
 
@@ -270,7 +270,7 @@ AWS 콘솔 - VPC - Transit Gateway - Transit Gateway 라우팅 테이블 을 선
 
 ![](<.gitbook/assets/image (132) (1).png>)
 
-![](<.gitbook/assets/image (136) (1) (1).png>)
+![](<.gitbook/assets/image (136) (1) (1) (1).png>)
 
 ### Task10. Transit Gateway 라우팅 테이블 변경
 

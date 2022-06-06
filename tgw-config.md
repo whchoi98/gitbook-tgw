@@ -146,7 +146,7 @@ VPC - TransitGateway를 선택해서, Transit Gateway 정상적으로 구성되�
 
 ![](<.gitbook/assets/image (103).png>)
 
-![](<.gitbook/assets/image (136) (1).png>)
+![](<.gitbook/assets/image (136) (1) (1).png>)
 
 ### Task5. TGW Attachment 확인.
 
@@ -197,7 +197,7 @@ propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하�
 
 **East-To-West Routing Table 도메인을 선택하여, 라우팅 테이블 속성을 확인합니다. Association 탭을 선택해서 3개의 VPC가 Association 되었는지 확인합니다.**
 
-![](<.gitbook/assets/image (136).png>)
+![](<.gitbook/assets/image (136) (1).png>)
 
 Propagations 탭을 선택해서, 3개의 VPC CIDR를 Propagation 하는지 확인합니다.
 
