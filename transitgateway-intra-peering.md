@@ -12,7 +12,7 @@ TransitGateway는 서로 다른 리전 또는 동일 리전에서 TransitGateway
 
 아래 구성도는 동일 리전에서 여러개의 TransitGateway를 수용하는 디자인입니다.&#x20;
 
-![](<.gitbook/assets/image (146).png>)
+![](<.gitbook/assets/image (146) (1).png>)
 
 ## 2.환경 구성하기
 
@@ -103,7 +103,7 @@ aws cloudformation deploy \
 
 정상적으로 구성되면 아래와 같이 AWS 서비스 Cloudformation 콘솔창에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
 
-![](<.gitbook/assets/image (138) (1).png>)
+![](<.gitbook/assets/image (138) (1) (1).png>)
 
 ### Task3. Cloudformation 생성 - TransitGateway
 
@@ -133,7 +133,7 @@ aws cloudformation deploy \
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다.  Transitgateway는 각 5분 내외에 생성됩니다.
 
-![](<.gitbook/assets/image (143) (1) (1) (1).png>)
+![](<.gitbook/assets/image (143) (1) (1) (1) (1).png>)
 
 ### Task4. VPC, EC2 구성 확인하기
 
@@ -143,21 +143,21 @@ Cloudformation 으로 생성된 자원들이 정상적으로 배포되었는지 
 
 VPC가 정상적으로 생성되었는지 확인합니다.
 
-![](<.gitbook/assets/image (145).png>)
+![](<.gitbook/assets/image (145) (1).png>)
 
 AWS 관리콘솔 - EC2를 선택합니다.
 
 EC2가 정상적으로 생성되었는지 확인합니다.
 
-![](<.gitbook/assets/image (139) (1).png>)
+![](<.gitbook/assets/image (139) (1) (1).png>)
 
 ### Task5. TGW 구성 확인
 
 **`AWS 관리콘솔 - VPC - TransitGateway`** 를 선택해서, Transit Gateway 정상적으로 구성되었는지 확인합니다.
 
-![](<.gitbook/assets/image (132) (1).png>)
+![](<.gitbook/assets/image (132) (1) (1).png>)
 
-![](<.gitbook/assets/image (136) (1).png>)
+![](<.gitbook/assets/image (136) (1) (1).png>)
 
 ### Task6. TGW Attachment 확인.
 
@@ -182,7 +182,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 ![](<.gitbook/assets/image (148) (1).png>)
 
-![](<.gitbook/assets/image (137).png>)
+![](<.gitbook/assets/image (137) (1).png>)
 
 이제 Cloudformation을 통해서 TransitGateway Intra-Peering이 모두 정상적으로 구성되었습니다.&#x20;
 
@@ -251,7 +251,7 @@ echo 10.13.21.101 Seoul-VPC-PART-DEV-Private >> /etc/hosts
 
 목표 구성과 필요작업은 아래와 같습니다.
 
-####
+![](<.gitbook/assets/image (137).png>)
 
 ### **Task10. Seoul 리전에서 TGW간 연결 (Peering)**
 
@@ -261,7 +261,7 @@ Seoul-TGW-PART1 , Seoul-TGW-PART2에는 이미 각 VPC의 CIDR가 Propagated(전
 
 Seoul-TGW-PART2 TGW ID를 복사해 둡니다. Peering을 위해서는 TGW ID를 알고 있어야 합니다.&#x20;
 
-![](<.gitbook/assets/image (138).png>)
+![](<.gitbook/assets/image (138) (1).png>)
 
 **`AWS 관리콘솔 - VPC - Transit Gateway - Transit Gateway`** 연결 을 선택합니다.
 
@@ -274,11 +274,11 @@ Seoul-TGW-PART2 TGW ID를 복사해 둡니다. Peering을 위해서는 TGW ID를
 5. 리전 - ap-northeast-2 를 선택&#x20;
 6. Transit gateway 수락자 - 앞서 복사해 둔 Seoul-TGW-PART2 Transit gateway ID를 입력합니다.
 
-![](<.gitbook/assets/image (144) (1).png>)
+![](<.gitbook/assets/image (144) (1) (1).png>)
 
 작업이 완료되면 아래와 같이 Seoul-TGW-PART2가 수락할때 까지 Pending 상태가 됩니다.
 
-![](<.gitbook/assets/image (142).png>)
+![](<.gitbook/assets/image (142) (1).png>)
 
 Seoul-TGW-PART2에서 수락하지 않으면 연결되지 않습니다.
 
@@ -288,25 +288,25 @@ Seoul-TGW-PART2에서 수락하지 않으면 연결되지 않습니다.
 
 Accept(수락를 선택하면, pending 으로 전환되고 3\~4분 이후 available로 변경됩니다.&#x20;
 
-![](<.gitbook/assets/image (143) (1).png>)
+![](<.gitbook/assets/image (143) (1) (1).png>)
 
 이제 Attachment가 Available(가용)으로 변경되면,**`Seoul-TGW-PART1-RT`** 라우팅 테이블의 **`Transit Gateway-Transit Gateway Route Table`** 탭에서 생성한 Peering Attachment를 Association(연결)을 시켜 줍니다.&#x20;
 
-![](<.gitbook/assets/image (136).png>)
+![](<.gitbook/assets/image (136) (1).png>)
 
 ![](<.gitbook/assets/image (149).png>)
 
-![](<.gitbook/assets/image (135).png>)
+![](<.gitbook/assets/image (135) (1).png>)
 
 연결 생성 이후 Trasit Gateway 라우팅테이블의 연결 탭에서 3\~4분 이후 Associated (연결) 됩니다.&#x20;
 
-![](<.gitbook/assets/image (144).png>)
+![](<.gitbook/assets/image (144) (1).png>)
 
 **`Seoul-TGW-PART2-RT`** 라우팅 테이블도 **`Transit Gateway-Transit Gateway Route Table`** 탭에서 생성한 Peering Attachment를  Association(연결)을 시켜 줍니다.&#x20;
 
-![](<.gitbook/assets/image (139).png>)
+![](<.gitbook/assets/image (139) (1).png>)
 
-![](<.gitbook/assets/image (140).png>)
+![](<.gitbook/assets/image (140) (1).png>)
 
 연결 생성 이후 Trasit Gateway 라우팅테이블의 연결 탭에서 3\~4분 이후 Associated (연결) 됩니다.&#x20;
 
@@ -322,8 +322,122 @@ Peering은 구성을 완료했지만, 상호간의 라우팅 구성이 되어 �
 
 **`Seoul-TGW-PART1-RT`** 를 선택하고, Route(경로) 탭을 선택하고, Create static Route(정적경로생성)를 선택합니다.
 
-![](<.gitbook/assets/image (132).png>)
+![](<.gitbook/assets/image (132) (1).png>)
+
+Static Route(정적 경로) 설정을 위한 CIDR, Attachment를 선택합니다
+
+* CIDR : 10.0.0.0/8 (STG, DEV VPC CIDR 대역 )&#x20;
+* Attachment : Seoul-TGW-PART1-To-PART2 선택
+
+![](<.gitbook/assets/image (143) (1).png>)
+
+Static Route(정적 경로) 설정을 위한 CIDR, Attachment를 선택합니다
+
+* CIDR : 0.0.0.0/0 (STG, DEV VPC가 인터넷 트래픽으로 가기 위한 CIDR )&#x20;
+* Attachment : Seoul-TGW-PART1-Attach-Seoul-VPC-PART-PRD 선택
+
+![](<.gitbook/assets/image (135).png>)
+
+연결 생성 이후 Trasit Gateway 라우팅테이블의 연결 탭에서 경로가 생성됩니다.&#x20;
+
+![](<.gitbook/assets/image (145).png>)
+
+Seoul-TGW-PART2에서도 Seoul-TGW-PART1 으로 라우팅을 구성해 줍니다.
+
+**`Transit Gateway - Transit Gateway 라우팅 테이블`** 을 선택합니다.
+
+**`Seoul-TGW-PART2-RT`** 를 선택하고, Route(경로) 탭을 선택하고, Create static Route(정적경로생성)를 선택합니다.
+
+![](<.gitbook/assets/image (141).png>)
+
+Static Route(정적 경로) 설정을 위한 CIDR, Attachment를 선택합니다
+
+* CIDR : 0.0.0.0/0 (STG, DEV VPC에서 인터넷 경로, PRD 경로를 위한 CIDR)
+* Attachment : Seoul-TGW-PART2-To-PART1 선택
+
+![](<.gitbook/assets/image (138).png>)
+
+연결 생성 이후 Trasit Gateway 라우팅테이블의 연결 탭에서 경로가 생성됩니다.
+
+![](<.gitbook/assets/image (142).png>)
+
+## 4. VPC Routing 구성
+
+앞서 TGW Routing을 모두 구성하더라도, VPC에서 라우팅 구성이 되어 있지 않기 때문에 정상적으로 트래픽이 처리되지 않습니다. Seoul-VPC-PART-PRD 에서 Seoul-VPC-PART-STG,DEV를 위한 라우팅 테이블과 Seoul-VPC-PART-STG,DEV에서 Seoul-VPC-PRD, Internet 연결을 위한 라우팅 테이블을 구성해야 합니다
+
+### Task 12. Seoul-VPC-PART-PRD 라우팅테이블 구성
+
+Seoul-VPC-PART-PRD VPC에서 다음과 같은 라우팅 테이블을 추가해 줍니다. &#x20;
+
+* Seoul-VPC-PART-PRD-PublicRT - 10.0.0.0/8 경로가 TGW로 향하도록 구성
+* Seoul-VPC-PART-PRD-Private-Subnet-A-RT - 10.0.0.0/8 경로가 TGW로 향하도록 구성&#x20;
+
+**`VPC - 라우팅 테이블`** 에서 **`Seoul-VPC-PART-PRD-PublicRT`** 을 선택합니다.&#x20;
+
+라우팅 탭에서 라우팅 편집을 선택합니다.&#x20;
 
 ![](<.gitbook/assets/image (143).png>)
 
-![](<.gitbook/assets/image (141).png>)
+10.0.0.0/8 목적지의 대상을 TGW로 선택하여 추가하고, 저장합니다. &#x20;
+
+![](<.gitbook/assets/image (146).png>)
+
+저장 이후 정상적으로 라우팅이 추가되었는지 확인합니다. &#x20;
+
+![](<.gitbook/assets/image (136).png>)
+
+**`Seoul-VPC-PART-PRD-Private-Subnet-A-RT`** 라우팅도 동일하게 추가해 줍니다.&#x20;
+
+![](<.gitbook/assets/image (139).png>)
+
+
+
+### Task 13. Seoul-VPC-PART-STG,DEV 라우팅테이블 구성
+
+Seoul-VPC-PART-STG,DEV VPC에서 다음과 같은 라우팅 테이블을 추가해 줍니다. &#x20;
+
+* Seoul-VPC-PART-STG-Private-Subnet-A-RT - 0.0.0.0/0 경로가 TGW로 향하도록 구성
+* Seoul-VPC-PART-DEV-Private-Subnet-A-RT - 0.0.0.0/0 경로가 TGW로 향하도록 구성
+
+**`VPC - 라우팅 테이블`** 에서 **`Seoul-VPC-PART-STG-Private-Subnet-A-RT`** 을 선택합니다.&#x20;
+
+라우팅 탭에서 라우팅 편집을 선택합니다.&#x20;
+
+![](<.gitbook/assets/image (132).png>)
+
+0.0.0.0/0 목적지의 대상이 NAT Gateway로 되어 있습니다. 제거하고 0.0.0.0/0 목적지로 Transit Gateway로 신규 추가합니다. &#x20;
+
+![](<.gitbook/assets/image (144).png>)
+
+저장 이후 정상적으로 라우팅이 추가되었는지 확인합니다.  &#x20;
+
+![](<.gitbook/assets/image (147).png>)
+
+**`Seoul-VPC-PART-DEV-Private-Subnet-A-RT`** 라우팅도 동일하게 추가해 줍니다.&#x20;
+
+![](<.gitbook/assets/image (140).png>)
+
+## 5.확인&#x20;
+
+### Task14. PRD,STG,DEV VPC EC2에서 확인. &#x20;
+
+Cloud9에서 PRD, STG, DEV VPC의 EC2로 접속해 봅니다. 연결은 SSM(Session Manager)를 통해서 접속합니다.
+
+```
+aws ssm start-session --target "Seoul-VPC-PART-PRD-Private-10.11.21.101 id"
+aws ssm start-session --target "Seoul-VPC-PART-STG-Private-10.12.21.101 id"
+aws ssm start-session --target "Seoul-VPC-PART-DEV-Private-10.13.21.101 id"
+```
+
+아래 처럼 정상적으로 통신이 되는지 확인합니다.&#x20;
+
+* Seoul-VPC-PART-PRD-Private-10.11.21.101
+  * [ ] Seoul-VPC-PART-STG-Private-10.12.21.101 로 통신 가능 여부 확인&#x20;
+  * [ ] Seoul-VPC-PART-DEV-Private-10.13.21.101 로 통신 가능 여부 확인&#x20;
+* Seoul-VPC-PART-STG-Private-10.12.21.101
+  * [ ] Seoul-VPC-PART-PRD-Private-10.11.21.101 로 통신 가능 여부 확인&#x20;
+  * [ ] www.aws.com 로 통신 가능 여부 확인
+* Seoul-VPC-PART-DEV-Private-10.13.21.101
+  * [ ] Seoul-VPC-PART-PRD-Private-10.11.21.101 로 통신 가능 여부 확인&#x20;
+  * [ ] www.aws.com 로 통신 가능 여부 확인
+
