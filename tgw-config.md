@@ -181,7 +181,7 @@ East-To-West 트래픽을 위한 라우팅 테이블 도메인, North-To-South �
 
 Associations **(연결)**와  Propagation(전파 탭을 눌러서, Seoul-VPC-HQ 연결과 Seoul-VPC-HQ의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
-![](<.gitbook/assets/image (143) (1) (1).png>)
+![](<.gitbook/assets/image (143) (1) (1) (1).png>)
 
 ![](<.gitbook/assets/image (134) (1) (1).png>)
 
@@ -205,7 +205,7 @@ Propagations 탭을 선택해서, 3개의 VPC CIDR를 Propagation 하는지 확�
 
 Routing 탭을 선택해서, 앞서 Propagation 된 Route가 정상적으로 등록되었는지 확인합니다.
 
-![](<.gitbook/assets/image (142) (1).png>)
+![](<.gitbook/assets/image (142) (1) (1).png>)
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**
 
@@ -388,7 +388,7 @@ Seoul-VPC-STG-Private-Subnet-A-RT
 Seoul-VPC-DEV-Private-Subnet-A-RT
 ```
 
-![](<.gitbook/assets/image (138) (1).png>)
+![](<.gitbook/assets/image (138) (1) (1).png>)
 
 ![](<.gitbook/assets/image (137) (1).png>)
 
@@ -519,7 +519,7 @@ Blackhole 구성으로 연결되지 않는 것을 확인 할 수 있습니다.
 
 **`Create Static Route`**를 선택하고, 0.0.0.0/0에 대한 경로를 Seoul-TGW-Seoul-VPC-HQ Attachment 추가합니다.
 
-![](<.gitbook/assets/image (142).png>)
+![](<.gitbook/assets/image (142) (1).png>)
 
 ![](<.gitbook/assets/image (146) (1).png>)
 

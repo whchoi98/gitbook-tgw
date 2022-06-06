@@ -103,7 +103,7 @@ aws cloudformation deploy \
 
 정상적으로 구성되면 아래와 같이 AWS 서비스 Cloudformation 콘솔창에서 확인 할 수 있습니다. VPC는 각 3분 내외에 생성됩니다.
 
-![](<.gitbook/assets/image (138).png>)
+![](<.gitbook/assets/image (138) (1).png>)
 
 ### Task3. Cloudformation 생성 - TransitGateway
 
@@ -133,7 +133,7 @@ aws cloudformation deploy \
 
 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다.  Transitgateway는 각 5분 내외에 생성됩니다.
 
-![](<.gitbook/assets/image (143) (1).png>)
+![](<.gitbook/assets/image (143) (1) (1).png>)
 
 ### Task4. VPC, EC2 구성 확인하기
 
@@ -174,12 +174,120 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 1. **TGW Routing Table과 Attachment가 연결된 상태를 확인**
 2. **Attachment가 VPC의 어떤 Subnet과 연결되었는지 확인**
 
-### Task6. TGW Routing Table 확인.&#x20;
+### Task7. TGW Routing Table 확인.&#x20;
 
 **`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. Associations(연결) 와 Propagation(전파), Routes(경로 탭을 눌러서, Seoul-VPC-PART-PRD/STG/DEV 연결과 각 VPC의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.&#x20;
 
 ![](<.gitbook/assets/image (149).png>)
 
-![](<.gitbook/assets/image (148).png>)
+![](<.gitbook/assets/image (148) (1).png>)
 
 ![](<.gitbook/assets/image (137).png>)
+
+이제 Cloudformation을 통해서 TransitGateway Intra-Peering이 모두 정상적으로 구성되었습니다.&#x20;
+
+## 3. TGW Peering 구성
+
+### Task8. SSM 에서 인스턴스 확인
+
+모든 랩의 구성 시험은 Private 인스턴스로 시험합니다. Cloudformation을 통해 System Manager와 Session Manager를 사용할 수 있도록 자동 배포 구성하였습니다.
+
+Session Manager를 사용할 수 있도록 아래 같이 각 PC환경에 맞추어서 AWS Session Manager Plugin을 설치합니다. Cloud9을 사용하거나 웹콘솔에서 Session Manager를 사용하면 각 PC환경에서 설치할 필요가 없습니다.
+
+Cloud9 터미널에서 아래 aws cli 명령을 실행하여 생성된 Seoul-의 EC2 인스턴스를 확인합니다.
+
+아래와 같이 Cloud9에서 shell을 실행해 봅니다.
+
+```
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PART-PRD"
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PART-STG"
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PART-DEV"
+
+```
+
+아래와 같은 결과를 확인할 수 있습니다.&#x20;
+
+```
+whchoi:~/environment $ ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PART-PRD"
+|  Seoul-VPC-PART-PRD-Private-10.11.21.101              |  ap-northeast-2a |  i-0ccb1eb5b7316fa2b |  t3.micro |  ami-0195322846474ddb9 |  running |  10.11.21.101 |  None            |
+|  Seoul-VPC-PART-PRD-Public-10.11.11.101               |  ap-northeast-2a |  i-070055b1b9272c872 |  t3.micro |  ami-0195322846474ddb9 |  running |  10.11.11.101 |  3.35.217.240    |
+whchoi:~/environment $ ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PART-STG"
+|  Seoul-VPC-PART-STG-Public-10.12.11.101               |  ap-northeast-2a |  i-0cfe93dd4ea738fd1 |  t3.micro |  ami-0195322846474ddb9 |  running |  10.12.11.101 |  3.38.255.132    |
+|  Seoul-VPC-PART-STG-Private-10.12.21.101              |  ap-northeast-2a |  i-0b18055e35d518fbc |  t3.micro |  ami-0195322846474ddb9 |  running |  10.12.21.101 |  None            |
+whchoi:~/environment $ ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PART-DEV"
+|  Seoul-VPC-PART-DEV-Public-10.13.11.101               |  ap-northeast-2a |  i-0ddf9cd0c997624a3 |  t3.micro |  ami-0195322846474ddb9 |  running |  10.13.11.101 |  13.124.93.54    |
+|  Seoul-VPC-PART-DEV-Private-10.13.21.101              |  ap-northeast-2a |  i-0fd08fd203278c5ce |  t3.micro |  ami-0195322846474ddb9 |  running |  10.13.21.101 |  None            |
+```
+
+ssm plugin을 통해서 인스턴스 ID 기반으로, 직접 Private Instance에 접속합니다.아래와 같은 명령을 통해서 직접 Private Instance에 접속합니다.&#x20;
+
+```
+aws ssm start-session --target "Seoul-VPC-PART-PRD-Private-10.11.21.101 id"
+```
+
+SSM을 통해서 Cloud9에서 터미널 창을 추가로 오픈하고, 아래와 같이 bash 콘솔로 접속하고, 시험할 호스트들을 host file에 등록합니다.&#x20;
+
+```
+sudo -s
+echo 10.11.11.101 Seoul-VPC-PART-PRD-Public >> /etc/hosts 
+echo 10.11.21.101 Seoul-VPC-PART-PRD-Private >> /etc/hosts 
+echo 10.12.11.101 Seoul-VPC-PART-STG-Public >> /etc/hosts 
+echo 10.12.21.101 Seoul-VPC-PART-STG-Private >> /etc/hosts 
+echo 10.13.11.101 Seoul-VPC-PART-DEV-Public >> /etc/hosts 
+echo 10.13.21.101 Seoul-VPC-PART-DEV-Private >> /etc/hosts 
+```
+
+### Task9. 시나리오 이해하기
+
+**1.서밋 컴퍼니는 아래와 같은 VPC를  서울 리전에 소유하고 있습니다.**
+
+* Production Workload : Seoul-VPC-PART-PRD
+* Staging Workload : Seoul-VPC-PART-STG
+* Dev Workload : Seoul-VPC-PART-Dev
+
+**2. Production VPC는 이미 TGW를 생성해서 사용하고 있습니다 Staging,Dev VPC도 이미 TGW를 생성해서 사용하고 있습니다**
+
+**3. 동일 리전에서 TGW를 연결하고 Staging,DEV VPC의 워크로드의 Private Subnet의 워크로드들은 Production VPC를 통해서 외부와 연결하고 서로 통신을 하기를 원합니다**
+
+목표 구성과 필요작업은 아래와 같습니다.
+
+####
+
+### **Task10. Seoul 리전에서 TGW간 연결 (Peering)**
+
+Seoul-TGW-PART1 , Seoul-TGW-PART2를 동일 리전안에서 연결해 봅니다.&#x20;
+
+Seoul-TGW-PART1 , Seoul-TGW-PART2에는 이미 각 VPC의 CIDR가 Propagated(전파 가 구성되어 있기 때문에, TGW에서 작업은 불필요합니다.&#x20;
+
+Seoul-TGW-PART2 TGW ID를 복사해 둡니다. Peering을 위해서는 TGW ID를 알고 있어야 합니다.&#x20;
+
+![](<.gitbook/assets/image (138).png>)
+
+**`AWS 관리콘솔 - VPC - Transit Gateway - Transit Gateway`** 연결 을 선택합니다.
+
+**`Create Transit Gateway Attachment(Transit Gateway 연결 생성)`** 를 선택합니다.
+
+1. Peering 이름을 생성합니다.  **`Seoul-TGW-PART1-To-PART2`**
+2. Trasit gateway ID를 선택합니다. **`Seoul-TGW-PART1`** &#x20;
+3. 연결유형을 Peering Connection으로 선택합니다. &#x20;
+4. 계정 - 내 계정을 선택
+5. 리전 - ap-northeast-2 를 선택&#x20;
+6. Transit gateway 수락자 - 앞서 복사해 둔 Seoul-TGW-PART2 Transit gateway ID를 입력합니다.
+
+![](<.gitbook/assets/image (144).png>)
+
+작업이 완료되면 아래와 같이 Seoul-TGW-PART2가 수락할때 까지 Pending 상태가 됩니다.
+
+![](<.gitbook/assets/image (142).png>)
+
+Seoul-TGW-PART2에서 수락하지 않으면 연결되지 않습니다.
+
+비어있는 Name을 **`Seoul-TGW-PART2-To-PART1`** 으로 변경하고 ,상단메뉴 **`"작업"`** 을 선택하고 **`Transit Gateway 연결수락`**을 선택합니다.&#x20;
+
+![](<.gitbook/assets/image (148).png>)
+
+Accept(수락를 선택하면, pending 으로 전환되고 3\~4분 이후 available로 변경됩니다.&#x20;
+
+![](<.gitbook/assets/image (143).png>)
+
+이제 Attachment가 Association으로 변경되면, Transit Gateway-Transit Gateway Route Table 탭에서 Create Association(연결생성) 을 시켜 줍니다.
