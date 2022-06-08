@@ -126,7 +126,7 @@ aws cloudformation deploy \
 # Seoul VPC PATR2 TGW 생성
 aws cloudformation deploy \
   --stack-name "Seoul-TGW-PART2" \
-  --template-file "/home/ec2-user/environment/tgw/Seoul-TGW-PART1.yml" \
+  --template-file "/home/ec2-user/environment/tgw/Seoul-TGW-PART2.yml" \
   --capabilities CAPABILITY_NAMED_IAM
   
 ```
