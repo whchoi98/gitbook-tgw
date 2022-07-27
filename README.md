@@ -1,5 +1,5 @@
 ---
-description: 'Update: 2021-12-12'
+description: 'Update: 2022-06-06'
 ---
 
 # TransitGateway
@@ -22,9 +22,13 @@ TransitGateway Workshop을 진행하기 위한 Cloud9 구성을 준비합니다.
 
 **동일 리전의 멀티 어카운트 환경에서 RAM을 이용한 TGW공유 방법을 소개합니다.**
 
-## [TransitGateway 피어링 ](tgw-peering.md)
+## [TransitGateway Intra-Peering](./#transitgateway-3)
 
-**서로 다른 리전에서 TGW간 Peering 방법을 소개합니다.**
+**동일 리전에서 TGW간 Peering 방법을 소개합니다.**
+
+## [TransitGateway Intra-Peering](tgw-peering.md#1.transit-gateway-peering)
+
+**서로 다른 리전간 에서 TGW간 Peering 방법을 소개합니다.**
 
 ## ****[**TransitGateway 멀티캐스트** ](tgw-mcast.md)
 

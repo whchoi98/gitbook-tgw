@@ -155,11 +155,11 @@ Step3. 액세스 할 수 있는 보안 주체 선택 - TransitGateway 자원을 
 
 `리소스 공유`에 `초대 알람`이 생성된 것을 확인 할 수 있습니다. 리소스 공유를 선택합니다.
 
-![](<.gitbook/assets/image (11).png>)
+![](.gitbook/assets/image.png)
 
 해당 리소스 공유를 선택하면, 리소스 공유 수락을 대기하고 있는 것을 확인 할 수 있습니다. 공유된 리소스 Seoul-TGW 를 선택합니다.
 
-![](<.gitbook/assets/image (5).png>)
+![](<.gitbook/assets/image (1).png>)
 
 리소스 공유 수락을 선택합니다.
 
@@ -171,7 +171,7 @@ AWS 계정 - VPC - TransitGateway에 빌더스 컴퍼니 계정의 Seoul-TGW가 
 
 ### Task 3. TGW 연동하기
 
-서밋 컴퍼 계정에서 Transit Gateway Attachment를 생성하기 위해, **`VPC - Transit Gateway - Transit Gateway 연결`**을 선택해서 새로운 Attachment를 생성합니다.
+서밋 컴퍼니  계정에서 Transit Gateway Attachment를 생성하기 위해, **`VPC - Transit Gateway - Transit Gateway 연결`**을 선택해서 새로운 Attachment를 생성합니다.
 
 * Transit Gateway ID : 공유된 TGW
 * Attachment name tag : Attachment 이름 (Seoul-TGW-Attach-Seoul-VPC-PART)
@@ -184,7 +184,7 @@ AWS 계정 - VPC - TransitGateway에 빌더스 컴퍼니 계정의 Seoul-TGW가 
 
 ![](<.gitbook/assets/image (94).png>)
 
-라우팅 테이블에서 Assocation을 수행합니다.
+빌더스 계정에서 서밋 계정의 TGW 라우팅 테이블 Association을  수행합니다.
 
 {% hint style="info" %}
 TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니다. 따라서 Assocation, Routing Table 구성은 빌더스 계정에서 수행합니다.
@@ -198,7 +198,7 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 
 ![](<.gitbook/assets/image (129) (1) (1) (1) (1) (1).png>)
 
-**`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - "Seoul-TGW-RT-East-To-West" - Assosications Tab`** 를 선택합니다. 정상적으로 Association 되었는지 확인합니다.
+**`AWS 콘솔 - VPC- Transit Gateway - Transit Gateway 라우팅 테이블 - "Seoul-TGW-RT-East-To-West" - Associations Tab`** 를 선택합니다. 정상적으로 Association 되었는지 확인합니다.
 
 ![](<.gitbook/assets/image (136) (1) (1) (1) (1) (1) (1) (1).png>)
 
@@ -217,36 +217,6 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 ![](<.gitbook/assets/image (132) (1) (1) (1) (1) (1) (1).png>)
 
 서밋 컴퍼니 계정에서 SEOUL-VPC-PRT-Private-10.4.21.101 을 접속합니다.
-
-리눅스 또는 Mac OS 콘솔에서 AWS   계정이 2개 구성되어 aws cli는 default profile로 접근이 됩니다. 아래와 같이 2개의 구성을 관리자 PC 또는 리눅스에서 설정합니다.
-
-```
-~/.aws/config
-[profile builders]
-region = ap-northeast-2
-output = json
-[profile summit]
-region = ap-northeast-2
-output = json
-
-~/.aws/credentials
-[builders]
-aws_access_key_id = xxxxxx
-aws_secret_access_key = xxxxx
-[summit]
-aws_access_key_id = xxxxxx
-aws_secret_access_key = xxxxx
-```
-
-환경설정을 아래와 같이 스위칭하면서 연결합니다.
-
-```
-###builders 계정
-export AWS_DEFAULT_PROFILE=builders
-
-##summit 계정
-export AWS_DEFAULT_PROFILE=builders
-```
 
 서밋 계정에도 (신규 계정) Cloud9으로 구성되어 있다면, 아래와 같이 Seoul-VPC-PART-Private-10.4.21.101 인스턴스 id를 조회합니다.
 
@@ -277,6 +247,10 @@ ping SEOUL-VPC-DEV-Private
 
 이제 Seoul-VPC-PART에서 Seoul-VPC-DEV, Seoul-VPC-STG로 통신을 하기 위해, 10.0.0.0/8의 목적지를 Transit Gateway로 추가합니다.
 
+```
+Seoul-VPC-PART-Private-Subnet-A-RT
+```
+
 ![](<.gitbook/assets/image (128) (1).png>)
 
 ![](<.gitbook/assets/image (133) (1) (1) (1) (1) (1).png>)
@@ -284,7 +258,7 @@ ping SEOUL-VPC-DEV-Private
 ![](<.gitbook/assets/image (23).png>)
 
 {% hint style="info" %}
-Seoul-VPC-PART에서 Seoul-VPC-PRD 로도 접근이 가능할 것입니다. 모든 VPC에서 10.0.0.0/8의 목적지를 TGW로 구성했긴 때문입니다. 보안 강화를 이러한 경우에는 VPC들의 CIDR을 Propagation 하지 않고, Static으로 처리하면 접근 제어가 가능합니다.&#x20;
+Seoul-VPC-PART에서 Seoul-VPC-PRD 로도 접근이 가능할 것입니다. 모든 VPC에서 10.0.0.0/8의 목적지를 TGW로 구성했 때문입니다. 보안 강화를 이러한 경우에는 VPC들의 CIDR을 Propagation 하지 않고, Static으로 처리하면 접근 제어가 가능합니다.&#x20;
 {% endhint %}
 
 이제 Seoul-VPC-PART-Private-10.4.21.101 에서 DEV, STG로 트래픽을 체크를 해보세요. PRD도 확인 해 보세요.
@@ -299,6 +273,6 @@ ping SEOUL-VPC-PRD-Private
 MultiAccount의 같은 리전에서 TGW 연동을 확인해 보았습니다. Propagation과 Static 조합을 통해서 VPC 격리와 보안을 강화하는 여러가지 디자인을 구성해 볼 수 있습니다.
 {% endhint %}
 
-**해당 LAB의 질문 사항은 whchoi98@gmail.com/ whchoi@amazon.com 또는🙋 슬랙채널(https://whchoi-hol.slack.com/ , https://join.slack.com/t/whchoi-hol/shared\_invite/zt-necc66t1-n6pSgrVfGW1w6SLAQUTP8A) #aws-builders-adv-networking-hol 에서 문의 가능합니다.**
+****
 
 ****
