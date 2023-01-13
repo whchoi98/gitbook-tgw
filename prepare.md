@@ -4,6 +4,36 @@ description: 'Update : 2023-01-13'
 
 # 사전준비
 
+## IAM 환경 구성하기
+
+Event Engine을 사용하는 환경의 사용자는 신규 User ID와 Alias URL을 생성합니다.
+
+#### IAM User ID 생성
+
+IAM 사용자 콘솔에서 **`Users`** 를 선택하고, User를 생성합니다.
+
+<figure><img src=".gitbook/assets/image (135).png" alt=""><figcaption></figcaption></figure>
+
+
+
+<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/image (150).png" alt=""><figcaption></figcaption></figure>
+
+
+
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+#### Alias URL 생성
+
+
+
+
+
 ## Cloud9 환경 생성
 
 ### 사전 준비
@@ -30,7 +60,7 @@ Cloud9을 실행하기 위해 아래와 같이 AWS 관리콘솔에서 **`"Cloud9
 
 * name : _userid_-cloud9
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (137).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -42,11 +72,11 @@ Cloud9을 실행하기 위해 아래와 같이 AWS 관리콘솔에서 **`"Cloud9
 
 2\~3분 후에 Cloud9 이 동작하는 것을 확인 할 수 있습니다. "Open"을 선택해서 Cloud9 IDE 창을 열어 봅니다.
 
-<figure><img src=".gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (4) (2).png" alt=""><figcaption></figcaption></figure>
 
 &#x20;Cloud9 창에서 "+" 버튼을 누르고 New Terminal을 띄워서 터미널을 생성합니다. 추가로 "+"를 계속 생성하게 되면 Terminal을 다중으로 사용할 수 있습니다.
 
-<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (3).png" alt=""><figcaption></figcaption></figure>
 
 Cloud9 IDE는 이미 AWS CLI가 설치되어 있습니다. 하지만 기본 1.x 버전이 설치되어 있습니다.
 

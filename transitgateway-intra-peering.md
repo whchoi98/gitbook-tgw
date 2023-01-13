@@ -251,7 +251,7 @@ echo 10.13.21.101 Seoul-VPC-PART-DEV-Private >> /etc/hosts
 
 목표 구성과 필요작업은 아래와 같습니다.
 
-![](<.gitbook/assets/image (137).png>)
+![](<.gitbook/assets/image (137) (2).png>)
 
 ### **Task10. Seoul 리전에서 TGW간 연결 (Peering)**
 
@@ -336,7 +336,7 @@ Static Route(정적 경로) 설정을 위한 CIDR, Attachment를 선택합니다
 * CIDR : 0.0.0.0/0 (STG, DEV VPC가 인터넷 트래픽으로 가기 위한 CIDR )&#x20;
 * Attachment : Seoul-TGW-PART1-Attach-Seoul-VPC-PART-PRD 선택
 
-![](<.gitbook/assets/image (135).png>)
+![](<.gitbook/assets/image (135) (2).png>)
 
 연결 생성 이후 Trasit Gateway 라우팅테이블의 연결 탭에서 경로가 생성됩니다.&#x20;
 

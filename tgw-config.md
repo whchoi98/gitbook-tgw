@@ -118,6 +118,7 @@ aws cloudformation deploy \
   --stack-name "Seoul-TGW" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-TGW.yml" \
   --capabilities CAPABILITY_NAMED_IAM
+  
 ```
 
 5분 이내에 TransitGateway가 완성됩니다.
