@@ -14,9 +14,11 @@ IAM 사용자 콘솔에서 **`Users`** 를 선택하고, User를 생성합니다
 
 <figure><img src=".gitbook/assets/image (135).png" alt=""><figcaption></figcaption></figure>
 
-
+**`Add Users`** 를 선택하고, 신규 User를 생성합니다.
 
 <figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+User name 에 신규 User를 입력하고, 패스워드 설정을 합니다.
 
 <figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
