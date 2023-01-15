@@ -1,5 +1,5 @@
 ---
-description: 'Update: 2021-09-09'
+description: 'Update: 2023-01-13'
 ---
 
 # TransitGateway 구성
@@ -64,7 +64,7 @@ aws cloudformation deploy \
   --stack-name "Seoul-VPC-HQ" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-HQ.yml" \
   --capabilities CAPABILITY_NAMED_IAM \
-  --parameter-overrides "KeyPair=${KeyPair}"
+  --parameter-overrides "KeyPair=${KeyName}"
 
 ```
 
@@ -75,7 +75,7 @@ aws cloudformation deploy \
   --stack-name "Seoul-VPC-PRD" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-PRD.yml" \
   --capabilities CAPABILITY_NAMED_IAM \
-  --parameter-overrides "KeyPair=${KeyPair}"
+  --parameter-overrides "KeyPair=${KeyName}"
 
 ```
 
@@ -86,7 +86,7 @@ aws cloudformation deploy \
   --stack-name "Seoul-VPC-STG" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-STG.yml" \
   --capabilities CAPABILITY_NAMED_IAM \
-  --parameter-overrides "KeyPair=${KeyPair}"
+  --parameter-overrides "KeyPair=${KeyName}"
 
 ```
 
@@ -97,7 +97,7 @@ aws cloudformation deploy \
   --stack-name "Seoul-VPC-DEV" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-DEV.yml" \
   --capabilities CAPABILITY_NAMED_IAM \
-  --parameter-overrides "KeyPair=${KeyPair}"
+  --parameter-overrides "KeyPair=${KeyName}"
 
 ```
 
