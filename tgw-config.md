@@ -305,8 +305,14 @@ ssm plugin을 통해서 인스턴스 ID 기반으로, 직접 Private Instance에
 * **Seoul-VPC-DEV-Private-10.3.21.101**
 
 ```
-# aws ssm start-session --target "인스턴스 ID"
+# Instance ID 등록
+~/environment/tgw/tgw_basic_ssm.sh
 
+# aws ssm start-session --target "인스턴스 ID"
+aws ssm start-session --target $Seoul_VPC_HQ_Private_10_0_21_101
+aws ssm start-session --target $Seoul_VPC_PRD_Private_10_1_21_101
+aws ssm start-session --target $Seoul_VPC_STG_Private_10_2_21_101
+aws ssm start-session --target $Seoul_VPC_DEV_Private_10_3_21_101
 ```
 
 Cloud9에서 터미널 창을 4개를 추가로 오픈하고, 아래와 같이 각 4개의 호스트에 명령을 입력하여, bash 콘솔로 접속하고, 시험할 호스트들을 host file에 등록합니다.
