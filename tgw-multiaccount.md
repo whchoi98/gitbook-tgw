@@ -1,5 +1,5 @@
 ---
-description: 'Update: 2021-12-12'
+description: 'Update: 2023-01-13'
 ---
 
 # TransitGateway 멀티어카운트
@@ -228,7 +228,13 @@ TGW와 Routing Table 자원은 모두 빌더스 컴퍼니 계정 소유 입니�
 Seoul-VPC-PART-Private-10.4.21.101 인스턴스에 접속합니다.
 
 ```
-aws ssm start-session --target "Seoul-VPC-PART-Private-10.4.21.101 id"
+aws ec2 describe-instances --filters 'Name=tag:Name,Values=Seoul-VPC-PART-Private-10.4.21.101' 'Name=instance-state-name,Values=running' | jq -r '.Reservations[].Instances[].InstanceId'
+export Seoul_VPC_PART_Private_10_4_21_101=$(aws ec2 describe-instances --filters 'Name=tag:Name,Values=Seoul-VPC-PART-Private-10.4.21.101' 'Name=instance-state-name,Values=running' | jq -r '.Reservations[].Instances[].InstanceId')
+echo "export Seoul_VPC_PART_Private_10_4_21_101=${Seoul_VPC_PART_Private_10_4_21_101}"| tee -a ~/.bash_profile
+source ~/.bash_profile
+
+aws ssm start-session --target $Seoul_VPC_PART_Private_10_4_21_101
+
 ```
 
 아래 명령어를 통해 Seoul-VPC-DEV,STG 의 인스턴스로 연결이 가능한지 확인합니다.
