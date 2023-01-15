@@ -195,6 +195,9 @@ The key's randomart image is:
 ```
 mv mykey ./mykey.pem
 chmod 400 ./mykey.pem
+export KeyName=mykey
+echo "export KeyName=${KeyName}" | tee -a ~/.bash_profile
+source ~/.bash_profile
 aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region ap-northeast-2
 aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region us-east-1
 aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region ap-northeast-1
@@ -250,6 +253,9 @@ ssh-keygen
 
 mv mykey ./mykey.pem
 chmod 400 ./mykey.pem
+export KeyName=mykey
+source ~/.bash_profile
+echo "export KeyName=${KeyName}" | tee -a ~/.bash_profile
 aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region ap-northeast-2
 aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.pub --region us-east-1
 
