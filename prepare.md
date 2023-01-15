@@ -16,25 +16,33 @@ IAM 사용자 콘솔에서 **`Users`** 를 선택하고, User를 생성합니다
 
 **`Add Users`** 를 선택하고, 신규 User를 생성합니다.
 
-<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
-User name 에 신규 User를 입력하고, 패스워드 설정을 합니다.
+_**`User name`**_ 에 신규 User를 입력하고, 패스워드 설정을 합니다.
 
 <figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
+생성한 User에 _**`AdministratorAccess`**_ 정책 권한을 부여합니다.
+
 <figure><img src=".gitbook/assets/image (150).png" alt=""><figcaption></figcaption></figure>
 
+정상적으로 User와 권한이 할당되었는지 확인합니다.&#x20;
 
+<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+Access Key ID와 Secret Access Key는 LAB에서 사용하지 않기 때문에 복사할 필요가 없습니다.
 
 <figure><img src=".gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 #### Alias URL 생성
 
+아래와 같이 Account의 Alias를 생성합니다.
 
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
+생성한 Alias URL을 복사해 둡니다.
 
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Cloud9 환경 생성
 
@@ -64,7 +72,7 @@ Cloud9을 실행하기 위해 아래와 같이 AWS 관리콘솔에서 **`"Cloud9
 
 <figure><img src=".gitbook/assets/image (137).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 모든 설정을 기본값으로 사용하고, 인스턴스타입은 t3.small ,Cost-Saving Setting Never로 변경합니다. 절전모드로 변경되는 것을 방지하게 됩니다. 다음 진행 버튼을 계속 누르고 Cloud9을 생성합니다.
 

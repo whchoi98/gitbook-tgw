@@ -159,7 +159,7 @@ Step3. 액세스 할 수 있는 보안 주체 선택 - TransitGateway 자원을 
 
 해당 리소스 공유를 선택하면, 리소스 공유 수락을 대기하고 있는 것을 확인 할 수 있습니다. 공유된 리소스 Seoul-TGW 를 선택합니다.
 
-![](<.gitbook/assets/image (1) (1).png>)
+![](<.gitbook/assets/image (1) (1) (1).png>)
 
 리소스 공유 수락을 선택합니다.
 
