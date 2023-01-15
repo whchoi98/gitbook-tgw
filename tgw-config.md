@@ -24,9 +24,11 @@ Cloudformation을 통해 기본이 되는 VPC구성을 먼저 구성합니다.
 
 **2.Cloudformation 생성.**
 
-Seoul-VPC-HQ, Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV를 Cloudformation 을 기반으로 생성합니다.
+Seoul-VPC-HQ, Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV를 Cloudformation 을 기반으로 생성합니다.&#x20;
 
+{% hint style="info" %}
 사내 보안을 이슈로 다운로드 받은 파일을 직접 업로드 하지 못하는 경우에는 , Cloud9에서 S3 bucket을 생성해서 직접 업로드 합니다.
+{% endhint %}
 
 ```
 ## 생성된 버킷에 clone한 파일들을 업로드 합니다.
@@ -62,7 +64,7 @@ aws cloudformation deploy \
   --stack-name "Seoul-VPC-HQ" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-HQ.yml" \
   --capabilities CAPABILITY_NAMED_IAM \
-  --parameter-overrides "KeyPair=mykey"
+  --parameter-overrides "KeyPair=${KeyPair}"
 
 ```
 
@@ -73,7 +75,7 @@ aws cloudformation deploy \
   --stack-name "Seoul-VPC-PRD" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-PRD.yml" \
   --capabilities CAPABILITY_NAMED_IAM \
-  --parameter-overrides "KeyPair=mykey"
+  --parameter-overrides "KeyPair=${KeyPair}"
 
 ```
 
@@ -84,7 +86,7 @@ aws cloudformation deploy \
   --stack-name "Seoul-VPC-STG" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-STG.yml" \
   --capabilities CAPABILITY_NAMED_IAM \
-  --parameter-overrides "KeyPair=mykey"
+  --parameter-overrides "KeyPair=${KeyPair}"
 
 ```
 
@@ -95,7 +97,7 @@ aws cloudformation deploy \
   --stack-name "Seoul-VPC-DEV" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-DEV.yml" \
   --capabilities CAPABILITY_NAMED_IAM \
-  --parameter-overrides "KeyPair=mykey"
+  --parameter-overrides "KeyPair=${KeyPair}"
 
 ```
 

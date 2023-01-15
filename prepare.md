@@ -226,9 +226,20 @@ cd ~/environment
 git clone https://github.com/whchoi98/tgw.git
 ```
 
+##
+
+## Session Manager PlugIn 설치
+
+Cloud9에서 EC2에 직접 Access 하기 위해서 Session Manager PlugIn을 설치합니다.
+
+```
+### Session Manager Plugin
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
+sudo sudo yum install -y session-manager-plugin.rpm
+
+```
+
 이제 사전 구성이 완료되었습니다.
-
-
 
 ## 참조
 
@@ -263,4 +274,7 @@ aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://mykey.p
 cd ~/environment
 git clone https://github.com/whchoi98/tgw.git
 
+### Session Manager Plugin
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
+sudo sudo yum install -y session-manager-plugin.rpm
 ```
