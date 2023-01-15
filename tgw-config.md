@@ -60,6 +60,7 @@ Cloud9에서 아래와 같이 차례로 수행하여, 배포 합니다.&#x20;
 * Seoul-VPC-HQ 배포&#x20;
 
 ```
+cd ~/environment/
 aws cloudformation deploy \
   --stack-name "Seoul-VPC-HQ" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-HQ.yml" \
@@ -71,6 +72,7 @@ aws cloudformation deploy \
 * Seoul-VPC-PRD 배포&#x20;
 
 ```
+cd ~/environment/
 aws cloudformation deploy \
   --stack-name "Seoul-VPC-PRD" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-PRD.yml" \
@@ -82,6 +84,7 @@ aws cloudformation deploy \
 Seoul-VPC-STG 배포&#x20;
 
 ```
+cd ~/environment/
 aws cloudformation deploy \
   --stack-name "Seoul-VPC-STG" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-STG.yml" \
@@ -93,6 +96,7 @@ aws cloudformation deploy \
 Seoul-VPC-DEV 배포&#x20;
 
 ```
+cd ~/environment/
 aws cloudformation deploy \
   --stack-name "Seoul-VPC-DEV" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-DEV.yml" \
@@ -301,7 +305,8 @@ ssm plugin을 통해서 인스턴스 ID 기반으로, 직접 Private Instance에
 * **Seoul-VPC-DEV-Private-10.3.21.101**
 
 ```
-aws ssm start-session --target "인스턴스 ID"
+# aws ssm start-session --target "인스턴스 ID"
+
 ```
 
 Cloud9에서 터미널 창을 4개를 추가로 오픈하고, 아래와 같이 각 4개의 호스트에 명령을 입력하여, bash 콘솔로 접속하고, 시험할 호스트들을 host file에 등록합니다.
@@ -341,7 +346,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 **목표 구성과 필요작업은 아래와 같습니다.**
 
-![](<.gitbook/assets/image (3) (1).png>)
+![](<.gitbook/assets/image (3) (1) (1).png>)
 
 ### Task9. Staging과 Dev 연결
 

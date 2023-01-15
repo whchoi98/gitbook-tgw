@@ -20,7 +20,7 @@ IAM 사용자 콘솔에서 **`Users`** 를 선택하고, User를 생성합니다
 
 _**`User name`**_ 에 신규 User를 입력하고, 패스워드 설정을 합니다.
 
-<figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 생성한 User에 _**`AdministratorAccess`**_ 정책 권한을 부여합니다.
 
@@ -226,7 +226,25 @@ cd ~/environment
 git clone https://github.com/whchoi98/tgw.git
 ```
 
-##
+### Cloud9 권한 변경
+
+Cloud9에 앞서 생성한 Role을 연결합니다.
+
+* _**`EC2 Dashboard - Instance - Cloud9 인스턴스 선택`**_
+* _**`Action - Security - Modify IAM Role 선택`**_
+
+<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+IAM Role에서 앞서 생성한 Cloud9을 위한 Role을 선택합니다. (e.g cloud9admin)
+
+<figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+이제 Cloud9 터미널에서 기존 Temporary credentials를 제거합니다.
+
+* Cloud9의 터미널 우측 상단의 톱니바퀴 모양의 Preference 메뉴를 선택합니다.
+* AWS Settings - Credentials 메뉴를 비활성합니다.
+
+<figure><img src=".gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 ## 기타 유틸리티 설치
 
