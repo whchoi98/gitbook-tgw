@@ -60,6 +60,7 @@ Cloud9에서 아래와 같이 차례로 수행하여, 배포 합니다.&#x20;
 * Seoul-VPC-HQ 배포&#x20;
 
 ```
+cd ~/environment/
 aws cloudformation deploy \
   --stack-name "Seoul-VPC-HQ" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-HQ.yml" \
@@ -71,6 +72,7 @@ aws cloudformation deploy \
 * Seoul-VPC-PRD 배포&#x20;
 
 ```
+cd ~/environment/
 aws cloudformation deploy \
   --stack-name "Seoul-VPC-PRD" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-PRD.yml" \
@@ -82,6 +84,7 @@ aws cloudformation deploy \
 Seoul-VPC-STG 배포&#x20;
 
 ```
+cd ~/environment/
 aws cloudformation deploy \
   --stack-name "Seoul-VPC-STG" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-STG.yml" \
@@ -93,6 +96,7 @@ aws cloudformation deploy \
 Seoul-VPC-DEV 배포&#x20;
 
 ```
+cd ~/environment/
 aws cloudformation deploy \
   --stack-name "Seoul-VPC-DEV" \
   --template-file "/home/ec2-user/environment/tgw/Seoul-VPC-DEV.yml" \
