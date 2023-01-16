@@ -322,7 +322,7 @@ Peering은 구성을 완료했지만, 상호간의 라우팅 구성이 되어 �
 
 **`Seoul-TGW-PART1-RT`** 를 선택하고, Route(경로) 탭을 선택하고, Create static Route(정적경로생성)를 선택합니다.
 
-![](<.gitbook/assets/image (132) (1).png>)
+![](<.gitbook/assets/image (132) (1) (2).png>)
 
 Static Route(정적 경로) 설정을 위한 CIDR, Attachment를 선택합니다
 
@@ -403,7 +403,7 @@ Seoul-VPC-PART-STG,DEV VPC에서 다음과 같은 라우팅 테이블을 추가�
 
 라우팅 탭에서 라우팅 편집을 선택합니다.&#x20;
 
-![](<.gitbook/assets/image (132).png>)
+![](<.gitbook/assets/image (132) (1).png>)
 
 0.0.0.0/0 목적지의 대상이 NAT Gateway로 되어 있습니다. 제거하고 0.0.0.0/0 목적지로 Transit Gateway로 신규 추가합니다. &#x20;
 

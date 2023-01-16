@@ -151,7 +151,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 _**`VPC Dashboard- TransitGateway`**_ 를 선택해서, Transit Gateway 정상적으로 구성되었는지 확인합니다.
 
-<figure><img src=".gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (134) (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Task5. TGW Attachment 확인.
 
@@ -468,13 +468,13 @@ sudo -s
 ```
 
 ```
-##Seoul-VPC-PRD-Private-10.1.21.101
+##From Seoul-VPC-PRD-Private-10.1.21.101
 ping SEOUL-VPC-DEV-Private
 
 ```
 
 ```
-##Seoul-VPC-PRD-Private-10.1.21.101
+##From Seoul-VPC-PRD-Private-10.1.21.101
 ping SEOUL-VPC-STG-Private
 
 ```
@@ -510,11 +510,11 @@ Transit Gateway에는 Blackhole 기능이 있습니다. 이것은 전통적인 �
 10.2.21.101/32
 ```
 
-**`VPC - TransitGateway - TransitGateway 라우팅 테이블 - Seoul-TGW-RT-East-To-West`**
+**`VPC - TransitGateway - TransitGateway Route tables - Seoul-TGW-RT-East-To-West`**
 
-![](<.gitbook/assets/image (120).png>)
+<figure><img src=".gitbook/assets/image (132).png" alt=""><figcaption></figcaption></figure>
 
-![](<.gitbook/assets/image (116).png>)
+<figure><img src=".gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
 
 ![](<.gitbook/assets/image (115).png>)
 
