@@ -502,7 +502,7 @@ Seoul-VPC-PRD-Private-Subnet-A-RT
 
 {% hint style="info" %}
 **이제 Production과 Dev,Staging 환경이 연결되었습니다.**  \
-Production과 Staging간의 10.2.21.101만 잠시 Block 하고 싶습니다. 어떻게 해야 할까요?
+Production/Dev와 Staging간의 10.2.21.101만 잠시 Block 하고 싶습니다. 어떻게 해야 할까요?
 {% endhint %}
 
 Transit Gateway에는 Blackhole 기능이 있습니다. 이것은 전통적인 네트워크 장비에서 Null Routing과 유사합니다. 특정 라우팅테이블을 블랙홀에 빠뜨려서, 격리시키는 방식으로 Transit Gateway 를 통과시키지 못하도록 합니다.
