@@ -163,7 +163,7 @@ EC2가 정상적으로 생성되었는지 확인합니다.
 
 **`VPC-Transit Gateway-Transit Gateway 연결` 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
-![](<.gitbook/assets/image (134).png>)
+![](<.gitbook/assets/image (134) (2).png>)
 
 3개의 Attachment를 선택하면, 이미 "Seoul-PART-PRD, STG, DEV VPC"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.&#x20;
 
@@ -284,7 +284,7 @@ Seoul-TGW-PART2에서 수락하지 않으면 연결되지 않습니다.
 
 비어있는 Name을 **`Seoul-TGW-PART2-To-PART1`** 으로 변경하고 ,상단메뉴 **`"작업"`** 을 선택하고 **`Transit Gateway 연결수락`**을 선택합니다.&#x20;
 
-![](<.gitbook/assets/image (148).png>)
+![](<.gitbook/assets/image (148) (2).png>)
 
 Accept(수락를 선택하면, pending 으로 전환되고 3\~4분 이후 available로 변경됩니다.&#x20;
 
@@ -292,7 +292,7 @@ Accept(수락를 선택하면, pending 으로 전환되고 3\~4분 이후 availa
 
 이제 Attachment가 Available(가용)으로 변경되면,**`Seoul-TGW-PART1-RT`** 라우팅 테이블의 **`Transit Gateway-Transit Gateway Route Table`** 탭에서 생성한 Peering Attachment를 Association(연결)을 시켜 줍니다.&#x20;
 
-![](<.gitbook/assets/image (136) (1).png>)
+![](<.gitbook/assets/image (136) (1) (2).png>)
 
 ![](<.gitbook/assets/image (149).png>)
 
@@ -310,7 +310,7 @@ Accept(수락를 선택하면, pending 으로 전환되고 3\~4분 이후 availa
 
 연결 생성 이후 Trasit Gateway 라우팅테이블의 연결 탭에서 3\~4분 이후 Associated (연결) 됩니다.&#x20;
 
-![](<.gitbook/assets/image (129).png>)
+![](<.gitbook/assets/image (129) (1).png>)
 
 ### Task11. Transit Gateway 라우팅 테이블 변경
 
@@ -384,7 +384,7 @@ Seoul-VPC-PART-PRD VPC에서 다음과 같은 라우팅 테이블을 추가해 �
 
 저장 이후 정상적으로 라우팅이 추가되었는지 확인합니다. &#x20;
 
-![](<.gitbook/assets/image (136).png>)
+![](<.gitbook/assets/image (136) (1).png>)
 
 **`Seoul-VPC-PART-PRD-Private-Subnet-A-RT`** 라우팅도 동일하게 추가해 줍니다.&#x20;
 

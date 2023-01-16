@@ -111,7 +111,7 @@ aws cloudformation deploy \
 
 4개의 VPC가 모두 정상적으로 구성되면 아래와 같이 Cloudformation에서 확인 할 수 있습니다. 4개의 VPC는 각 3분 내외에 생성됩니다. 동시에 수행해도 가능합니다.
 
-![](<.gitbook/assets/image (119).png>)
+<figure><img src=".gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 AWS Cloudformation 서비스에서 직접 작업을 수행해도 됩니다. S3에 업로드한 경로를 선택하고 진행합니다. (옵션)
 
@@ -129,44 +129,42 @@ aws cloudformation deploy \
 
 5분 이내에 TransitGateway가 완성됩니다.
 
-![](<.gitbook/assets/image (126).png>)
+<figure><img src=".gitbook/assets/image (151).png" alt=""><figcaption></figcaption></figure>
 
 ## 2.TransitGateway 구성 확인
 
 ### Task3.VPC, EC2 구성 확인
 
-AWS 관리콘솔 - VPC 를 선택합니다.
+_**`VPC Dashboard - Your VPC`**_ 를 선택합니다.
 
 4개의 VPC가 정상적으로 생성되었는지 확인합니다.
 
-![](<.gitbook/assets/image (121).png>)
+<figure><img src=".gitbook/assets/image (152).png" alt=""><figcaption></figcaption></figure>
 
-AWS 관리콘솔 - EC2를 선택합니다.
+_**`EC2 Dashboard - EC2`**_ 를 선택합니다.
 
 EC2가 정상적으로 생성되었는지 확인합니다.
 
-![](<.gitbook/assets/image (122).png>)
+<figure><img src=".gitbook/assets/image (135).png" alt=""><figcaption></figcaption></figure>
 
 ### Task 4. TGW 구성 확인
 
-VPC - TransitGateway를 선택해서, Transit Gateway 정상적으로 구성되었는지 확인합니다.
+_**`VPC Dashboard- TransitGateway`**_ 를 선택해서, Transit Gateway 정상적으로 구성되었는지 확인합니다.
 
-![](<.gitbook/assets/image (103).png>)
-
-![](<.gitbook/assets/image (136) (1) (1) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
 
 ### Task5. TGW Attachment 확인.
 
-**VPC-Transit Gateway-Transit Gateway 연결 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
+_**`VPC Dashboard -Transit Gateway-Transit Gateway Attachments`**_** 을 선택해서, Transit Gateway attachment가 정상적으로 구성되었는지 확인합니다.**
 
 ![](<.gitbook/assets/image (140) (1) (1).png>)
 
-Seoul-TGW-Attach-Seoul-VPC-HQ를 선택하면, 이미 "Seoul-VPC-HQ"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.
+_**`Seoul-TGW-Attach-Seoul-VPC-HQ`**_를 선택하면, 이미 "Seoul-VPC-HQ"의 TGW-Subnet ID에 연결되어 있는 것을 확인할 수 있습니다. 또한 Routing Table에 Association 된 상태도 확인이 가능합니다.
 
 1. **TGW Routing Table과 Attachment가 연결된 상태를 확인**
 2. **Attachment가 VPC의 어떤 Subnet과 연결되었는지 확인**
 
-![](<.gitbook/assets/image (134) (1) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (148).png" alt=""><figcaption></figcaption></figure>
 
 아래에서 나머지 VPC들도 선택해서 확인해 봅니다.
 
@@ -178,7 +176,7 @@ Seoul-TGW-Attach-Seoul-VPC-PRD
 
 ### Task6. TGW Routing Table 확인.
 
-**`VPC-Transit Gateway-Transit Gateway- Transit Gateway 라우팅 테이블`** 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. 라우팅 테이블은 2개로 구성되어 있습니다.
+_**`VPC-Transit Gateway-Transit Gateway- Transit Gateway route tables`**_ 을 선택해서 라우팅 테이블 구성을 확인해 봅니다. 라우팅 테이블은 2개로 구성되어 있습니다.
 
 East-To-West 트래픽을 위한 라우팅 테이블 도메인, North-To-South 트래픽을 위한 라우팅 테이블 도메인으로 구성되어 있습니다. Seoul-VPC-HQ 는 North-To-South 라우팅 테이블 도메인에 속해 있습니다.
 
@@ -186,33 +184,31 @@ East-To-West 트래픽을 위한 라우팅 테이블 도메인, North-To-South �
 
 **해당 라우팅 테이블 도에인에는 Seoul-VPC-HQ를 연결했습니다.**
 
-Associations **(연결)**와  Propagation(전파 탭을 눌러서, Seoul-VPC-HQ 연결과 Seoul-VPC-HQ의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
+_**`Associations`**_** ** 와  _**`Propagation`**_ 을 선택해서, Seoul-VPC-HQ 연결과 Seoul-VPC-HQ의 CIDR가 정상적으로 업데이트 되었는지 확인합니다.
 
-![](<.gitbook/assets/image (143) (1) (1) (1) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (153).png" alt=""><figcaption></figcaption></figure>
 
-![](<.gitbook/assets/image (134) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (129).png" alt=""><figcaption></figcaption></figure>
 
-propagation이 정상적으로 구성되었기 때문에 Route 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
+propagation이 정상적으로 구성되었기 때문에 _**`Route`**_ 탭을 선택하면, Route Type은 Propagated 되었다고 표기됩니다.
 
-![](<.gitbook/assets/image (130).png>)
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 **이제 East-To-West 라우팅 테이블 도메인을 확인합니다.**
 
 **해당 라우팅 테이블 도에인에는 Seoul-VPC-PRD, Seoul-VPC-STG, Seoul-VPC-DEV를 연결했습니다.**
 
-![](<.gitbook/assets/image (132) (1) (1) (1).png>)
+**East-To-West Routing Table 도메인을 선택하여, 라우팅 테이블 속성을 확인합니다. **_**`Association`**_** 탭을 선택해서 3개의 VPC가 Association 되었는지 확인합니다.**
 
-**East-To-West Routing Table 도메인을 선택하여, 라우팅 테이블 속성을 확인합니다. Association 탭을 선택해서 3개의 VPC가 Association 되었는지 확인합니다.**
-
-![](<.gitbook/assets/image (136) (1) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Propagations 탭을 선택해서, 3개의 VPC CIDR를 Propagation 하는지 확인합니다.
 
-![](<.gitbook/assets/image (133) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (150).png" alt=""><figcaption></figcaption></figure>
 
 Routing 탭을 선택해서, 앞서 Propagation 된 Route가 정상적으로 등록되었는지 확인합니다.
 
-![](<.gitbook/assets/image (142) (1) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (154).png" alt=""><figcaption></figcaption></figure>
 
 **Cloudformation을 통해서 모두 정상적으로 구성되었습니다.**
 
@@ -352,7 +348,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 **목표 구성과 필요작업은 아래와 같습니다.**
 
-<figure><img src=".gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
 
 ### Task9. Staging과 Dev 연결
 
@@ -392,7 +388,7 @@ sudo -s
 
 ```
 ##From Seoul-VPC-DEV-Private-10.2.21.101
-ping SEOUL-VPC-STG-Private
+ping SEOUL-VPC-DEV-Private
 
 ```
 
@@ -400,25 +396,31 @@ ping SEOUL-VPC-STG-Private
 상호간의 트래픽이 허용되지 않습니다. 각 VPC에서 라우팅 테이블이 없기 때문입니다.&#x20;
 {% endhint %}
 
-VPC- 가상 프라이빗 클라우드 - 라우팅 테이블에서 아래 라우팅 테이블 Tag 확인하고, 수정합니다.
+_**`Virtual Private Cloud - Route Tables`**_ 에서 아래 라우팅 테이블 Tag 확인하고, 수정합니다.
 
 ```
 Seoul-VPC-STG-Private-Subnet-A-RT
 ```
 
-![](<.gitbook/assets/image (141) (1) (1) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
-![](<.gitbook/assets/image (129) (1).png>)
+_**`Destination 0.0.0.0/0 - Target NAT Gateway`**_를 TGW로 변경하고, _**`Save Changes`**_ 를 선택합니다.
+
+<figure><img src=".gitbook/assets/image (136).png" alt=""><figcaption></figcaption></figure>
+
+_**`Seoul-VPC-DEV-Private-Subnet-A-RT`**_ Route Table도 동일하게 변경합니다.
 
 ```
 Seoul-VPC-DEV-Private-Subnet-A-RT
 ```
 
-![](<.gitbook/assets/image (138) (1) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
-![](<.gitbook/assets/image (137) (1) (1).png>)
+_**`Destination 0.0.0.0/0 - Target NAT Gateway`**_를 TGW로 변경하고, _**`Save Changes`**_ 를 선택합니다.
 
-아래와 같이 변경 적용합니다
+<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+아래와 같이 변경 적용됩니다.&#x20;
 
 ![](<.gitbook/assets/image (141) (1) (1) (1).png>)
 
@@ -460,7 +462,7 @@ Dev, Stage 환경에서 모든 준비가 완료되고 필요 요구에 따라 Pr
 
 ```
 ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-PRD-Private"
-aws ssm start-session --target "Instance ID 값"
+aws ssm start-session --target $Seoul_VPC_PRD_Private_10_1_21_101
 sudo -s
 
 ```
@@ -474,6 +476,7 @@ ping SEOUL-VPC-DEV-Private
 ```
 ##Seoul-VPC-PRD-Private-10.1.21.101
 ping SEOUL-VPC-STG-Private
+
 ```
 
 {% hint style="info" %}
@@ -487,7 +490,7 @@ Seoul-VPC-PRD-Private-Subnet-A-RT
 
 ```
 
-![](<.gitbook/assets/image (134) (1).png>)
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 이제 다시 앞서 실행한 각 인스턴스에서의 Ping이 정상적으로 처리되는 지 확인합니다.
 

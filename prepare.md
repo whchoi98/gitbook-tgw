@@ -12,11 +12,11 @@ Event Engine을 사용하는 환경의 사용자는 신규 User ID와 Alias URL�
 
 IAM 사용자 콘솔에서 **`Users`** 를 선택하고, User를 생성합니다.
 
-<figure><img src=".gitbook/assets/image (135).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (135) (3).png" alt=""><figcaption></figcaption></figure>
 
 **`Add Users`** 를 선택하고, 신규 User를 생성합니다.
 
-<figure><img src=".gitbook/assets/image (2) (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1) (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 _**`User name`**_ 에 신규 User를 입력하고, 패스워드 설정을 합니다.
 
@@ -24,21 +24,21 @@ _**`User name`**_ 에 신규 User를 입력하고, 패스워드 설정을 합니
 
 생성한 User에 _**`AdministratorAccess`**_ 정책 권한을 부여합니다.
 
-<figure><img src=".gitbook/assets/image (150).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (150) (1).png" alt=""><figcaption></figcaption></figure>
 
 정상적으로 User와 권한이 할당되었는지 확인합니다.&#x20;
 
-<figure><img src=".gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 Access Key ID와 Secret Access Key는 LAB에서 사용하지 않기 때문에 복사할 필요가 없습니다.
 
-<figure><img src=".gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (4) (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Alias URL 생성
 
 아래와 같이 Account의 Alias를 생성합니다.
 
-<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 생성한 Alias URL을 복사해 둡니다.
 
@@ -50,7 +50,7 @@ Cloud9에 새로운 Assume Role을 부여하기 위해, 사전에 Role을 생성
 
 _**`IAM Dashboard - Access Management - Roles`**_ 를 선택합니다.
 
-<figure><img src=".gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (10) (2).png" alt=""><figcaption></figcaption></figure>
 
 _**`Create Role`**_ 을 선택합니다.
 
@@ -61,13 +61,13 @@ Cloud9은 EC2 인스턴스에 IDE를 구현한 것입니다. 아래와 같이 Tr
 * _**`Trusted Entity Type`**_ : _**`AWS Service`**_
 * _**`Use Case`**_ : _**`EC2`**_
 
-<figure><img src=".gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (8) (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 생성하는 Role에 부여할 Permission을 선택합니다.
 
 * _**`Permissions Policies`**_ : _**`AdministratorAccess`**_&#x20;
 
-<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 신규 Role의 이름을 입력하고, Role 생성을 마칩니다. (Role Name은 사용자가 원하는 데로 입력해도 됩니다.)
 
@@ -233,7 +233,7 @@ Cloud9에 앞서 생성한 Role을 연결합니다.
 * _**`EC2 Dashboard - Instance - Cloud9 인스턴스 선택`**_
 * _**`Action - Security - Modify IAM Role 선택`**_
 
-<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (6) (2).png" alt=""><figcaption></figcaption></figure>
 
 IAM Role에서 앞서 생성한 Cloud9을 위한 Role을 선택합니다. (e.g cloud9admin)
 
@@ -244,7 +244,7 @@ IAM Role에서 앞서 생성한 Cloud9을 위한 Role을 선택합니다. (e.g c
 * Cloud9의 터미널 우측 상단의 톱니바퀴 모양의 Preference 메뉴를 선택합니다.
 * AWS Settings - Credentials 메뉴를 비활성합니다.
 
-<figure><img src=".gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
 
 ## 기타 유틸리티 설치
 
