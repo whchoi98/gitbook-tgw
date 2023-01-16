@@ -38,7 +38,7 @@ MyNetwork
 
 **`전송 게이트웨이 등록`**을 선택합니다.
 
-![](<.gitbook/assets/image (12).png>)
+![](<.gitbook/assets/image (12) (1).png>)
 
 앞서 만들어 둔 TransitGateway를 선택하고, 전송게이트웨이 등록을 클릭합니다.
 

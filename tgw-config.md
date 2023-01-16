@@ -418,11 +418,11 @@ Seoul-VPC-DEV-Private-Subnet-A-RT
 
 _**`Destination 0.0.0.0/0 - Target NAT Gateway`**_를 TGW로 변경하고, _**`Save Changes`**_ 를 선택합니다.
 
-<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 아래와 같이 변경 적용됩니다.&#x20;
 
-![](<.gitbook/assets/image (141) (1) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 이제 다시 앞서 실행한 각 인스턴스에서의 Ping이 정상적으로 처리되는 지 확인합니다.
 
@@ -490,7 +490,13 @@ Seoul-VPC-PRD-Private-Subnet-A-RT
 
 ```
 
+<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+아래와 같이 Seoul-VPC-PRD-Private-Subnet-A-RT Route Table에서 NATGW Table도 삭제합니다.
+
 <figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 이제 다시 앞서 실행한 각 인스턴스에서의 Ping이 정상적으로 처리되는 지 확인합니다.
 
