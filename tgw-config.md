@@ -12,7 +12,7 @@ AWS TransitGateway의 기본 동작 이해를 위해, 가장 기본이 되는 �
 
 아래 그림은 이번 Chapter에서 구성해 볼 아키텍쳐 입니다.
 
-![](<.gitbook/assets/image (1) (1) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 ### Task1. VPC 구성하기
 
@@ -352,7 +352,7 @@ echo 10.5.21.101 IAD-VPC-Private >> /etc/hosts
 
 **목표 구성과 필요작업은 아래와 같습니다.**
 
-![](<.gitbook/assets/image (3) (1) (1).png>)
+<figure><img src=".gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 ### Task9. Staging과 Dev 연결
 
@@ -366,22 +366,34 @@ East-To-West에는 이미 Seoul-VPC-STG, Seoul-VPC-DEV의 CIDR가 Propagated 되
 Cloudformation을 통해 Security Group은 시험에 필요한 트래픽은 모두 허용되어 있습니다.&#x20;
 {% endhint %}
 
+Cloud9 터미널에서 아래와 같이 실행 합니다.
+
 ```
 ~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-DEV-Private"
-aws ssm start-session --target "Instance ID 값"
+aws ssm start-session --target $Seoul_VPC_DEV_Private_10_3_21_101
 sudo -s
 
 ```
 
 ```
-##Seoul-VPC-STG-Private-10.2.21.101
-ping SEOUL-VPC-DEV-Private
-
-```
-
-```
-##Seoul-VPC-DEV-Private-10.3.21.101
+##From Seoul-VPC-DEV-Private-10.3.21.101
 ping SEOUL-VPC-STG-Private
+
+```
+
+Cloud9 터미널에서 아래와 같이 실행합니다.
+
+```
+~/environment/tgw/aws_ec2_ext.sh |grep "Seoul-VPC-STG-Private"
+aws ssm start-session --target $Seoul_VPC_STG_Private_10_2_21_101
+sudo -s
+
+```
+
+```
+##From Seoul-VPC-DEV-Private-10.2.21.101
+ping SEOUL-VPC-STG-Private
+
 ```
 
 {% hint style="warning" %}

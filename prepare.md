@@ -42,7 +42,7 @@ Access Key ID와 Secret Access Key는 LAB에서 사용하지 않기 때문에 �
 
 생성한 Alias URL을 복사해 둡니다.
 
-<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Cloud9 을 위한 Role 생성
 
@@ -61,13 +61,13 @@ Cloud9은 EC2 인스턴스에 IDE를 구현한 것입니다. 아래와 같이 Tr
 * _**`Trusted Entity Type`**_ : _**`AWS Service`**_
 * _**`Use Case`**_ : _**`EC2`**_
 
-<figure><img src=".gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
 
 생성하는 Role에 부여할 Permission을 선택합니다.
 
 * _**`Permissions Policies`**_ : _**`AdministratorAccess`**_&#x20;
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 신규 Role의 이름을 입력하고, Role 생성을 마칩니다. (Role Name은 사용자가 원하는 데로 입력해도 됩니다.)
 
@@ -103,7 +103,7 @@ Cloud9을 실행하기 위해 아래와 같이 AWS 관리콘솔에서 **`"Cloud9
 
 <figure><img src=".gitbook/assets/image (137).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 모든 설정을 기본값으로 사용하고, 인스턴스타입은 t3.small ,Cost-Saving Setting Never로 변경합니다. 절전모드로 변경되는 것을 방지하게 됩니다. 다음 진행 버튼을 계속 누르고 Cloud9을 생성합니다.
 
