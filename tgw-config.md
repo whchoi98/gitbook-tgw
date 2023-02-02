@@ -303,6 +303,7 @@ ssm plugin을 통해서 인스턴스 ID 기반으로, 직접 Private Instance에
 ```
 # Instance ID 등록
 ~/environment/tgw/tgw_basic_ssm.sh
+source ~/.bash_profile
 
 # aws ssm start-session --target "인스턴스 ID"
 aws ssm start-session --target $Seoul_VPC_HQ_Private_10_0_21_101
