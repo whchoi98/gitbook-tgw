@@ -165,7 +165,9 @@ ssm plugin을 통해서 인스턴스 ID 기반으로, 직접 Private Instance에
 * **IAD-VPC-Private-10.5.21.101**
 
 ```
-aws ssm start-session --target "IAD-VPC-Private-10.5.21.101" --region us-east-1
+~/environment/tgw/tgw_inter_ssm.sh
+source ~/.bash_profile
+aws ssm start-session --target $IAD_VPC_Private_10_5_21_101 --region us-east-1
 
 ```
 
